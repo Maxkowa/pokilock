@@ -4,8 +4,9 @@ local player, target, focus, healer, enemyHealer = awful.player, awful.target, a
 awful.DevMode = true
 
 ---Spells
-poki.warlock
-poki.warlock.demonology = awful.Actor:New({ spec = 3, class = "warlock" })
+poki.warlock = {
+poki.warlock.demonology = awful.Actor:New({ spec = 3, class = "warlock" }),
+}
 local Demo = poki.warlock.demonology
 local NewSell = awful.NewSpell
 local NewItem = awful.NewItem

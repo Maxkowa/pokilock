@@ -81,6 +81,7 @@ awful.Populate({
     shadowflame = spell({47897, 61290}, { damage = "magic", targeted = true }),
     shadowfury = spell({30283, 30413, 30414, 47847, 47848}, { damage = "magic", targeted = true }),
     soulFire = spell({6353, 17924, 27211, 47843, 47844, 47845}, { damage = "magic", targeted = true }),
+    felguard = spell({30146}, { beneficial = true }),
 }, demo, getfenv(1))
 
 --awful.PopulateItems({
@@ -116,7 +117,12 @@ awful.powerTypes = {
 }
 
 -- Create spell callbacks for Demonology Warlock spells
-awful.SummonPet("30146")
+
+felguard:Callback(function(spell)
+    if not pet.exists then
+        sell:Cast()
+    end
+end)
 
 summonPet:Callback(function(spell)
     if not player.pet.exists then
@@ -173,7 +179,7 @@ immolationAura:Callback(function(spell)
 end)
 
 demonicEmpowerment:Callback(function(spell)
-    if Demo.pet and Demo.pet:IsSummoned("Felguard") then
+    if pet.exists then
         spell:Cast()
     end
 end)
@@ -243,7 +249,7 @@ demo:Init(function()
     if player.mounted then return end 
     if player.casting or player.channeling then return end
 
-    summonPet()
+    felguard()
     lifeTap()
     summonFelguard()
     shadowBolt()

@@ -214,12 +214,10 @@ end)
 seedOfCorruption:Callback(function(spell)
     local numEnemies = 0
     for _, unit in ipairs(awful.units) do
-        if unit:IsInCombat() and unit:IsInRange(target) then
-            numEnemies = numEnemies + 1
-            if numEnemies > 3 then
-                spell:Cast(target)
-                return
-            end
+        numEnemies = numEnemies + 1
+        if numEnemies > 3 then
+            spell:Cast(target)
+            return
         end
     end
 end)
@@ -227,12 +225,10 @@ end)
 shadowflame:Callback(function(spell)
     local numTargetsInRange = 0
     for _, unit in ipairs(awful.units) do
-        if unit:IsInCombat() and unit:IsInRange(spell) then
-            numTargetsInRange = numTargetsInRange + 1
-            if numTargetsInRange > 3 then
-                spell:Cast(target)
-                return
-            end
+        numTargetsInRange = numTargetsInRange + 1
+        if numTargetsInRange > 3 then
+            spell:Cast(target)
+            return
         end
     end
 end)

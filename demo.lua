@@ -150,15 +150,12 @@ metamorphosis:Callback(function(spell)
 end)
 
 immolationAura:Callback(function(spell)
-    local numTargets = 0
-    for _, unit in ipairs(awful.units) do
-        numTargets = numTargets + 1
-        if numTargets > 2 then
-            return
-        end
+    if awful.enemies.around(player, 10) >= 3 then
         spell:Cast()
     end
 end)
+
+
 
 demonicEmpowerment:Callback(function(spell)
     if pet.exists then

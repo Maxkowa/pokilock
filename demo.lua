@@ -1,6 +1,6 @@
 local Unlocker, awful, poki = ...
-local player, target, focus, healer, enemyHealer = awful.player, awful.target, awful.focus, awful.healer, awful.enemyHealer
 local player = awful.player
+local target, focus, healer, enemyHealer = awful.target, awful.focus, awful.healer, awful.enemyHealer
 awful.DevMode = true
 
 poki.warlock = {}

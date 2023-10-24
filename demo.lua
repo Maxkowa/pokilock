@@ -4,14 +4,14 @@ local pet = awful.pet
 local wasCasting = {}
 local target, focus, healer, enemyHealer = awful.target, awful.focus, awful.healer, awful.enemyHealer
 awful.DevMode = true
-
 poki.warlock = {}
 poki.warlock.demo = awful.Actor:New({ spec = 2, class = "warlock"})
 local demo = poki.warlock.demo
-
-
 local spell = awful.Spell
 local NewItem = awful.NewItem
+
+--TODO
+--Fix Incinerate 3x cast + Cast delay
 
 awful.Populate({
     banish = spell({710, 18647}, { effect = "magic", targeted = true }),
@@ -198,11 +198,13 @@ createSpellstone:Callback(function(spell)
     end
 end)
 
---spellstone:Use(function(item)
---    if not player.mainHandEnchant then
---        item:Use(player)
---    end
---end)
+spellstone:Use(function(item)
+    if not player.mainHandEnchant then
+        RunMacroText("/use [mod:alt] Grand Spellstone")
+        RunMacroText("/use 16")
+        RunMacroText("/click StaticPopup1Button1")
+    end
+end)
 
 
 felguard:Callback(function(spell)
@@ -296,7 +298,7 @@ corruption:Callback(function(spell)
     end
 end)
 
-incinerate:Callback(function(spell)
+incinerate:Callback(function(spell) 
     local incinerateID = 47838
     local consecutiveCasts = 0  -- Counter variable for consecutive casts
     
@@ -369,6 +371,7 @@ demo:Init(function()
     WasCastingCheck()
     if player.mounted then return end 
     if player.casting or player.channeling then return end
+    spellstone()
     createSpellstone()
     createSoulstone()
     felArmor()

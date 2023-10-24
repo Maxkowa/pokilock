@@ -118,7 +118,7 @@ awful.powerTypes = {
 
 -- Create spell callbacks for Demonology Warlock spells
 
-felguard:Callback(function(spell)
+felguard:Update(function(spell)
     if not pet.exists then
       spell:Cast()
     end
@@ -166,14 +166,14 @@ end)
 immolationAura:Callback(function(spell)
     local numImmolationAuraDebuffs = 0
     for _, unit in ipairs(awful.units) do
-        if unit:IsInCombat() and unit.debuff("Immolation Aura") then
+        if unit:IsInCombat() and player.buff("Immolation Aura") then
             numImmolationAuraDebuffs = numImmolationAuraDebuffs + 1
             if numImmolationAuraDebuffs > 3 then
                 return
             end
         end
     end
-    if target:IsInRange(spell) and target.timeToDie > 15 and not target.debuff("Immolation Aura") then
+    if target:InRange(spell) and target.timeToDie > 15 and not target.debuff("Immolation Aura") then
         spell:Cast()
     end
 end)

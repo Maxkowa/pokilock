@@ -132,10 +132,11 @@ local gui, settings, cmd = awful.UI:New("pokilock", {
 
 cmd:New(function(msg)
     if msg == "burst" then
-        burst()
-        return true
+      burst()
+      -- returning true officially 'registers' it
+      return true
     end
-end)
+  end)
 
 gui:Tab("Curse")
 gui.tabs["Curse"]:Checkbox({

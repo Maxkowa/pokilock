@@ -172,11 +172,11 @@ createSpellstone:Callback(function(spell)
     end
 end)
 
-spellstone:Use(function(item)
-    if not player.mainHandEnchant then
-        item:Use(player)
-    end
-end)
+--spellstone:Use(function(item)
+--    if not player.mainHandEnchant then
+--        item:Use(player)
+--    end
+--end)
 
 
 felguard:Callback(function(spell)

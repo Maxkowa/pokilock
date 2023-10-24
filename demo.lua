@@ -26,7 +26,7 @@ awful.Populate({
     felArmor = NewSpell({28176, 47893, 47894, 47895}, { beneficial = true }),
     felDomination = NewSpell({18708}, { beneficial = true }),
     healthFunnel = NewSpell({755, 3698, 3699, 3700, 11693, 11694, 11695, 27259}, { beneficial = true }),
-    immolationAuraDemon = NewSpell({50589}, { damage = "magic", targeted = true }),
+    immolationAura = NewSpell({50589}, { damage = "magic", targeted = true }),
     inferno = NewSpell({1122}, { damage = "magic", targeted = true }),
     manaFeed = NewSpell({100}, { beneficial = true }),
     metamorphosis = NewSpell({47241, 61610, 59672}, { beneficial = true }),

@@ -1,6 +1,10 @@
 -- Create a new class rotation.lua for Demonology Warlock using Awful API and Wowhead wotlk guide
-local unlocker, awful, poki = ...
+local unlocker, awful, demo = ...
 local player, target, focus, healer, enemyHealer = awful.player, awful.target, awful.focus, awful.healer, awful.enemyHealer
+if WOW_PROJECT_ID ~= WOW_PROJECT_WRATH_CLASSIC then return end
+if player.class ~= "WARLOCK" then return else
+    awful.print("[|cff3FC7EBSussuki Warlock|r]")
+end
 awful.DevMode = true
 
 ---Spells

@@ -3,8 +3,8 @@ local player, target, focus, healer, enemyHealer = awful.player, awful.target, a
 awful.DevMode = true
 
 ---Spells
-poki = poki or {} -- Ensure that the 'poki' table exists
-poki.warlock = poki.warlock or {} -- Ensure that the 'warlock' table exists
+demo = demo or {} -- Ensure that the 'poki' table exists
+demo.warlock = demo.warlock or {} -- Ensure that the 'warlock' table exists
 --poki.warlock.demonology = awful.Actor:New({ spec = 5, class = "warlock" })
 local demo = poki.warlock.demonology
 local spell = awful.Spell

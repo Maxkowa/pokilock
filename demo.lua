@@ -66,7 +66,7 @@ awful.Populate({
     haunt = spell({48181, 59164, 59165, 59166}, { damage = "magic", targeted = true }),
     howlOfTerror = spell({5484, 17928}, { effect = "magic", targeted = true }),
     lifeTap = spell({1454, 1455, 1456, 11687, 11688, 11689, 27222, 47855, 47856}, { beneficial = true }),
-    seedOfCorruption = spell({27243, 47843, 47844}, { damage = "magic", targeted = true, radius = 8 }),
+    seedOfCorruption = spell({27243, 47843, 47844}, { damage = "magic", targeted = true}),
     unstableAffliction = spell({30108, 30404, 30405, 47843, 47844}, { damage = "magic", targeted = true }),
     drainSoul = spell({1120, 8288, 8289, 11675, 11676, 27217}, { damage = "magic", targeted = true }),
     chaosBolt = spell({50796, 59172, 59173, 59174, 59175}, { damage = "magic", targeted = true }),
@@ -125,12 +125,6 @@ felguard:Update(function(spell)
     end
 end)
 
---summonPet:Callback(function(spell)
---    if not player.pet.exists then
---      return spell:Cast()
---    end
---end)
-
 lifeTap:Callback(function(spell)
     if player.buff(63321) or player.mana < 30 then
         return
@@ -175,8 +169,6 @@ immolationAura:Callback(function(spell)
     end
 end)
 
-
-
 demonicEmpowerment:Callback(function(spell)
     if pet.exists then
         spell:Cast()
@@ -195,9 +187,6 @@ corruption:Callback(function(spell)
     end
 end)
 
-
-
-
 incinerate:Callback(function(spell)
     if player:buff(47247) then
         spell:Cast(target)
@@ -210,14 +199,15 @@ shadowBolt:Callback(function(spell)
     end
 end)
 
+shadowBolt:Callback(function(spell)
+    if not target.debuff(17800) then
+        spell:Cast(target)
+    end
+end)
 
 seedOfCorruption:Callback(function(spell)
-    if awful.enemies.around(target, 10) >=3 then
-        if spell:SmartAoE(target)
-            and alert("aoe", spell.id, ture) then
-            return
-            end
-        end
+    if awful.enemies.around(target, 10) >= 3 then
+        spell:SmartAoE(target)
     end
 end)
 

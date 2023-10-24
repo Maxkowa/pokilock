@@ -240,7 +240,15 @@ end)
 shadowBolt:Callback(function(spell)
     if not target.debuff(17800) then
         spell:Cast(target)
-    elseif true then
+    end
+end)
+
+shadowBolt:Callback("priority", function(spell)
+    -- Check if there are other spells to prioritize
+    if not spell:IsCasting() and not spell:IsOnCooldown() and not spell:HasPendingCast() then
+        -- Cast other spells first
+        -- ...
+        -- Once all other spells are done, come back to Shadow Bolt
         spell:Cast(target)
     end
 end)

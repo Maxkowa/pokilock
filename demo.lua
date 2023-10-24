@@ -212,12 +212,11 @@ end)
 
 
 seedOfCorruption:Callback(function(spell)
-    local numEnemies = 0
-    for _, unit in ipairs(awful.units) do
-        numEnemies = numEnemies + 1
-        if numEnemies > 3 and unit:IsEnemy(target) then
-            spell:Cast(target)
+    if awful.enemies.around(target, 10) >=3 then
+        if spell:SmartAoE(target)
+            and alert("aoe", spell.id, ture) then
             return
+            end
         end
     end
 end)

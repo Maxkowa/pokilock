@@ -6,7 +6,7 @@ awful.DevMode = true
 demo = demo or {} -- Ensure that the 'poki' table exists
 demo.warlock = demo.warlock or {} -- Ensure that the 'warlock' table exists
 --poki.warlock.demonology = awful.Actor:New({ spec = 5, class = "warlock" })
-local demo = poki.warlock.demonology
+local demo = demo.warlock.demonology
 local spell = awful.Spell
 local NewItem = awful.NewItem
 

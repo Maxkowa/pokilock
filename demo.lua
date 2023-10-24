@@ -186,7 +186,7 @@ demonicEmpowerment:Callback(function(spell)
 end)
 
 soulFire:Callback(function(spell)
-    if target.health.percent <= 35 then
+    if target.hp <= 35 then
         spell:Cast(target)
     end
 end)

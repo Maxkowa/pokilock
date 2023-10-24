@@ -172,10 +172,9 @@ felguard:Callback(function(spell)
 end)
 
 lifeTap:Callback(function(spell)
-    if not player.buff(63321) or player.mana < 30 then
-        return
+    if player.mana < 30 or not player.buff(63321) then
+        spell:Cast()
     end
-    spell:Cast()
 end)
 
 curseOfDoom:Callback(function(spell)

@@ -130,7 +130,7 @@ local gui, settings, cmd = awful.UI:New("pokilock", {
 	}
 })
 
-local isMetamorphosisEnabled = false
+local isMetamorphosisEnabled = true
 
 cmd:New(function(msg)
   if msg == "burst" then
@@ -214,7 +214,7 @@ immolate:Callback(function(spell)
 end)
 
 metamorphosis:Callback(function(spell)
-    if settings.metamorphosis = true then
+    if settings.metamorphosis then
         spell:Cast()
     end
 end)

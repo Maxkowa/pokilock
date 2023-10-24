@@ -47,7 +47,7 @@ awful.Populate({
     unendingBreath = spell({5697}, { beneficial = true }),
     createFirestone = spell({17951, 17952, 17953, 17954, 17955, 27230}, { beneficial = true }),
     createSoulstone = spell({20707, 20762, 20763, 20764, 20765, 20766, 27238}, { beneficial = true }),
-    createSpellstone = spell({2362, 17727, 17728, 17729, 17730, 27230}, { beneficial = true }),
+    createSpellstone = spell({47888}, { beneficial = true }),
     amplifyCurse = spell({18223}, { effect = "magic", targeted = true }),
     atrocity = spell({12345}, { effect = "magic", targeted = true }),
     corruption = spell({172, 6222, 6223, 7648, 11671, 11672, 25311, 27216}, { damage = "magic", targeted = true }),

@@ -140,15 +140,6 @@ curseOfDoom:Callback(function(spell)
 end)
 
 immolate:Callback(function(spell)
-    local numImmolateDebuffs = 0
-    for _, enemy in ipairs(awful.units) do
-        if not enemy.debuff("Immolate") then
-            numImmolateDebuffs = numImmolateDebuffs + 1
-            if numImmolateDebuffs > 3 then
-                return
-            end
-        end
-    end
     if not target.debuff("Immolate") then
         spell:Cast(target)
     end

@@ -168,7 +168,7 @@ end
 
 createSpellstone:Callback(function(spell)
     if spellstone.count <= 1 then
-        spell:cast()
+        spell:Cast()
     end
 end)
 

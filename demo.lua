@@ -110,7 +110,8 @@ awful.powerTypes = {
 }
 
 -- RGBA color scheme
-local yellow = {245, 235, 55, 1}
+local yellow = {255, 255, 0, 1}
+local classColor = {255, 0, 0, 1}
 local white = {255, 255, 255, 1}
 local dark = {21, 21, 21, 0.45}
 -- all ui saved variables are stored in `settings`
@@ -129,14 +130,14 @@ local gui, settings, cmd = awful.UI:New("pokilock", {
 	}
 })
 
-gui:Tab("Test 123")
-gui.tabs["Test 123"]:Checkbox({
+gui:Tab("Curse")
+gui.tabs["Curse"]:Checkbox({
     text = "Curse of Elements",
     var = "curseOfElements", -- selected state = settings.curseOfElements
     tooltip = "Enable Curse of Elements",
 })
 
-gui.tabs["Test 123"]:Checkbox({
+gui.tabs["Curse"]:Checkbox({
     text = "Curse of Doom",
     var = "curseOfDoom", -- selected state = settings.curseOfDoom
     tooltip = "Enable Curse of Doom",

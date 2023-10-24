@@ -130,14 +130,12 @@ local gui, settings, cmd = awful.UI:New("pokilock", {
 })
 
 gui:Tab("Test 123")
-gui.tabs["Test 123"]:Slider({
-	text = "hi mom",
-	var = "mom", -- selected number = settings.mom
-	min = 0,
-	max = 100,
-	default = 69,
-	valueType = "%",
-	tooltip = "hi mom :)"
+gui.tabs["Test 123"]:Dropdown({
+	text = "Curse",
+	var = "curse",
+	options = {"Curse of Doom", "Curse of Elements"},
+	default = "Curse of Doom",
+	tooltip = "Select a curse"
 })
 
 

@@ -217,24 +217,23 @@ demo:Init(function()
     if player.mounted then return end 
     if player.casting or player.channeling then return end
     
-    WasCastingCheck()
-
+    WasCastingCheck() -- Call the function to update the casting status
     
-        felguard()
-        lifeTap()
-        felguard()
-        shadowBolt()
-        demonicEmpowerment()
-        curseOfDoom()
-        corruption()
-        immolate()
-        metamorphosis()
-        immolationAura()
-        soulFire()
-        incinerate()
-        shadowflame()
-        seedOfCorruption()
-    end
+    -- Rest of your code
+    felguard()
+    lifeTap()
+    felguard()
+    shadowBolt()
+    demonicEmpowerment()
+    curseOfDoom()
+    corruption()
+    immolate()
+    metamorphosis()
+    immolationAura()
+    soulFire()
+    incinerate()
+    shadowflame()
+    seedOfCorruption()
 end)
 
 

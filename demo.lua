@@ -192,15 +192,6 @@ soulFire:Callback(function(spell)
 end)
 
 corruption:Callback(function(spell)
-    local numCorruptionDebuffs = 0
-    for _, enemy in ipairs(awful.units) do
-        if enemy:IsInCombat() and not enemy.debuff("Corruption") then
-            numCorruptionDebuffs = numCorruptionDebuffs + 1
-            if numCorruptionDebuffs > 1 then
-                return
-            end
-        end
-    end
     if not target.debuff("Corruption") then
         spell:Cast(target)
     end

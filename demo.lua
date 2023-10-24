@@ -145,12 +145,11 @@ gui.tabs["Curse"]:Checkbox({
 
 
 
---awful.PopulateItems({
---    healthstone = NewItem({5512, 19004, 19005, 19006, 19007, 19008}, { beneficial = true }),
---    soulstone = NewItem({5232, 16892, 16893, 16895, 22116, 22117, 27239}, { beneficial = true }),
---    soulShard = NewItem({6265, 6266, 6267, 6268, 20752, 20756, 20757, 20758, 20759, 20760, 20761, 27230}, { beneficial = true }),
---    hyperspeedAccelartors = NewItem({54998}, { beneficial = true }),
---})
+local items = {
+    healthstone = awful.Item(36892, 36893, 36894),
+} 
+
+awful.Populate(items, actor, getfenv(1))
 
 function WasCastingCheck()
     local time = awful.time
@@ -231,6 +230,8 @@ corruption:Callback(function(spell)
 end)
 
 incinerate:Callback(function(spell)
+    local incinerateID = 47838
+    if wasCasting[incinerateID] then return end
     if player.buff(71165) then
         spell:Cast(target)
     end

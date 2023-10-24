@@ -176,7 +176,7 @@ spellstone:Update(function(item)
     if not player.mainHandEnchant then
         print("nope no enchanto")
     end
-end
+end)
 
 
 felguard:Callback(function(spell)

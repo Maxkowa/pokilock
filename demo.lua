@@ -301,7 +301,8 @@ incinerate:Callback(function(spell)
     local consecutiveCasts = 0  -- Counter variable for consecutive casts
     
     if target.enemy then
-        if wasCasting[incinerateID] then
+        if target.hp <= 35 or player.buff(71165) then
+            spell:Cast(target)
             consecutiveCasts = consecutiveCasts + 1
             if consecutiveCasts < 3 then
                 return  -- Skip casting if not the third consecutive cast
@@ -309,8 +310,7 @@ incinerate:Callback(function(spell)
                 consecutiveCasts = 0  -- Reset the counter after the third consecutive cast
             end
         end
-        
-        if target.hp <= 35 or player.buff(71165) then
+        if wasCasting[incinerateID] then
             spell:Cast(target)
         end
     end

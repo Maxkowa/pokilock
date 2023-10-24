@@ -178,6 +178,15 @@ lifeTap:Callback(function(spell)
 end)
 
 curseOfDoom:Callback(function(spell)
+    if settings.curseOfDoom then
+    if target.debuff(spell.id) then
+        return
+    end
+    spell:Cast(target)
+end)
+
+curseOfElements:Callback(function(spell)
+    if settings.curseOfElements then
     if target.debuff(spell.id) then
         return
     end
@@ -269,6 +278,7 @@ demo:Init(function()
     shadowBolt()
     demonicEmpowerment()
     curseOfDoom()
+    curseOfElements()
     corruption()
     immolate()
     metamorphosis()

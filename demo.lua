@@ -223,8 +223,7 @@ end)
 
 shadowBolt:Callback(function(spell)
     local shadowBoltID = 47809
-    if wasCasting[shadowBoltID] then
-    end
+    if wasCasting[shadowBoltID] then return end
     if not target.debuff(17800) then
         spell:Cast(target)
     end

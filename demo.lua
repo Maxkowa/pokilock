@@ -174,7 +174,7 @@ end)
 
 spellstone:Use(function(item)
     if not player.mainHandEnchant then
-        item:Use("player")
+        item:Use(player)
     end
 end)
 

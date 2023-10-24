@@ -197,7 +197,9 @@ immolate:Callback(function(spell)
 end)
 
 metamorphosis:Callback(function(spell)
-    spell:Cast()
+    if settings.cooldownToggle and spell:Cooldown() == 0 then
+        spell:Cast()
+    end
 end)
 
 immolationAura:Callback(function(spell)
@@ -265,6 +267,16 @@ shadowflame:Callback(function(spell)
     end
 end)
 
+local isCooldownEnabled = true
+
+awful.RegisterSlashCommand("cooldown", function()
+    isCooldownEnabled = not isCooldownEnabled
+    if isCooldownEnabled then
+        print("Cooldown is now enabled")
+    else
+        print("Cooldown is now disabled")
+    end
+end)
 
 demo:Init(function() 
     if player.mounted then return end 

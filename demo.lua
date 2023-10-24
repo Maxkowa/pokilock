@@ -147,8 +147,8 @@ end)
 
 immolate:Callback(function(spell)
     local numImmolateDebuffs = 0
-    for _, unit in ipairs(awful.units) do
-        if unit:IsInCombat() and not unit.debuff("Immolate") then
+    for _, enemy in ipairs(awful.units) do
+        if enemy:IsInCombat() and not enemy.debuff("Immolate") then
             numImmolateDebuffs = numImmolateDebuffs + 1
             if numImmolateDebuffs > 3 then
                 return
@@ -166,15 +166,15 @@ end)
 
 immolationAura:Callback(function(spell)
     local numImmolationAuraDebuffs = 0
-    for _, unit in ipairs(awful.units) do
-        if unit:IsInCombat() and player.buff("Immolation Aura") then
+    for _, enemy in ipairs(awful.units) do
+        if enemy:IsInCombat() and player.buff("Immolation Aura") then
             numImmolationAuraDebuffs = numImmolationAuraDebuffs + 1
             if numImmolationAuraDebuffs > 3 then
                 return
             end
         end
     end
-    if target:InRange(spell) and target.timeToDie > 15 and not target.debuff("Immolation Aura") then
+    if target:InRange(spell) and target.timeToDie > 15 and not player.buff("Immolation Aura") then
         spell:Cast()
     end
 end)
@@ -194,7 +194,7 @@ end)
 corruption:Callback(function(spell)
     local numCorruptionDebuffs = 0
     for _, unit in ipairs(awful.units) do
-        if unit:combat() and not unit.debuff("Corruption") then
+        if enemy:combat() and not enemy.debuff("Corruption") then
             numCorruptionDebuffs = numCorruptionDebuffs + 1
             if numCorruptionDebuffs > 3 then
                 return

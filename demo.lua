@@ -5,7 +5,7 @@ awful.DevMode = true
 ---Spells
 poki = poki or {} -- Ensure that the 'poki' table exists
 poki.warlock = poki.warlock or {} -- Ensure that the 'warlock' table exists
---poki.warlock.demonology = awful.Actor:New({ spec = 5, class = "warlock" })
+poki.warlock.demonology = awful.Actor:New({ spec = 5, class = "warlock" })
 local demo = poki.warlock.demonology
 local NewSpell = awful.NewSpell
 local NewItem = awful.NewItem
@@ -63,7 +63,7 @@ awful.Populate({
     fear = NewSpell({5782, 6213, 6215}, { effect = "magic", targeted = true }),
     haunt = NewSpell({48181, 59164, 59165, 59166}, { damage = "shadow", targeted = true }),
     howlOfTerror = NewSpell({5484, 17928}, { effect = "magic", targeted = true }),
-    lifeTap = NewSpell({1454, 1455, 1456, 11687, 11688, 11689, 27222, 47855, 47856}, { beneficial = true })
+    lifeTap = NewSpell({1454, 1455, 1456, 11687, 11688, 11689, 27222, 47855, 47856}, { beneficial = true }),
     seedOfCorruption = NewSpell({27243, 47843, 47844}, { damage = "shadow", targeted = true }),
     unstableAffliction = NewSpell({30108, 30404, 30405, 47843, 47844}, { damage = "shadow", targeted = true }),
     drainSoul = NewSpell({1120, 8288, 8289, 11675, 11676, 27217}, { damage = "shadow", targeted = true }),

@@ -274,10 +274,13 @@ end)
 
 
 soulFire:Callback(function(spell)
-    awful.enemies.loop(function(enemy)
-    if enemy.combat then
-        if enemy.hp <= 35 then
-            spell:Cast(enemy)
+    if target.enemy then
+        awful.enemies.loop(function(enemy)
+            if enemy.combat then
+                if enemy.hp <= 35 then
+                    spell:Cast(enemy)
+                end
+            end
         end
     end)
 end)

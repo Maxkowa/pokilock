@@ -157,7 +157,7 @@ gui.tabs["Curse"]:Checkbox({
 local healthstone = awful.Item(36892, 36893, 36894)
 local soulShard = awful.Item(6265)
 local soulstone = awful.Item(134336)
-local spellstone = awful.Item(134131)
+local spellstone = awful.Item(41196)
 
 
 awful.Populate(items, actor, getfenv(1))

@@ -177,6 +177,8 @@ end
 createSoulstone:Callback(function(spell)
     if soulstone.count < 1 then
         spell:Cast()
+    else
+        -- Skip casting if soulstone count is one or more
     end
 end)
 
@@ -184,6 +186,8 @@ end)
 createSpellstone:Callback(function(spell)
     if spellstone.count < 1 then
         spell:Cast()
+    else
+        -- skip
     end
 end)
 

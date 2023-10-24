@@ -130,13 +130,22 @@ local gui, settings, cmd = awful.UI:New("pokilock", {
 	}
 })
 
+local isMetamorphosisEnabled = false
+
 cmd:New(function(msg)
-    if msg == "burst" then
-      burst()
-      -- returning true officially 'registers' it
-      return true
+  if msg == "metamorphosis" then
+    isMetamorphosisEnabled = not isMetamorphosisEnabled
+    if isMetamorphosisEnabled then
+      settings.metamorphosis = true
+      print("Metamorphosis is now enabled")
+    else
+      settings.metamorphosis = false
+      print("Metamorphosis is now disabled")
     end
-  end)
+    -- returning true officially 'registers' it
+    return true
+  end
+end)
 
 gui:Tab("Curse")
 gui.tabs["Curse"]:Checkbox({
@@ -205,7 +214,7 @@ immolate:Callback(function(spell)
 end)
 
 metamorphosis:Callback(function(spell)
-    if settings.burst and spell.cooldown(spell.id) == 0 then
+    if settings.metamorphosis and spell.cooldown(spell.id) == 0 then
         spell:Cast()
     end
 end)

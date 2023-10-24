@@ -97,7 +97,7 @@ awful.powerTypes = {
 -- Create spell callbacks for Demonology Warlock spells
 
 lifeTap:Callback(function(spell)
-    if player:HasBuff(63321) or player.power.mana < 30 then
+    if player.buff(63321) or player.power.mana < 30 then
         return
     end
     spell:Cast()

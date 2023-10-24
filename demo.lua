@@ -279,10 +279,11 @@ soulFire:Callback(function(spell)
             if enemy.combat then
                 if enemy.hp <= 35 then
                     spell:Cast(enemy)
+                end
                 return true
             end
-        end
-    end)
+        end)
+    end
 end)
 
 corruption:Callback(function(spell)

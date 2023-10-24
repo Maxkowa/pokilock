@@ -130,7 +130,6 @@ local gui, settings, cmd = awful.UI:New("pokilock", {
 	}
 })
 
-
 gui:Tab("Curse")
 gui.tabs["Curse"]:Checkbox({
     text = "Curse of Elements",
@@ -200,6 +199,7 @@ end)
 metamorphosis:Callback("burst", function(spell)
     spell:Cast()
 end)
+
 immolationAura:Callback(function(spell)
     if awful.enemies.around(player, 10) >= 3 then
         spell:Cast()

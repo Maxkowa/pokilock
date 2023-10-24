@@ -120,7 +120,7 @@ awful.powerTypes = {
 
 felguard:Callback(function(spell)
     if not pet.exists then
-        return spell:Cast()
+      spell:Cast()
     end
 end)
 

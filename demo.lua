@@ -288,6 +288,7 @@ demo:Init(function()
     shadowflame()
     seedOfCorruption()
     shadowBoltFiller()
+    end
 end)
 
 

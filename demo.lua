@@ -174,6 +174,13 @@ function WasCastingCheck()
     end
 end
 
+createSoulstone:Callback(function(spell)
+    if soulstone.count < 0 then
+        spell:Cast()
+    end
+end)
+
+
 createSpellstone:Callback(function(spell)
     if spellstone.count < 0 then
         spell:Cast()
@@ -312,6 +319,7 @@ demo:Init(function()
     if player.mounted then return end 
     if player.casting or player.channeling then return end
     createSpellstone()
+    createSoulstone()
     felArmor()
     felguard()
     lifeTap()

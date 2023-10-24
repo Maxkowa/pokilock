@@ -217,7 +217,7 @@ end)
 demo:Init(function() 
     if player.mounted then return end 
     if player.casting or player.channeling then return end
-
+    if not player.casting and not player.channeling then
     felguard()
     lifeTap()
     summonFelguard()

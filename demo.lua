@@ -198,7 +198,7 @@ createSpellstone:Callback(function(spell)
     end
 end)
 
-spellstone:Use(function(item)
+spellstone:Callback(function(item)
     if not player.mainHandEnchant then
         RunMacroText("/use [mod:alt] Grand Spellstone")
         RunMacroText("/use 16")

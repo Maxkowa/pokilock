@@ -1,4 +1,5 @@
 local Unlocker, awful, poki = ...
+local awful = LibStub("Awful-1.0")
 local player = awful.player
 local pet = awful.pet
 local target, focus, healer, enemyHealer = awful.target, awful.focus, awful.healer, awful.enemyHealer
@@ -91,6 +92,50 @@ awful.Populate({
 --    soulShard = NewItem({6265, 6266, 6267, 6268, 20752, 20756, 20757, 20758, 20759, 20760, 20761, 27230}, { beneficial = true }),
 --    hyperspeedAccelartors = NewItem({54998}, { beneficial = true }),
 --}, demo, getfenv(1))
+
+local ui = awful:CreateUI("MyAddon", "MyAddonConfigFrame")
+local tab = ui:Tab("MyTab")
+
+tab:Checkbox({
+    text = "Enable Feature",
+    var = "enableFeature",
+    tooltip = "Enable or disable the feature",
+})
+
+tab:Slider({
+    text = "Slider Value",
+    var = "sliderValue",
+    min = 0,
+    max = 100,
+    step = 1,
+    tooltip = "Adjust the value using the slider",
+})
+
+local guiCode = tab:Generate()
+
+-- Use the generated GUI code to display the GUI frame in your addon
+-- For example, you can use AceConfigDialog or your own UI framework
+
+-- Example using AceConfigDialog
+local AceConfigDialog = LibStub("AceConfigDialog-3.0")
+AceConfigDialog:SetDefaultSize("MyAddon", 400, 300)
+AceConfigDialog:AddToBlizOptions("MyAddon", "MyAddon", nil, "MyTab")
+
+-- Example using your own UI framework
+local frame = CreateFrame("Frame", "MyAddonConfigFrame", UIParent)
+frame:SetSize(400, 300)
+frame.name = "MyAddon"
+frame.parent = "Interface Options"
+frame.okay = function() end
+frame.cancel = function() end
+frame.refresh = function() end
+frame:SetScript("OnShow", function(self)
+    self:SetScript("OnShow", nil)
+    self:AddChild(guiCode)
+end)
+InterfaceOptions_AddCategory(frame)
+
+
 
 awful.powerTypes = {
 	["mana"] = 0,

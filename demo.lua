@@ -116,7 +116,7 @@ local dark = {21, 21, 21, 0.45}
 -- all ui saved variables are stored in `settings`
 -- slash command to open the GUI is now `/example`
 local gui, settings, cmd = awful.UI:New("pokilock", {
-	title = "Pokilock ui",
+	title = "Pokilock",
 	show = true, -- show on load by default
 	colors = {
 		-- color of our ui title in the top left
@@ -130,15 +130,19 @@ local gui, settings, cmd = awful.UI:New("pokilock", {
 })
 
 gui:Tab("Test 123")
-gui.tabs["Test 123"]:Slider({
-	text = "hi mom",
-	var = "mom", -- selected number = settings.mom
-	min = 0,
-	max = 100,
-	default = 69,
-	valueType = "%",
-	tooltip = "hi mom :)"
+gui.tabs["Test 123"]:Checkbox({
+    text = "Curse of Elements",
+    var = "curseOfElements", -- selected state = settings.curseOfElements
+    tooltip = "Enable Curse of Elements",
 })
+
+gui.tabs["Test 123"]:Checkbox({
+    text = "Curse of Doom",
+    var = "curseOfDoom", -- selected state = settings.curseOfDoom
+    tooltip = "Enable Curse of Doom",
+})
+
+
 
 awful.PopulateItems({
     healthstone = NewItem({5512, 19004, 19005, 19006, 19007, 19008}, { beneficial = true }),

@@ -268,7 +268,8 @@ end)
 
 demo:Init(function() 
     if awful.burst then
-        icyVeins("burst")
+        metamorphosis("burst")
+    end
     WasCastingCheck()
     if player.mounted then return end 
     if player.casting or player.channeling then return end
@@ -281,14 +282,12 @@ demo:Init(function()
     curseOfElements()
     corruption()
     immolate()
-    metamorphosis()
     immolationAura()
     soulFire()
     incinerate()
     shadowflame()
     seedOfCorruption()
     shadowBoltFiller()
-    end
 end)
 
 

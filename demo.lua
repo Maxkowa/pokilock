@@ -77,6 +77,7 @@ awful.Populate({
     rainOfFire = spell({5740, 6219, 11677, 11678, 27212, 47836, 47837}, { damage = "magic", targeted = false }),
     searingPain = spell({17919, 17920, 17921, 17922, 17923, 17924, 27210, 47843, 47844, 47845}, { damage = "magic", targeted = true }),
     shadowBolt = spell({686, 695, 705, 1088, 1106, 7641, 11659, 11660, 25307, 27209, 47843, 47808, 47809}, { damage = "magic", targeted = true }),
+    shadowBoltFiller = spell({686, 695, 705, 1088, 1106, 7641, 11659, 11660, 25307, 27209, 47843, 47808, 47809}, { damage = "magic", targeted = true }),
     shadowburn = spell({17877, 18867, 18868, 18869, 18870, 18871, 47843, 47844, 47845, 47846, 47847}, { damage = "magic", targeted = true }),
     shadowflame = spell({47897, 61290}, { damage = "magic", targeted = true }),
     shadowfury = spell({30283, 30413, 30414, 47847, 47848}, { damage = "magic", targeted = true }),
@@ -243,14 +244,8 @@ shadowBolt:Callback(function(spell)
     end
 end)
 
-shadowBolt:Callback("priority", function(spell)
-    -- Check if there are other spells to prioritize
-    if not spell:IsCasting() and not spell:IsOnCooldown() and not spell:HasPendingCast() then
-        -- Cast other spells first
-        -- ...
-        -- Once all other spells are done, come back to Shadow Bolt
-        spell:Cast(target)
-    end
+shadowBoltFiller:Callback(function(spell)
+    spell:Cast(target)
 end)
 
 seedOfCorruption:Callback(function(spell)
@@ -293,6 +288,7 @@ demo:Init(function()
     incinerate()
     shadowflame()
     seedOfCorruption()
+    shadowBoltFiller()
 end)
 
 

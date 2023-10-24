@@ -156,6 +156,7 @@ gui.tabs["Curse"]:Checkbox({
 
 local healthstone = awful.Item(36892, 36893, 36894)
 local soulShard = awful.Item(6265)
+local soulShardCount = GetItemCount(6265)
 local soulstone = awful.Item(36895)
 local spellstone = awful.Item(41196)
 
@@ -174,6 +175,7 @@ function WasCastingCheck()
     end
 end
 
+
 createSoulstone:Callback(function(spell)
     if soulstone.count == 0 then
         spell:Cast()
@@ -182,8 +184,11 @@ end)
 
 
 createSpellstone:Callback(function(spell)
-    if spellstone.count == 0 then
-        spell:Cast()
+    if soulStoneCount.count < 20 then
+        RunMacroText("/run local n=0 for i=0,4 do for j=1,C_Container.GetContainerNumSlots(i) do local z=C_Container.GetContainerItemID(i,j) if z~=nil then if z==6265 then if n>19 then C_Container.PickupContainerItem(i,j) DeleteCursorItem() else n=n+1 end end end end end")
+        if spellstone.count == 0 then
+            spell:Cast()
+        end
     end
 end)
 

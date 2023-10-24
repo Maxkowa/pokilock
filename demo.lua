@@ -109,6 +109,38 @@ awful.powerTypes = {
     ["essence"] = 19
 }
 
+-- RGBA color scheme
+local yellow = {245, 235, 55, 1}
+local white = {255, 255, 255, 1}
+local dark = {21, 21, 21, 0.45}
+-- all ui saved variables are stored in `settings`
+-- slash command to open the GUI is now `/example`
+local gui, settings, cmd = awful.UI:New("pokilock", {
+	title = "Pokilock ui",
+	show = true, -- show on load by default
+	colors = {
+		-- color of our ui title in the top left
+		title = yellow,
+		-- primary is the primary text color
+		primary = white,
+		-- accent controls colors of elements and some element text in the UI. it should contrast nicely with the background.
+		accent = yellow,
+		background = dark,
+	}
+})
+
+gui:Tab("Test 123")
+gui.tabs["Test 123"]:Slider({
+	text = "hi mom",
+	var = "mom", -- selected number = settings.mom
+	min = 0,
+	max = 100,
+	default = 69,
+	valueType = "%",
+	tooltip = "hi mom :)"
+})
+
+
 function WasCastingCheck()
     local time = awful.time
     if player.casting then

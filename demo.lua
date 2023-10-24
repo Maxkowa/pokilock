@@ -7,7 +7,7 @@ poki = poki or {} -- Ensure that the 'poki' table exists
 poki.warlock = poki.warlock or {} -- Ensure that the 'warlock' table exists
 poki.warlock.demonology = awful.Actor:New({ spec = 5, class = "warlock" })
 local demo = poki.warlock.demonology
-local NewSpell = awful.NewSpell -- Corrected here
+local NewSpell = awful.NewSpell
 local NewItem = awful.NewItem
 
 awful.Populate({
@@ -82,12 +82,12 @@ awful.Populate({
     soulFire = NewSpell({6353, 17924, 27211, 47843, 47844, 47845}, { damage = "fire", targeted = true }),
 }, demo, getfenv(1))
 
-awful.PopulateItems({
-    healthstone = NewItem({5512, 19004, 19005, 19006, 19007, 19008}, { beneficial = true }),
-    soulstone = NewItem({5232, 16892, 16893, 16895, 22116, 22117, 27239}, { beneficial = true }),
-    soulShard = NewItem({6265, 6266, 6267, 6268, 20752, 20756, 20757, 20758, 20759, 20760, 20761, 27230}, { beneficial = true }),
-    hyperspeedAccelartors = NewItem({54998}, { beneficial = true }),
-})
+--awful.PopulateItems({
+--    healthstone = NewItem({5512, 19004, 19005, 19006, 19007, 19008}, { beneficial = true }),
+--    soulstone = NewItem({5232, 16892, 16893, 16895, 22116, 22117, 27239}, { beneficial = true }),
+--    soulShard = NewItem({6265, 6266, 6267, 6268, 20752, 20756, 20757, 20758, 20759, 20760, 20761, 27230}, { beneficial = true }),
+--    hyperspeedAccelartors = NewItem({54998}, { beneficial = true }),
+--}, demo, getfenv(1))
 
 awful.powerTypes = {
     mana = "Mana",
@@ -95,7 +95,7 @@ awful.powerTypes = {
 
 -- Create spell callbacks for Demonology Warlock spells
 lifeTap:Callback(function(spell)
-    if player:HasBuff(63321) and player.power.mana < 30 then
+    if player:HasBuff(63321) or player.power.mana < 30 then
         return
     end
     spell:Cast()

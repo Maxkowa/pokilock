@@ -80,7 +80,7 @@ awful.Populate({
     shadowflame = NewSpell({47897, 61290}, { damage = "fire", targeted = true }),
     shadowfury = NewSpell({30283, 30413, 30414, 47847, 47848}, { damage = "shadow", targeted = true }),
     soulFire = NewSpell({6353, 17924, 27211, 47843, 47844, 47845}, { damage = "fire", targeted = true }),
-}, Demo, getfenv(1))
+}, demo, getfenv(1))
 
 awful.PopulateItems({
     healthstone = NewItem({5512, 19004, 19005, 19006, 19007, 19008}, { beneficial = true }),

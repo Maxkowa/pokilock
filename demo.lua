@@ -172,7 +172,7 @@ felguard:Callback(function(spell)
 end)
 
 lifeTap:Callback(function(spell)
-    if player.buff(63321) or player.mana < 30 then
+    if not player.buff(63321) or player.mana < 30 then
         return
     end
     spell:Cast()

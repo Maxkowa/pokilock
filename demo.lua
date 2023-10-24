@@ -149,7 +149,7 @@ local items = {
     healthstone = awful.Item(36892, 36893, 36894),
     soulShard = awful.Item(6265),
     soulstone = awful.Item(134336),
-    grandSpellstone = awful.Item(134131),
+    spellstone = awful.Item(134131),
 } 
 
 awful.Populate(items, actor, getfenv(1))
@@ -167,7 +167,7 @@ function WasCastingCheck()
 end
 
 createSpellstone:Callback(function(spell)
-    if grandSpellstone.count <= 0 then
+    if spellstone.count <= 1 then
         spell:cast()
     end
 end)

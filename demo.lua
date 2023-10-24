@@ -199,7 +199,7 @@ end)
 
 
 incinerate:Callback(function(spell)
-    if player:HasBuff(12345) then
+    if player:buff(47247) then
         spell:Cast(target)
     end
 end)

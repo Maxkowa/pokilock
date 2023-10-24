@@ -172,9 +172,9 @@ createSpellstone:Callback(function(spell)
     end
 end)
 
-spellstone:Update(function(item)
+spellstone:Callback(function(item)
     if not player.mainHandEnchant then
-        print("nope no enchanto")
+        spell:Cast("player")
     end
 end)
 

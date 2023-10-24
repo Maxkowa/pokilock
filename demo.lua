@@ -4,7 +4,7 @@ awful.DevMode = true
 
 ---Spells
 poki.warlock = {
-poki.warlock.demonology = awful.Actor:New({ spec = 5, class = "warlock" }),
+demonology = awful.Actor:New({ spec = 5, class = "warlock" }),
 }
 local demo = poki.warlock.demonology
 local NewSell = awful.NewSpell

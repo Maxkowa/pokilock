@@ -184,7 +184,7 @@ curseOfDoom:Callback(function(spell)
 end)
 
 curseOfElements:Callback(function(spell)
-    if settings.curseOfElements and not target.debuff("47865") then
+    if settings.curseOfElements and not target.debuff("Curse of the Elements") then
         spell:Cast(target)
     end
 end)

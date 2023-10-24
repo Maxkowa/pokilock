@@ -33,14 +33,12 @@ awful.Populate({
     manaFeed = spell({100}, { beneficial = true }),
     metamorphosis = spell({47241, 61610, 59672}, { beneficial = true }),
     ritualOfDoom = spell({18540}, { beneficial = true }),
-    ritualOfDoom = spell({58887, 29893}, { beneficial = true }),
     ritualOfSummoning = spell({698}, { beneficial = true }),
     senseDemons = spell({5500}, { beneficial = true }),
     shadowCleave = spell({50581}, { damage = "magic", targeted = true }),
     shadowWard = spell({6229, 28610, 28611, 28612, 47891, 47892}, { beneficial = true }),
     soulLink = spell({19028}, { beneficial = true }),
     soulshatter = spell({29858}, { beneficial = true }),
-    summonFelguard = spell({30146}, { beneficial = true }),
     summonFelhunter = spell({691}, { beneficial = true }),
     summonImp = spell({688}, { beneficial = true }),
     summonSuccubus = spell({712}, { beneficial = true }),
@@ -82,17 +80,8 @@ awful.Populate({
     shadowflame = spell({47897, 61290}, { damage = "magic", targeted = true }),
     shadowfury = spell({30283, 30413, 30414, 47847, 47848}, { damage = "magic", targeted = true }),
     soulFire = spell({6353, 17924, 27211, 47843, 47844, 47845}, { damage = "magic", targeted = true }),
-    felguard = spell({30146}, { beneficial = true }),
+    felguard = spell({30146}, { beneficial = true , targeted = false }),
 }, demo, getfenv(1))
-
---awful.PopulateItems({
---    healthstone = NewItem({5512, 19004, 19005, 19006, 19007, 19008}, { beneficial = true }),
---    soulstone = NewItem({5232, 16892, 16893, 16895, 22116, 22117, 27239}, { beneficial = true }),
---    soulShard = NewItem({6265, 6266, 6267, 6268, 20752, 20756, 20757, 20758, 20759, 20760, 20761, 27230}, { beneficial = true }),
---    hyperspeedAccelartors = NewItem({54998}, { beneficial = true }),
---}, demo, getfenv(1))
-
-
 
 awful.powerTypes = {
 	["mana"] = 0,
@@ -118,8 +107,6 @@ awful.powerTypes = {
 	["pain"] = 18,
     ["essence"] = 19
 }
-
--- Create spell callbacks for Demonology Warlock spells
 
 felguard:Callback(function(spell)
     if not pet.exists then

@@ -130,22 +130,6 @@ local gui, settings, cmd = awful.UI:New("pokilock", {
 	}
 })
 
-local isMetamorphosisEnabled = false
-
-cmd:New(function(msg)
-  if msg == "burst" then
-    isMetamorphosisEnabled = not isMetamorphosisEnabled
-    if isMetamorphosisEnabled then
-      settings.metamorphosis = true
-      print("Metamorphosis is now enabled")
-    else
-      settings.metamorphosis = false
-      print("Metamorphosis is now disabled")
-    end
-    -- returning true officially 'registers' it
-    return true
-  end
-end)
 
 gui:Tab("Curse")
 gui.tabs["Curse"]:Checkbox({
@@ -213,10 +197,8 @@ immolate:Callback(function(spell)
     end
 end)
 
-metamorphosis:Callback(function(spell)
-    if settings.metamorphosis and msg == "burst" then
-        spell:Cast()
-    end
+metamorphosis:Callback("burst", function(spell)
+    spell:Cast()
 end)
 immolationAura:Callback(function(spell)
     if awful.enemies.around(player, 10) >= 3 then
@@ -285,6 +267,8 @@ end)
 
 
 demo:Init(function() 
+    if awful.burst then
+        icyVeins("burst")
     WasCastingCheck()
     if player.mounted then return end 
     if player.casting or player.channeling then return end

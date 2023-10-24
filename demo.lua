@@ -110,8 +110,7 @@ awful.powerTypes = {
 }
 
 -- RGBA color scheme
-local yellow = {255, 255, 0, 1}
-local classColor = {255, 0, 0, 1}
+local yellow = {148, 130, 201, 1}
 local white = {255, 255, 255, 1}
 local dark = {21, 21, 21, 0.45}
 -- all ui saved variables are stored in `settings`

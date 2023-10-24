@@ -239,7 +239,7 @@ shadowBolt:Callback(function(spell)
 end)
 
 shadowBolt:Callback(function(spell)
-    wasCasting(spell.id)
+    WasCastingCheck(spell.id)
     if not target.debuff(17800) then
         spell:Cast(target)
     end

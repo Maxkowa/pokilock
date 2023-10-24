@@ -153,17 +153,6 @@ gui.tabs["Curse"]:Checkbox({
 --})
 
 
-function WasCastingCheck()
-    local time = awful.time
-    if player.casting then
-        wasCasting[player.castingid] = time
-    end
-    for spell, when in pairs(wasCasting) do
-        if time - when > 0.100 + awful.buffer then
-            wasCasting[spell] = nil
-        end
-    end
-end
 
 felguard:Callback(function(spell)
     if not pet.exists then
@@ -265,6 +254,18 @@ shadowflame:Callback(function(spell)
         end
     end
 end)
+
+function WasCastingCheck()
+    local time = awful.time
+    if player.casting then
+        wasCasting[player.castingid] = time
+    end
+    for spell, when in pairs(wasCasting) do
+        if time - when > 0.100 + awful.buffer then
+            wasCasting[spell] = nil
+        end
+    end
+end
 
 
 demo:Init(function() 

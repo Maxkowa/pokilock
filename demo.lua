@@ -116,6 +116,13 @@ awful.powerTypes = {
 }
 
 -- Create spell callbacks for Demonology Warlock spells
+awful.SummonPet("30146")
+
+summonPet:Callback(function(spell)
+    if not player.pet.exists then
+      return spell:Cast()
+    end
+end)
 
 lifeTap:Callback(function(spell)
     if player.buff(63321) or player.mana < 30 then
@@ -236,6 +243,7 @@ demo:Init(function()
     if player.mounted then return end 
     if player.casting or player.channeling then return end
 
+    summonPet()
     lifeTap()
     summonFelguard()
     shadowBolt()

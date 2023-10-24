@@ -5,17 +5,6 @@ local wasCasting = {}
 local target, focus, healer, enemyHealer = awful.target, awful.focus, awful.healer, awful.enemyHealer
 awful.DevMode = true
 
-local isCooldownEnabled = true
-
-awful.RegisterSlashCommand("cooldown", function()
-    isCooldownEnabled = not isCooldownEnabled
-    if isCooldownEnabled then
-        print("Cooldown is now enabled")
-    else
-        print("Cooldown is now disabled")
-    end
-end)
-
 poki.warlock = {}
 poki.warlock.demo = awful.Actor:New({ spec = 2, class = "warlock"})
 local demo = poki.warlock.demo
@@ -141,6 +130,13 @@ local gui, settings, cmd = awful.UI:New("pokilock", {
 	}
 })
 
+cmd:New(function(msg)
+    if msg == "burst" then
+        burst()
+        return true
+    end
+end)
+
 gui:Tab("Curse")
 gui.tabs["Curse"]:Checkbox({
     text = "Curse of Elements",
@@ -208,7 +204,7 @@ immolate:Callback(function(spell)
 end)
 
 metamorphosis:Callback(function(spell)
-    if settings.cooldownEnabled and spell.cooldown(spell.id) == 0 then
+    if settings.burst and spell.cooldown(spell.id) == 0 then
         spell:Cast()
     end
 end)
@@ -280,12 +276,9 @@ end)
 
 
 demo:Init(function() 
+    WasCastingCheck()
     if player.mounted then return end 
     if player.casting or player.channeling then return end
-    
-    WasCastingCheck() -- Call the function to update the casting status
-    
-    -- Rest of your code
     felguard()
     lifeTap()
     felguard()

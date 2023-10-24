@@ -218,7 +218,7 @@ metamorphosis:Callback("burst", function(spell)
     spell:Cast()
 end)
 
-souldrain:Callback("farm", function(spell)
+drainSoul:Callback("farm", function(spell)
     spell:Cast(target)
 end)
 
@@ -298,7 +298,7 @@ demo:Init(function()
         metamorphosis("burst")
     end
     if awful.farm then
-        souldrain("farm")
+        drainSoul("farm")
     end
     WasCastingCheck()
     if player.mounted then return end 

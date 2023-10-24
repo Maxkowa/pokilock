@@ -172,6 +172,13 @@ createSpellstone:Callback(function(spell)
     end
 end)
 
+spellstone:Update(function(item)
+    if not player.mainHandEnchant then
+        print("nope no enchanto")
+    end
+end
+
+
 felguard:Callback(function(spell)
     local felguardID = 30147
     if wasCasting[felguardID] then return end

@@ -130,12 +130,21 @@ local gui, settings, cmd = awful.UI:New("pokilock", {
 })
 
 gui:Tab("Test 123")
-gui.tabs["Test 123"]:Dropdown({
-	text = "Curse",
-	var = "curse",
-	options = {"Curse of Doom", "Curse of Elements"},
-	default = "Curse of Doom",
-	tooltip = "Select a curse"
+gui.tabs["Test 123"]:Slider({
+	text = "hi mom",
+	var = "mom", -- selected number = settings.mom
+	min = 0,
+	max = 100,
+	default = 69,
+	valueType = "%",
+	tooltip = "hi mom :)"
+})
+
+awful.PopulateItems({
+    healthstone = NewItem({5512, 19004, 19005, 19006, 19007, 19008}, { beneficial = true }),
+    soulstone = NewItem({5232, 16892, 16893, 16895, 22116, 22117, 27239}, { beneficial = true }),
+    soulShard = NewItem({6265, 6266, 6267, 6268, 20752, 20756, 20757, 20758, 20759, 20760, 20761, 27230}, { beneficial = true }),
+    hyperspeedAccelartors = NewItem({54998}, { beneficial = true }),
 })
 
 

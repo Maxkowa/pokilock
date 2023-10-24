@@ -148,7 +148,7 @@ end)
 immolate:Callback(function(spell)
     local numImmolateDebuffs = 0
     for _, enemy in ipairs(awful.units) do
-        if enemy:IsInCombat() and not enemy.debuff("Immolate") then
+        if not enemy.debuff("Immolate") then
             numImmolateDebuffs = numImmolateDebuffs + 1
             if numImmolateDebuffs > 3 then
                 return
@@ -167,11 +167,12 @@ end)
 immolationAura:Callback(function(spell)
     local numTargets = 0
     for _, unit in ipairs(awful.units) do
-        if unit:IsInCombat() and unit:IsInRange(target) then
-            numTargets = numTargets + 1
-            if numTargets > 2 then
-                return
-            end
+        numTargets = numTargets + 1
+        if numTargets > 2 then
+            return
+        end
+        if unit:IsInRange(target) then
+            spell:Cast()
         end
     end
     spell:Cast()

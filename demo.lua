@@ -178,19 +178,15 @@ lifeTap:Callback(function(spell)
 end)
 
 curseOfDoom:Callback(function(spell)
-    if settings.curseOfDoom then
-    if target.debuff(spell.id) then
-        return
+    if settings.curseOfDoom and not target.debuff(spell.id) then
+        spell:Cast(target)
     end
-    spell:Cast(target)
 end)
 
 curseOfElements:Callback(function(spell)
-    if settings.curseOfElements then
-    if target.debuff(spell.id) then
-        return
+    if settings.curseOfElements and not target.debuff(spell.id) then
+        spell:Cast(target)
     end
-    spell:Cast(target)
 end)
 
 immolate:Callback(function(spell)

@@ -94,7 +94,6 @@ awful.powerTypes = {
 }
 
 -- Create spell callbacks for Demonology Warlock spells
-local lifeTap = NewSpell({1454, 1455, 1456, 11687, 11688, 11689, 27222, 47855, 47856}, { beneficial = true })
 
 lifeTap:Callback(function(spell)
     if player:HasBuff(63321) or player.power.mana < 30 then

@@ -51,7 +51,7 @@ awful.Populate({
     atrocity = NewSpell({12345}, { effect = "magic", targeted = true }),
     corruption = NewSpell({172, 6222, 6223, 7648, 11671, 11672, 25311, 27216}, { damage = "shadow", targeted = true }),
     curseOfAgony = NewSpell({980, 1014, 6217, 11711, 11712, 11713, 27218}, { damage = "shadow", targeted = true }),
-    curseOfDoom = NewSpell({603, 30910, 47867}, { damage = "shadow", targeted = true }),
+    curseOfDoom = NewSpell({603, 30910, 47867}, { damage = "magic", targeted = true }),
     curseOfExhaustion = NewSpell({18223}, { effect = "magic", targeted = true }),
     curseOfElements = NewSpell({1490, 11721, 11722, 27228, 47865}, { effect = "magic", targeted = true }),
     curseOfTongues = NewSpell({1714, 11719}, { effect = "magic", targeted = true }),

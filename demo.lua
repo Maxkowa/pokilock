@@ -218,6 +218,10 @@ metamorphosis:Callback("burst", function(spell)
     spell:Cast()
 end)
 
+souldrain:Callback("farm", function(spell)
+    spell:Cast()
+end)
+
 immolationAura:Callback(function(spell)
     if awful.enemies.around(player, 10) >= 3 then
         spell:Cast()
@@ -292,6 +296,9 @@ end)
 demo:Init(function() 
     if awful.burst then
         metamorphosis("burst")
+    end
+    if awful.farm then
+        souldrain("farm")
     end
     WasCastingCheck()
     if player.mounted then return end 

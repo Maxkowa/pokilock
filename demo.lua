@@ -222,12 +222,6 @@ incinerate:Callback(function(spell)
 end)
 
 shadowBolt:Callback(function(spell)
-    if not target.debuff(17800) then
-        spell:Cast(target)
-    end
-end)
-
-shadowBolt:Callback(function(spell)
     wasCasting(spell.id)
     if not target.debuff(17800) then
         spell:Cast(target)

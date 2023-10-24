@@ -167,15 +167,14 @@ end)
 immolationAura:Callback(function(spell)
     local numTargets = 0
     for _, unit in ipairs(awful.units) do
-        numTargets = numTargets + 1
-        if numTargets > 2 then
-            return
-        end
         if unit:IsInRange(target) then
+            numTargets = numTargets + 1
+            if numTargets > 2 then
+                return
+            end
             spell:Cast()
         end
     end
-    spell:Cast()
 end)
 
 

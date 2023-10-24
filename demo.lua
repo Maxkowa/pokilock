@@ -1,5 +1,6 @@
 local Unlocker, awful, poki = ...
 local player = awful.player
+local pet = awful.pet
 local target, focus, healer, enemyHealer = awful.target, awful.focus, awful.healer, awful.enemyHealer
 awful.DevMode = true
 

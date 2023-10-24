@@ -193,18 +193,21 @@ end)
 
 corruption:Callback(function(spell)
     local numCorruptionDebuffs = 0
-    for _, unit in ipairs(awful.units) do
-        if enemy:combat() and not enemy.debuff("Corruption") then
+    for _, enemy in ipairs(awful.units) do
+        if enemy:IsInCombat() and not enemy.debuff("Corruption") then
             numCorruptionDebuffs = numCorruptionDebuffs + 1
-            if numCorruptionDebuffs > 3 then
+            if numCorruptionDebuffs > 1 then
                 return
             end
         end
     end
-    if not target.debuff("Corruption") and target.timeToDie > 18 then
+    if not target.debuff("Corruption") then
         spell:Cast(target)
     end
 end)
+
+
+
 
 incinerate:Callback(function(spell)
     if player:HasBuff(12345) then

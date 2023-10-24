@@ -144,12 +144,12 @@ gui.tabs["Test 123"]:Checkbox({
 
 
 
-awful.PopulateItems({
-    healthstone = NewItem({5512, 19004, 19005, 19006, 19007, 19008}, { beneficial = true }),
-    soulstone = NewItem({5232, 16892, 16893, 16895, 22116, 22117, 27239}, { beneficial = true }),
-    soulShard = NewItem({6265, 6266, 6267, 6268, 20752, 20756, 20757, 20758, 20759, 20760, 20761, 27230}, { beneficial = true }),
-    hyperspeedAccelartors = NewItem({54998}, { beneficial = true }),
-})
+--awful.PopulateItems({
+--    healthstone = NewItem({5512, 19004, 19005, 19006, 19007, 19008}, { beneficial = true }),
+--    soulstone = NewItem({5232, 16892, 16893, 16895, 22116, 22117, 27239}, { beneficial = true }),
+--    soulShard = NewItem({6265, 6266, 6267, 6268, 20752, 20756, 20757, 20758, 20759, 20760, 20761, 27230}, { beneficial = true }),
+--    hyperspeedAccelartors = NewItem({54998}, { beneficial = true }),
+--})
 
 
 function WasCastingCheck()

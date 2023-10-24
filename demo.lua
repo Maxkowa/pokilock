@@ -130,7 +130,7 @@ local gui, settings, cmd = awful.UI:New("pokilock", {
 	}
 })
 
-local isMetamorphosisEnabled = true
+local isMetamorphosisEnabled = false
 
 cmd:New(function(msg)
   if msg == "burst" then
@@ -214,11 +214,10 @@ immolate:Callback(function(spell)
 end)
 
 metamorphosis:Callback(function(spell)
-    if settings.metamorphosis then
+    if settings.metamorphosis and msg == "burst" then
         spell:Cast()
     end
 end)
-
 immolationAura:Callback(function(spell)
     if awful.enemies.around(player, 10) >= 3 then
         spell:Cast()

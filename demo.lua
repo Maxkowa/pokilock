@@ -172,7 +172,7 @@ createSpellstone:Callback(function(spell)
     end
 end)
 
-spellstone:Callback(function(item)
+spellstone:Use(function(item)
     if not player.mainHandEnchant then
         spell:Cast("player")
     end

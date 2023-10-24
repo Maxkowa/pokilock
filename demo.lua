@@ -219,7 +219,7 @@ metamorphosis:Callback("burst", function(spell)
 end)
 
 souldrain:Callback("farm", function(spell)
-    spell:Cast()
+    spell:Cast(target)
 end)
 
 immolationAura:Callback(function(spell)

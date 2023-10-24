@@ -206,7 +206,7 @@ demo:Init(function()
     if not player.casting and not player.channeling then
         felguard()
         lifeTap()
-        summonFelguard()
+        felguard()
         shadowBolt()
         demonicEmpowerment()
         curseOfDoom()

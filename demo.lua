@@ -213,7 +213,7 @@ incinerate:Callback(function(spell)
 end)
 
 shadowBolt:Callback(function(spell)
-    if not target.debuff(17800) or target.debuff(17800).remains < 3 then
+    if not target.debuff(17800) then
         spell:Cast(target)
     end
 end)

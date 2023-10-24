@@ -166,6 +166,8 @@ end
 
 
 felguard:Callback(function(spell)
+    local felguardID = 30147
+    if wasCasting[felguardID] then return end
     if not pet.exists then
       return spell:Cast()
     end
@@ -191,6 +193,8 @@ curseOfElements:Callback(function(spell)
 end)
 
 immolate:Callback(function(spell)
+    local immolateID = 47881
+    if wasCasting[immolateID] then return end
     if not target.debuff("Immolate") then
         spell:Cast(target)
     end

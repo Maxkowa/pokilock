@@ -1,6 +1,7 @@
 local Unlocker, awful, poki = ...
 local player = awful.player
 local pet = awful.pet
+local wasCasting = {}
 local target, focus, healer, enemyHealer = awful.target, awful.focus, awful.healer, awful.enemyHealer
 awful.DevMode = true
 
@@ -108,6 +109,18 @@ awful.powerTypes = {
     ["essence"] = 19
 }
 
+function WasCastingCheck()
+    local time = awful.time
+    if player.casting then
+        wasCasting[player.castingid] = time
+    end
+    for spell, when in pairs(wasCasting) do
+        if time - when > 0.100 + awful.buffer then
+            wasCasting[spell] = nil
+        end
+    end
+end
+
 felguard:Callback(function(spell)
     if not pet.exists then
       return spell:Cast()
@@ -203,7 +216,10 @@ end)
 demo:Init(function() 
     if player.mounted then return end 
     if player.casting or player.channeling then return end
-    if not player.casting and not player.channeling then
+    
+    WasCastingCheck()
+
+    
         felguard()
         lifeTap()
         felguard()

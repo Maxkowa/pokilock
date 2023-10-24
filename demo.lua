@@ -215,32 +215,42 @@ lifeTap:Callback(function(spell)
 end)
 
 curseOfDoom:Callback(function(spell)
-    if settings.curseOfDoom and not target.debuff(spell.id) then
-        spell:Cast(target)
+    if target.enemy then
+        if settings.curseOfDoom and not target.debuff(spell.id) then
+            spell:Cast(target)
+        end
     end
 end)
 
 curseOfElements:Callback(function(spell)
-    if settings.curseOfElements and not target.debuff("Curse of the Elements") then
-        spell:Cast(target)
+    if target.enemy then
+        if settings.curseOfElements and not target.debuff("Curse of the Elements") then
+            spell:Cast(target)
+        end
     end
 end)
 
 immolate:Callback(function(spell)
     local immolateID = 47881
-    if wasCasting[immolateID] then return end
-    if not target.debuff("Immolate") then
-        spell:Cast(target)
+    if target.enemy then
+        if wasCasting[immolateID] then return end
+        if not target.debuff("Immolate") then
+            spell:Cast(target)
+        end
     end
 end)
 
 metamorphosis:Callback("burst", function(spell)
-    spell:Cast()
+    if target.enemy then
+        spell:Cast()
+    end
 end)
 
 drainSoul:Callback(function(spell)
-    if settings.farm then
-        spell:Cast(target)
+    if target.enemy then
+        if settings.farm then
+            spell:Cast(target)
+        end
     end
 end)
 
@@ -259,14 +269,18 @@ demonicEmpowerment:Callback(function(spell)
 end)
 
 soulFire:Callback(function(spell)
-    if target.hp <= 35 then
-        spell:Cast(target)
+    if target.enemy then
+        if target.hp <= 35 then
+            spell:Cast(target)
+        end
     end
 end)
 
 corruption:Callback(function(spell)
-    if not target.debuff("Corruption") then
-        spell:Cast(target)
+    if target.enemy then
+        if not target.debuff("Corruption") then
+            spell:Cast(target)
+        end
     end
 end)
 

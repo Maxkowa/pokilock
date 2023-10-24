@@ -103,6 +103,8 @@ lifeTap:Callback(function(spell)
     spell:Cast()
 end)
 
+local curseOfDoom = awful.Spell(47867, { damage = "mgaic", target = true })
+
 curseOfDoom:Callback(function(spell)
     if target.debuff("47867") then
         return

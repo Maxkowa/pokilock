@@ -7,7 +7,7 @@ poki = poki or {} -- Ensure that the 'poki' table exists
 poki.warlock = poki.warlock or {} -- Ensure that the 'warlock' table exists
 --poki.warlock.demonology = awful.Actor:New({ spec = 5, class = "warlock" })
 local demo = poki.warlock.demonology
-local NewSpell = awful.NewSpell
+local NewSpell = awful.Spell
 local NewItem = awful.NewItem
 
 awful.Populate({
@@ -102,8 +102,6 @@ lifeTap:Callback(function(spell)
     end
     spell:Cast()
 end)
-
-local curseOfDoom = awful.Spell(47867, { damage = "magic", targeted = true })
 
 curseOfDoom:Callback(function(spell)
     if target.debuff(spell.id) then

@@ -179,7 +179,7 @@ corruption:Callback(function(spell)
 end)
 
 incinerate:Callback(function(spell)
-    if player:buff(71165) then
+    if player.buff(71165) then
         spell:Cast(target)
     end
 end)

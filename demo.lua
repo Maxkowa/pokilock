@@ -82,7 +82,6 @@ awful.Populate({
     shadowflame = spell({47897, 61290}, { damage = "magic", targeted = true }),
     shadowfury = spell({30283, 30413, 30414, 47847, 47848}, { damage = "magic", targeted = true }),
     soulFire = spell({6353, 17924, 27211, 47843, 47844, 47845}, { damage = "magic", targeted = true }),
-    soulFireSnipe = spell({6353, 17924, 27211, 47843, 47844, 47845}, { damage = "magic", targeted = true }),
     felguard = spell({30146}, { beneficial = true , targeted = false }),
 }, demo, getfenv(1))
 
@@ -273,20 +272,14 @@ demonicEmpowerment:Callback(function(spell)
     end
 end)
 
-awful.enemies.loop(function(enemy)
-    if enemy.combat then
-        if enemy.hp <= 35 then
-            soulFireSnipe:Cast(enemy)
-        end
-    end
-end)
 
 soulFire:Callback(function(spell)
-    if target.enemy then
-        if target.hp <= 35 then
-            spell:Cast(target)
+    awful.enemies.loop(function(enemy)
+    if enemy.combat then
+        if enemy.hp <= 35 then
+            spell:Cast(enemy)
         end
-    end
+    end)
 end)
 
 corruption:Callback(function(spell)
@@ -364,7 +357,6 @@ demo:Init(function()
     createSoulstone()
     felArmor()
     lifeTap()
-    soulFireSnipe()
     felguard()
     shadowBolt()
     demonicEmpowerment()

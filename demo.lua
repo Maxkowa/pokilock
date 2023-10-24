@@ -133,7 +133,7 @@ local gui, settings, cmd = awful.UI:New("pokilock", {
 local isMetamorphosisEnabled = false
 
 cmd:New(function(msg)
-  if msg == "metamorphosis" then
+  if msg == "burst" then
     isMetamorphosisEnabled = not isMetamorphosisEnabled
     if isMetamorphosisEnabled then
       settings.metamorphosis = true

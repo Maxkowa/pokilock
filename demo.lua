@@ -214,7 +214,7 @@ immolate:Callback(function(spell)
 end)
 
 metamorphosis:Callback(function(spell)
-    if settings.metamorphosis and spell.cooldown(spell.id) == 0 then
+    if settings.metamorphosis then
         spell:Cast()
     end
 end)

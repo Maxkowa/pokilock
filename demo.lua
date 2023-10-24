@@ -232,7 +232,7 @@ end)
 incinerate:Callback(function(spell)
     local incinerateID = 47838
     if wasCasting[incinerateID] then return end
-    if player.buff(71165) then
+    if target.hp <= 35 or player.buff(71165) then
         spell:Cast(target)
     end
 end)
@@ -242,6 +242,12 @@ shadowBolt:Callback(function(spell)
     if wasCasting[shadowBoltID] then return end
     if not target.debuff(17800) then
         spell:Cast(target)
+    end
+end)
+
+felArmor:Callback(function(spell)
+    if not player.buff(47893) then
+        spell:Cast()
     end
 end)
 
@@ -275,6 +281,7 @@ demo:Init(function()
     WasCastingCheck()
     if player.mounted then return end 
     if player.casting or player.channeling then return end
+    felArmor()
     felguard()
     lifeTap()
     felguard()

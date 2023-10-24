@@ -272,6 +272,7 @@ end)
 
 incinerate:Callback(function(spell)
     local incinerateID = 47838
+    if target.enemy then
     if wasCasting[incinerateID] then return end
     if target.hp <= 35 or player.buff(71165) then
         spell:Cast(target)
@@ -280,6 +281,7 @@ end)
 
 shadowBolt:Callback(function(spell)
     local shadowBoltID = 47809
+    if target.enemy then
     if wasCasting[shadowBoltID] then return end
     if not target.debuff(17800) then
         spell:Cast(target)
@@ -293,10 +295,12 @@ felArmor:Callback(function(spell)
 end)
 
 shadowBoltFiller:Callback(function(spell)
+    if target.enemy then
     spell:Cast(target)
 end)
 
 seedOfCorruption:Callback(function(spell)
+    if target.enemy then
     if awful.enemies.around(target, 10) >= 3 then
         spell:SmartAoE(target)
     end
@@ -304,6 +308,7 @@ end)
 
 shadowflame:Callback(function(spell)
     local numTargetsInRange = 0
+    if target.enemy then
     for _, unit in ipairs(awful.units) do
         numTargetsInRange = numTargetsInRange + 1
         if numTargetsInRange > 3 then

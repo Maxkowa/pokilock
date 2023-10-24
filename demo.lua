@@ -165,19 +165,19 @@ metamorphosis:Callback(function(spell)
 end)
 
 immolationAura:Callback(function(spell)
-    local numImmolationAuraDebuffs = 0
-    for _, enemy in ipairs(awful.units) do
-        if enemy:IsInCombat() and player.buff("Immolation Aura") then
-            numImmolationAuraDebuffs = numImmolationAuraDebuffs + 1
-            if numImmolationAuraDebuffs > 3 then
+    local numTargets = 0
+    for _, unit in ipairs(awful.units) do
+        if unit:IsInCombat() and unit:IsInRange(target) then
+            numTargets = numTargets + 1
+            if numTargets > 2 then
                 return
             end
         end
     end
-    if target:InRange(spell) and target.timeToDie > 15 and not player.buff("Immolation Aura") then
-        spell:Cast()
-    end
+    spell:Cast()
 end)
+
+
 
 demonicEmpowerment:Callback(function(spell)
     if pet.exists then

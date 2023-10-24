@@ -167,7 +167,7 @@ function WasCastingCheck()
 end
 
 createSpellstone:Callback(function(spell)
-    if spellstone.count <= 0 then
+    if spellstone.count < 0 then
         spell:Cast()
     end
 end)

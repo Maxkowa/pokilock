@@ -133,7 +133,7 @@ local gui, settings, cmd = awful.UI:New("pokilock", {
 gui:Tab("Farm")
 gui.tabs["Farm"]:Checkbox({
     text = "Farm",
-    var = "farm", -- selected state = settings.curseOfElements
+    var = "farm", -- selected state = settings.farm
     tooltip = "Enable Farm",
 })
 
@@ -228,7 +228,8 @@ end)
 
 drainSoul:Callback(function(spell)
     if settings.farm then
-    spell:Cast(target)
+        spell:Cast(target)
+    end
 end)
 
 immolationAura:Callback(function(spell)

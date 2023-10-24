@@ -82,6 +82,7 @@ awful.Populate({
     shadowflame = spell({47897, 61290}, { damage = "magic", targeted = true }),
     shadowfury = spell({30283, 30413, 30414, 47847, 47848}, { damage = "magic", targeted = true }),
     soulFire = spell({6353, 17924, 27211, 47843, 47844, 47845}, { damage = "magic", targeted = true }),
+    soulFireSnipe = spell({6353, 17924, 27211, 47843, 47844, 47845}, { damage = "magic", targeted = true }),
     felguard = spell({30146}, { beneficial = true , targeted = false }),
 }, demo, getfenv(1))
 
@@ -177,17 +178,21 @@ end
 
 
 createSoulstone:Callback(function(spell)
-    if soulstone.count == 0 then
-        spell:Cast()
+    if not player.combat then
+        if soulstone.count == 0 then
+            spell:Cast()
+        end
     end
 end)
 
 
 createSpellstone:Callback(function(spell)
-    if soulStoneCount.count < 20 then
-        RunMacroText("/run local n=0 for i=0,4 do for j=1,C_Container.GetContainerNumSlots(i) do local z=C_Container.GetContainerItemID(i,j) if z~=nil then if z==6265 then if n>19 then C_Container.PickupContainerItem(i,j) DeleteCursorItem() else n=n+1 end end end end end")
-        if spellstone.count == 0 then
-            spell:Cast()
+    if not player.combat then
+        if soulStoneCount.count < 20 then
+            RunMacroText("/run local n=0 for i=0,4 do for j=1,C_Container.GetContainerNumSlots(i) do local z=C_Container.GetContainerItemID(i,j) if z~=nil then if z==6265 then if n>19 then C_Container.PickupContainerItem(i,j) DeleteCursorItem() else n=n+1 end end end end end")
+            if spellstone.count == 0 then
+                spell:Cast()
+            end
         end
     end
 end)
@@ -265,6 +270,14 @@ end)
 demonicEmpowerment:Callback(function(spell)
     if pet.exists then
         spell:Cast()
+    end
+end)
+
+awful.enemies.loop(function(enemy)
+    if enemy.combat then
+        if enemy.hp <= 35 then
+            soulFireSnipe:Cast(enemy)
+        end
     end
 end)
 
@@ -350,8 +363,8 @@ demo:Init(function()
     createSpellstone()
     createSoulstone()
     felArmor()
-    felguard()
     lifeTap()
+    soulFireSnipe()
     felguard()
     shadowBolt()
     demonicEmpowerment()

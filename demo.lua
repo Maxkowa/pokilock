@@ -215,7 +215,7 @@ seedOfCorruption:Callback(function(spell)
     local numEnemies = 0
     for _, unit in ipairs(awful.units) do
         numEnemies = numEnemies + 1
-        if numEnemies > 3 then
+        if numEnemies > 3 and unit:IsEnemy(target) then
             spell:Cast(target)
             return
         end

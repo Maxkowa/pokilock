@@ -124,11 +124,11 @@ felguard:Callback(function(spell)
     end
 end)
 
-summonPet:Callback(function(spell)
-    if not player.pet.exists then
-      return spell:Cast()
-    end
-end)
+--summonPet:Callback(function(spell)
+--    if not player.pet.exists then
+--      return spell:Cast()
+--    end
+--end)
 
 lifeTap:Callback(function(spell)
     if player.buff(63321) or player.mana < 30 then

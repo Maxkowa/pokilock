@@ -193,7 +193,7 @@ end)
 corruption:Callback(function(spell)
     local numCorruptionDebuffs = 0
     for _, unit in ipairs(awful.units) do
-        if unit:IsInCombat() and not unit.debuff("Corruption") then
+        if unit:combat() and not unit.debuff("Corruption") then
             numCorruptionDebuffs = numCorruptionDebuffs + 1
             if numCorruptionDebuffs > 3 then
                 return

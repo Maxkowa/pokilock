@@ -130,6 +130,14 @@ local gui, settings, cmd = awful.UI:New("pokilock", {
 	}
 })
 
+gui:Tab("Farm")
+gui.tabs["Farm"]:Checkbox({
+    text = "Farm",
+    var = "farm", -- selected state = settings.curseOfElements
+    tooltip = "Enable Farm",
+})
+
+
 gui:Tab("Curse")
 gui.tabs["Curse"]:Checkbox({
     text = "Curse of Elements",
@@ -218,7 +226,8 @@ metamorphosis:Callback("burst", function(spell)
     spell:Cast()
 end)
 
-drainSoul:Callback("farm", function(spell)
+drainSoul:Callback(function(spell)
+    if settings.farm then
     spell:Cast(target)
 end)
 
@@ -297,9 +306,7 @@ demo:Init(function()
     if awful.burst then
         metamorphosis("burst")
     end
-    if awful.farm then
-        drainSoul("farm")
-    end
+    drainSoul()
     WasCastingCheck()
     if player.mounted then return end 
     if player.casting or player.channeling then return end

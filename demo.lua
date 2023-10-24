@@ -119,7 +119,7 @@ awful.powerTypes = {
 -- Create spell callbacks for Demonology Warlock spells
 
 felguard:Callback(function(spell)
-    if not player.pet.exists then
+    if not pet.exists then
         return spell:Cast()
     end
 end)

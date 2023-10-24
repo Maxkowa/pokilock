@@ -1,5 +1,5 @@
 local Unlocker, awful, poki = ...
-local awful = LibStub("Awful-1.0")
+--local awful = LibStub("Awful-1.0")
 local player = awful.player
 local pet = awful.pet
 local target, focus, healer, enemyHealer = awful.target, awful.focus, awful.healer, awful.enemyHealer

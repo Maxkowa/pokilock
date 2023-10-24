@@ -240,6 +240,8 @@ end)
 shadowBolt:Callback(function(spell)
     if not target.debuff(17800) then
         spell:Cast(target)
+    elseif true then
+        spell:Cast(target)
     end
 end)
 

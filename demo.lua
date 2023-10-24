@@ -83,6 +83,7 @@ awful.Populate({
     shadowfury = spell({30283, 30413, 30414, 47847, 47848}, { damage = "magic", targeted = true }),
     soulFire = spell({6353, 17924, 27211, 47843, 47844, 47845}, { damage = "magic", targeted = true }),
     felguard = spell({30146}, { beneficial = true , targeted = false }),
+    spellstoneTest = spell({41196}, { beneficial = true }),
 }, demo, getfenv(1))
 
 awful.powerTypes = {
@@ -198,7 +199,7 @@ createSpellstone:Callback(function(spell)
     end
 end)
 
-spellstone:Callback(function(spell)
+spellstoneTest:Callback(function(spell)
     if not player.mainHandEnchant then
         RunMacroText("/use [mod:alt] Grand Spellstone")
         RunMacroText("/use 16")
@@ -371,7 +372,7 @@ demo:Init(function()
     WasCastingCheck()
     if player.mounted then return end 
     if player.casting or player.channeling then return end
-    spellstone()
+    spellstoneTest()
     createSpellstone()
     createSoulstone()
     felArmor()

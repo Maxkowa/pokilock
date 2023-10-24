@@ -175,14 +175,14 @@ function WasCastingCheck()
 end
 
 createSoulstone:Callback(function(spell)
-    if soulstone.count < 1 then
+    if soulstone.count = 0 then
         spell:Cast()
     end
 end)
 
 
 createSpellstone:Callback(function(spell)
-    if spellstone.count < 1 then
+    if spellstone.count = 0 then
         spell:Cast()
     end
 end)

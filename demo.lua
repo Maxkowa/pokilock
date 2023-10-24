@@ -5,6 +5,17 @@ local wasCasting = {}
 local target, focus, healer, enemyHealer = awful.target, awful.focus, awful.healer, awful.enemyHealer
 awful.DevMode = true
 
+local isCooldownEnabled = true
+
+awful.RegisterSlashCommand("cooldown", function()
+    isCooldownEnabled = not isCooldownEnabled
+    if isCooldownEnabled then
+        print("Cooldown is now enabled")
+    else
+        print("Cooldown is now disabled")
+    end
+end)
+
 poki.warlock = {}
 poki.warlock.demo = awful.Actor:New({ spec = 2, class = "warlock"})
 local demo = poki.warlock.demo
@@ -267,16 +278,6 @@ shadowflame:Callback(function(spell)
     end
 end)
 
-local isCooldownEnabled = true
-
-awful.RegisterSlashCommand("cooldown", function()
-    isCooldownEnabled = not isCooldownEnabled
-    if isCooldownEnabled then
-        print("Cooldown is now enabled")
-    else
-        print("Cooldown is now disabled")
-    end
-end)
 
 demo:Init(function() 
     if player.mounted then return end 

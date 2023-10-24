@@ -91,13 +91,34 @@ awful.Populate({
 --}, demo, getfenv(1))
 
 awful.powerTypes = {
-    mana = "Mana",
+	["mana"] = 0,
+	["rage"] = 1,
+	["focus"] = 2,
+	["energy"] = 3,
+	["combopoints"] = 4,
+	["cp"] = 4,
+	["runes"] = 5,
+	["runicpower"] = 6,
+	["soulshards"] = 7,
+	["shards"] = 7,
+	["astralpower"] = 8,
+	["ap"] = 8,
+	["lunarpower"] = 8,
+	["holypower"] = 9,
+	["alternatepower"] = 10,
+	["maelstrom"] = 11,
+	["chi"] = 12,
+	["insanity"] = 13,
+	["arcanecharges"] = 16,
+	["fury"] = 17,
+	["pain"] = 18,
+    ["essence"] = 19
 }
 
 -- Create spell callbacks for Demonology Warlock spells
 
 lifeTap:Callback(function(spell)
-    if player.buff(63321) or player.powerTypes.mana < 30 then
+    if player.buff(63321) or player.mana < 30 then
         return
     end
     spell:Cast()

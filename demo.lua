@@ -249,7 +249,7 @@ function UseHyperspeedAccelerators()
     if player.combat and target.enemy then
         -- Check if Hyperspeed Accelerators are available
         if GetItemCount(hyperspeedAcceleratorsID) >= 1 and (C_Container.GetItemCooldown(hyperspeedAcceleratorsID)) == 0 then
-            _Use(GetItemInfo(hyperspeedAcceleratorsID))
+            UseInventoryItem(11) -- Use the item in the first trinket slot
             _print("Using Hyperspeed Accelerators")
         end
     end

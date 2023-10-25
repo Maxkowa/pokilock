@@ -434,7 +434,7 @@ demo:Init(function()
     end
     -- Decrease the Metamorphosis buff duration by the time since the last frame
     if metamorphosisBuffDuration > 0 then
-        metamorphosisBuffDuration = metamorphosisBuffDuration - awful.deltaTime
+        metamorphosisBuffDuration = metamorphosisBuffDuration - awful.tickRate
     end
     drainSoul()
     WasCastingCheck()

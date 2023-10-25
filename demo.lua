@@ -234,6 +234,15 @@ function Buff()
     end
 end
 
+function OnUpdate()
+    UseItemInSlot10IfEnchanted()
+    -- Other update code...
+end
+
+-- Call OnUpdate every frame
+local frame = CreateFrame("Frame")
+frame:SetScript("OnUpdate", OnUpdate)
+
 function UseItemInSlot10IfEnchanted()
     -- Get the item ID for the item in slot 10
     local itemID = GetInventoryItemID("player", 10)

@@ -162,7 +162,11 @@ local healthstone = awful.Item(36892, 36893, 36894)
 local soulShard = awful.Item(6265)
 local soulShardCount = GetItemCount(6265)
 local soulstone = awful.Item(36895)
---- local spellstone = awful.Item(41196)
+
+local function hasSoulstone()
+    return soulstone.count > 0
+end
+
 
 
 awful.Populate(items, actor, getfenv(1))
@@ -187,7 +191,7 @@ local soulStoneCount = 0
 
 createSoulstone:Callback(function(spell)
     if not player.combat then
-        if soulStoneCount == 0 then
+        if not hasSoulstone() then
             spell:Cast()
         end
     end

@@ -205,10 +205,13 @@ end)
 
 local spellstone = awful.Item(41196) -- Create an Item object for the spellstone
 
+
 spellstone:Update(function(item)
     if not spellstone:Usable() then return end -- Check if the spellstone is usable
 
     local hasMH, mhExpires, _, _, hasOH, ohExpires, _ = GetWeaponEnchantInfo()
+    local itemLink = GetInventoryItemLink("player", mainHandSlotID)
+    local _, _, _, _, _, _, _, _, _, itemID = GetItemInfo(itemLink)
 
     if not hasMH or (hasMH and mhExpires / 1000 < GetTime()) then
         local mainHandSlotID = GetInventorySlotInfo("MainHandSlot")

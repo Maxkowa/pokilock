@@ -236,7 +236,7 @@ function Buff()
 end
 
 
-hyperspeedAccelerators:Callback(function(spell)
+hyperspeedAccelartors:Callback(function(spell)
     if target.enemy then
         spell:Cast()
         _print("Casting Hyperspeed Accelerators")

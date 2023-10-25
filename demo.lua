@@ -325,7 +325,7 @@ immolationAura:Callback(function(spell)
     local count, total, objects = enemies.around(player, 10)
     local metamorphosisBuff = player.buff("Metamorphosis") -- Replace "Metamorphosis" with the actual name of the Metamorphosis buff
     local metamorphosisBuffDuration = metamorphosisBuff and player.buffRemains(metamorphosisBuff[10]) or 0
-    if metamorphosisBuff then
+    if metamorphosisBuff and metamorphosisBuff[10] then
         _print("Metamorphosis buff ID: " .. metamorphosisBuff[10])
     end
     if count > 2 then

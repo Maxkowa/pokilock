@@ -323,12 +323,8 @@ function countEnemiesInRange(range)
 end
 
 immolationAura:Callback(function(spell)
-    if countEnemiesInRange(10) > 1 then
-        awful.enemies.loop(function(enemy)
-            if enemy.distanceTo(player) <= 10 then
-                spell:Cast(enemy)
-            end
-        end)
+    if countEnemiesInRange(10) > 2 or (player.buff(47241) and player.buff(47241).remains < 15) then
+        spell:Cast()
     end
 end)
 

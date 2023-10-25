@@ -239,7 +239,7 @@ function UseHyperspeedAccelerators()
     local hasHandEnchant, handEnchantExpiration, _, _, _, _, _, _, _, handEnchantID = GetInventoryItemGems(10)
 
     -- Check if Hyperspeed Accelerators are active
-    local hyperspeedAcceleratorsID = 54758 -- Replace with the actual spell ID of Hyperspeed Accelerators
+    local hyperspeedAcceleratorsID = 3604 -- Replace with the actual spell ID of Hyperspeed Accelerators
     if hasHandEnchant and handEnchantID == hyperspeedAcceleratorsID then
         -- Hyperspeed Accelerators are active, no need to use them again
         return

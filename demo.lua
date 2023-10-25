@@ -180,6 +180,10 @@ function WasCastingCheck()
     end
 end
 
+function _print(message)
+    awful.alert(message)
+end
+
 
 createSoulstone:Callback(function(spell)
     if not player.combat then
@@ -243,7 +247,7 @@ function UseHyperspeedAccelerators()
     end
 
     -- Hyperspeed Accelerators are not active, try to use them
-    if not player.moving then
+    if player.combat and target.enemy then
         -- Check if Hyperspeed Accelerators are available
         if GetItemCount(hyperspeedAcceleratorsID) >= 1 and (C_Container.GetItemCooldown(hyperspeedAcceleratorsID)) == 0 then
             _Use(GetItemInfo(hyperspeedAcceleratorsID))

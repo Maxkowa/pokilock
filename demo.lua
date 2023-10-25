@@ -163,7 +163,7 @@ local healthstone = awful.Item(36892, 36893, 36894)
 local soulShard = awful.Item(6265)
 local soulShardCount = GetItemCount(6265)
 local soulstone = awful.Item(36895)
-local spellstone = awful.Item(41196)
+--- local spellstone = awful.Item(41196)
 
 
 awful.Populate(items, actor, getfenv(1))
@@ -203,14 +203,18 @@ createSpellstone:Callback(function(spell)
     end
 end)
 
+local spellstone = awful.Item(41196) -- Create an Item object for the spellstone
+
 spellstone:Callback(function(spell)
+    if not spellstone:Usable() then return end -- Check if the spellstone is usable
+
     local hasMH, mhExpires, _, _, hasOH, ohExpires, _ = GetWeaponEnchantInfo()
 
     if not hasMH or (hasMH and mhExpires / 1000 < GetTime()) then
         local mainHandSlotID = GetInventorySlotInfo("MainHandSlot")
         local itemID = GetInventoryItemID("player", mainHandSlotID)
 
-        if itemID == (41196) then
+        if itemID == spellstone:GetID() then -- Use the GetID() method to compare item IDs
             UseInventoryItem(mainHandSlotID)
             C_Timer.After(0.1, function()
                 RunMacroText("/click StaticPopup1Button1")

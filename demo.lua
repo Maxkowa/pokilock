@@ -348,7 +348,7 @@ end)
 
 soulFire:Callback(function(spell)
     if target.enemy then
-        if target.combat then
+        if target.combat and soulShardCount >= 1 then
             if player.buff(63167) or target.hp <= 35 then
                 spell:Cast(target)
             end

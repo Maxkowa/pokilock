@@ -214,7 +214,9 @@ function Buff()
         end
     end
 
-    if not checkweaponenchants('mainhand') and not player.moving then
+    local hasMH, mhExpires, _, _, hasOH, ohExpires, _ = GetWeaponEnchantInfo()
+
+    if not (hasMH and mhExpires) and not player.moving then
         for i = 1, #spellstonelist do
             if GetItemCount(spellstonelist[i]) >= 1 and (C_Container.GetItemCooldown(spellstonelist[i])) == 0 then
                 local CurrentWeapon = GetInventoryItemID("player", 16)

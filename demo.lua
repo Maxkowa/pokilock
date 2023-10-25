@@ -343,8 +343,12 @@ end)
 
 seedOfCorruption:Callback(function(spell)
     if target.enemy then
-        if awful.enemies.around(target, 10) >= 3 then
-            spell:SmartAoE(target)
+        local numEnemiesNearTarget = awful.enemies.around(target, 10)
+        if numEnemiesNearTarget >= 3 then
+            local enemies = awful.enemies.get(target, 10)
+            for _, enemy in ipairs(enemies) do
+                spell:Cast(enemy)
+            end
         end
     end
 end)

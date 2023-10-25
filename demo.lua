@@ -235,7 +235,6 @@ function Buff()
 end
 
 function OnUpdate()
-    print("OnUpdate is being called")
     UseItemInSlot10IfEnchanted()
     -- Other update code...
 end

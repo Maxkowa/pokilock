@@ -234,26 +234,26 @@ function Buff()
     end
 end5/1
 
-local itemInSlot10 = awful.Item(GetInventoryItemID("player", 10)) -- Create an Item object for the item in slot 10
+--local itemInSlot10 = awful.Item(GetInventoryItemID("player", 10)) -- Create an Item object for the item in slot 10
 
-itemInSlot10:Use(function(item)
+--itemInSlot10:Use(function(item)
     -- Get the item's link
-    local itemLink = select(2, GetItemInfo(item.id))
-    if not itemLink then return end -- Exit if the item link couldn't be retrieved
-
+--    local itemLink = select(2, GetItemInfo(item.id))
+--    if not itemLink then return end -- Exit if the item link couldn't be retrieved
+--
     -- Extract the enchantment ID from the item link
-    local enchantmentID = tonumber(itemLink:match("item:%d+:%d+:(%d+)"))
-    if not enchantmentID then return end -- Exit if the enchantment ID couldn't be retrieved
+--    local enchantmentID = tonumber(itemLink:match("item:%d+:%d+:(%d+)"))
+--    if not enchantmentID then return end -- Exit if the enchantment ID couldn't be retrieved
 
     -- Check if the enchantment ID matches the ID of the Hyperspeed Accelerators enchantment
-    local hyperspeedAcceleratorsEnchantmentID = 3604 -- Replace with the actual enchantment ID of Hyperspeed Accelerators
-    if enchantmentID == hyperspeedAcceleratorsEnchantmentID then
+--    local hyperspeedAcceleratorsEnchantmentID = 3604 -- Replace with the actual enchantment ID of Hyperspeed Accelerators
+--    if enchantmentID == hyperspeedAcceleratorsEnchantmentID then
         -- The item has the Hyperspeed Accelerators enchantment, use the item
-        if item:Use() then
-            _print("Using item in slot 11")
-        end
-    end
-end)
+--        if item:Use() then
+--            _print("Using item in slot 11")
+--        end
+--    end
+--end)
 
 felguard:Callback(function(spell)
     local felguardID = 30147
@@ -447,7 +447,7 @@ demo:Init(function()
     felArmor()
     lifeTap()
     felguard()
-    itemInSlot10()
+--    itemInSlot10()
     seedOfCorruption()
     shadowBolt()
     demonicEmpowerment()

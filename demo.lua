@@ -438,12 +438,12 @@ seedOfCorruption:Callback(function(spell)
     if target.enemy then
         local numEnemiesNearTarget = 0
         for _, unit in ipairs(awful.units) do
-            if unit.enemy and unit.distanceTo(target) <= 10 then
+            if unit.enemy and unit.distanceTo(target) <= 20 then
                 numEnemiesNearTarget = numEnemiesNearTarget + 1
             end
         end
         if numEnemiesNearTarget > 2 then -- Change the condition to > 2
-            local enemies = awful.enemies.get(target, 10)
+            local enemies = awful.enemies.get(target, 20)
             for _, enemy in ipairs(enemies) do
                 spell:Cast(enemy)
             end

@@ -235,6 +235,7 @@ function Buff()
 end
 
 function OnUpdate()
+    print("OnUpdate is being called")
     UseItemInSlot10IfEnchanted()
     -- Other update code...
 end
@@ -256,10 +257,13 @@ function UseItemInSlot10IfEnchanted()
     local enchantmentID = tonumber(itemLink:match("item:%d+:%d+:(%d+)"))
     if not enchantmentID then return end -- Exit if the enchantment ID couldn't be retrieved
 
+    print("Enchantment ID: " .. enchantmentID)
+
     -- Check if the enchantment ID matches the ID of the Hyperspeed Accelerators enchantment
     local hyperspeedAcceleratorsEnchantmentID = 3604 -- Replace with the actual enchantment ID of Hyperspeed Accelerators
     if enchantmentID == hyperspeedAcceleratorsEnchantmentID then
         -- The item has the Hyperspeed Accelerators enchantment, use the item
+        print("Attempting to use item in slot 10")
         UseInventoryItem(10)
         _print("Using item in slot 10")
     end

@@ -87,7 +87,6 @@ awful.Populate({
     soulFire = spell({6353, 17924, 27211, 47843, 47844, 47845}, { damage = "magic", targeted = true }),
     felguard = spell({30146}, { beneficial = true , targeted = false }),
     spellstoneTest = spell({41196}, { beneficial = true }),
-    hyperspeedAccelartors = spell({54758 }, { beneficial = true }),
 }, demo, getfenv(1))
 
 awful.powerTypes = {
@@ -236,12 +235,15 @@ function Buff()
 end
 
 
-hyperspeedAccelartors:Callback(function(spell)
-    if target.enemy then
-        spell:Cast()
+function UseHyperspeedAccelerators()
+    -- Check if the player can cast the Hyperspeed Accelerators spell
+    local hyperspeedAcceleratorsSpellID = 54758 -- Replace with the actual spell ID of Hyperspeed Accelerators
+    if IsSpellKnown(hyperspeedAcceleratorsSpellID) then
+        -- The player knows the Hyperspeed Accelerators spell, cast the spell
+        CastSpellByID(hyperspeedAcceleratorsSpellID)
         _print("Casting Hyperspeed Accelerators")
     end
-end)
+end
 
 felguard:Callback(function(spell)
     local felguardID = 30147
@@ -435,7 +437,7 @@ demo:Init(function()
     felArmor()
     lifeTap()
     felguard()
-    hyperspeedAccelartors()
+    UseHyperspeedAccelerators()
     seedOfCorruption()
     shadowBolt()
     demonicEmpowerment()

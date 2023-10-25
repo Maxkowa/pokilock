@@ -283,7 +283,8 @@ immolate:Callback(function(spell)
     local immolateID = 47811
     if target.enemy then
         if wasCasting[immolateID] then return end
-        if not target.debuff("Immolate") then
+        local debuff = target.debuff("Immolate")
+        if not debuff or debuff.remains < 3 then
             spell:Cast(target)
         end
     end

@@ -442,7 +442,8 @@ seedOfCorruption:Callback(function(spell)
                 numEnemiesNearTarget = numEnemiesNearTarget + 1
             end
         end
-        if numEnemiesNearTarget > 2 then -- Change the condition to > 2
+        print("Number of enemies near target:", numEnemiesNearTarget) -- Add this line to print the count
+        if numEnemiesNearTarget > 1 then
             local enemies = awful.enemies.get(target, 20)
             for _, enemy in ipairs(enemies) do
                 spell:Cast(enemy)

@@ -346,7 +346,8 @@ end)
 
 corruption:Callback(function(spell)
     if target.enemy then
-        if not target.debuff("Corruption") then
+        local debuff = target.debuffFrom({"Corruption"}, player)
+        if not debuff then
             spell:Cast(target)
         end
     end

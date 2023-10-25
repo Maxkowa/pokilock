@@ -12,6 +12,10 @@ local NewItem = awful.NewItem
 
 --TODO
 --Fix Incinerate 3x cast + Cast delay
+-- soullink
+-- corruption if more then 1 warlock
+-- seed error
+--SoulFire only fish for buff
 
 awful.Populate({
     banish = spell({710, 18647}, { effect = "magic", targeted = true }),
@@ -280,14 +284,11 @@ end)
 
 soulFire:Callback(function(spell)
     if target.enemy then
-        awful.enemies.loop(function(enemy)
-            if enemy.combat then
-                if enemy.hp <= 35 then
-                    spell:Cast(enemy)
-                end
-                return true
+        if target.combat then
+            if player.buff(63167) or target.hp <= 35 then
+                spell:Cast(target)
             end
-        end)
+        end
     end
 end)
 
@@ -299,22 +300,15 @@ corruption:Callback(function(spell)
     end
 end)
 
-incinerate:Callback(function(spell) 
-    local incinerateID = 47838
-    local consecutiveCasts = 0  -- Counter variable for consecutive casts
-    
+incinerate:Callback(function(spell)
     if target.enemy then
-        if target.hp <= 35 or player.buff(71165) then
-            spell:Cast(target)
-            consecutiveCasts = consecutiveCasts + 1
-            if consecutiveCasts < 3 then
-                return  -- Skip casting if not the third consecutive cast
-            else
-                consecutiveCasts = 0  -- Reset the counter after the third consecutive cast
-            end
-        end
-        if wasCasting[incinerateID] then
-            spell:Cast(target)
+        if enemy.combat and player.buff(47247) and not player.buff(63167) then
+            awful.enemies.loop(function(enemy)
+                if enemy.combat and enemy.hp <= 35 then
+                    spell:Cast(enemy)
+                end
+                return true
+            end)
         end
     end
 end)

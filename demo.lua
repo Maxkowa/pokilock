@@ -439,9 +439,9 @@ demo:Init(function()
     immolate()
     immolationAura()
     soulFire()
-    incinerate()
     shadowflame()
     shadowBoltFiller()
+    incinerate()
 end)
 
 

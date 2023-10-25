@@ -391,6 +391,12 @@ shadowBolt:Callback(function(spell)
     end
 end)
 
+felDomination:Callback(function(spell)
+    if not pet.exists and player.combat then
+        spell:Cast()
+    end
+end)
+
 felArmor:Callback(function(spell)
     if not player.buff(47893) then
         spell:Cast()
@@ -453,6 +459,7 @@ demo:Init(function()
     createSoulstone()
     felArmor()
     lifeTap()
+    felDomination()
     felguard()
     UseItemInSlot10()
     seedOfCorruption()

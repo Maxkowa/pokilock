@@ -74,7 +74,6 @@ awful.Populate({
     drainSoul = spell({1120, 8288, 8289, 11675, 11676, 27217}, { damage = "magic", targeted = true }),
     chaosBolt = spell({50796, 59172, 59173, 59174, 59175}, { damage = "magic", targeted = true }),
     conflagrate = spell({17962}, { damage = "magic", targeted = true }),
-    demonicImmolate = spell({75445}, { damage = "magic", targeted = true }),
     hellfire = spell({1949, 11683, 11684, 11685, 27213}, { damage = "magic", targeted = false }),
     immolate = spell({47811}, { damage = "magic", targeted = true }),
     incinerate = spell({29722, 32231, 47837, 47838}, { damage = "magic", targeted = true }),
@@ -324,7 +323,7 @@ end
 
 immolationAura:Callback(function(spell)
     local count, total, objects = enemies.around(player, 10)
-    if count > 2 or (count <= 2 and player.buff(47241) and player.buff(47241).remains and player.buff(47241).remains < 15) then
+    if count > 1 then
         spell:Cast()
     end
 end)

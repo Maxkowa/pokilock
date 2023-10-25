@@ -169,12 +169,20 @@ local function hasSoulstone()
 end
 
 local function deleteExcessSoulShards()
-    if soulShardCount > 20 then
-        for bag = 0, NUM_BAG_SLOTS do
-            for slot = 1, GetContainerNumSlots(bag) do
-                local itemID = GetContainerItemID(bag, slot)
-                if itemID == 6265 then -- Check if the item is a soul shard
-                    UseItemByName("Soul Shard") -- Call the UseItemByName function from the WoW API
+    local itemID = 6265 -- Soul Shard item ID
+    local soulShardCount = GetItemCount(itemID) - 20 -- Calculate the excess soul shard count
+
+    if soulShardCount > 0 then
+        for bag = 0, 4 do
+            for slot = 1, C_Container.GetContainerNumSlots(bag) do
+                if soulShardCount <= 0 then
+                    return -- Exit the function if excess soul shards have been deleted
+                end
+
+                if C_Container.GetContainerItemID(bag, slot) == itemID then
+                    C_Container.PickupContainerItem(bag, slot) -- Pick up the soul shard
+                    DeleteCursorItem() -- Delete the item from the cursor
+                    soulShardCount = soulShardCount - 1 -- Decrement the excess soul shard count
                 end
             end
         end

@@ -401,7 +401,7 @@ incinerate:Callback(function(spell)
             if casted then return end
         end
         if not player.buff(71165) then
-            spell:Cancel() -- Cancel casting if we lost the buff 71165
+            SpellStopCasting() -- Cancel casting if we lost the buff 71165
             return
         end
         spell:Cast(target)

@@ -237,9 +237,7 @@ end
 
 
 hyperspeedAccelerators:Callback(function(spell)
-    -- Check if the player can cast the Hyperspeed Accelerators spell
-    if spell:Castable() then
-        -- The player can cast the Hyperspeed Accelerators spell, cast the spell
+    if target.enemy then
         spell:Cast()
         _print("Casting Hyperspeed Accelerators")
     end

@@ -171,9 +171,11 @@ end
 local function hasSoulShards()
     if soulShardCount > 0 then
         if soulShardCount > 20 then
-            for i = 1, soulShardCount - 20 do
-                -- Delete a soul shard using the WoW API
-                DeleteCursorItem()
+            if not player.combat then
+                for i = 1, soulShardCount - 20 do
+                    -- Delete a soul shard using the WoW API
+                    DeleteCursorItem()
+                end
             end
         end
         return true

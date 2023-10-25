@@ -382,7 +382,7 @@ end)
 corruption:Callback(function(spell)
     if target.enemy then
         local debuff = target.debuffFrom({"Corruption"}, player)
-        if not debuff then
+        if not debuff and not target.debuff(47836) then
             spell:Cast(target)
         end
     end
@@ -440,7 +440,7 @@ seedOfCorruption:Callback(function(spell)
     if target.enemy then
         local count = 0
         enemies.loop(function(enemy)
-            if enemy.distanceTo(target) < 10 then -- Check if enemy is close to the target
+            if enemy.distanceTo(target) < 10 and enemy.combat then -- Check if enemy is close to the target and in combat
                 if enemy.debuff(47836) then -- Check if enemy has debuff 47836
                     SpellStopCasting() -- Cancel casting if enemy has the debuff
                     return -- Exit the loop
@@ -448,7 +448,7 @@ seedOfCorruption:Callback(function(spell)
                 if not enemy.debuff(47836) then -- Check if enemy doesn't have debuff 47836
                     count = count + 1
                     -- Add your actions here
-                    if enemy ~= lastTarget then -- Check if the enemy is not the same as the last target
+                    if count > 2 then -- Check if there are more than 2 enemies
                         spell:Cast(enemy) -- Cast the spell on the enemy that doesn't have the debuff
                         lastTarget = enemy -- Update the last target
                         return true -- Exit the loop after casting the spell on a new enemy

@@ -203,13 +203,19 @@ createSpellstone:Callback(function(spell)
     end
 end)
 
-spellstoneTest:Callback(function(spell)
+spellstone:Callback(function(spell)
     local hasMH, mhExpires, _, _, hasOH, ohExpires, _ = GetWeaponEnchantInfo()
 
     if not hasMH or (hasMH and mhExpires / 1000 < GetTime()) then
-        RunMacroText("/use Grand Spellstone")
-        RunMacroText("/use 16")
-        RunMacroText("/click StaticPopup1Button1")
+        local mainHandSlotID = GetInventorySlotInfo("MainHandSlot")
+        local itemID = GetInventoryItemID("player", mainHandSlotID)
+
+        if itemID == (41196) then
+            UseInventoryItem(mainHandSlotID)
+            C_Timer.After(0.1, function()
+                RunMacroText("/click StaticPopup1Button1")
+            end)
+        end
     end
 end)
 
@@ -377,7 +383,7 @@ demo:Init(function()
     WasCastingCheck()
     if player.mounted then return end 
     if player.casting or player.channeling then return end
-    spellstoneTest()
+    spellstone()
     createSpellstone()
     createSoulstone()
     felArmor()

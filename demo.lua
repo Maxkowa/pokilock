@@ -323,7 +323,12 @@ end
 
 immolationAura:Callback(function(spell)
     local count, total, objects = enemies.around(player, 10)
-    if count > 1 then
+    local metamorphosisBuff = player.buff("Metamorphosis") -- Replace "Metamorphosis" with the actual name of the Metamorphosis buff
+    local metamorphosisBuffDuration = metamorphosisBuff and player.buffRemains(metamorphosisBuff.id) or 0
+    if metamorphosisBuff then
+        _print("Metamorphosis buff ID: " .. metamorphosisBuff.id)
+    end
+    if count > 2 then
         spell:Cast()
     end
 end)

@@ -205,7 +205,7 @@ end)
 
 local spellstone = awful.Item(41196) -- Create an Item object for the spellstone
 
-spellstone:Callback(function(spell)
+spellstone:Update(function(item)
     if not spellstone:Usable() then return end -- Check if the spellstone is usable
 
     local hasMH, mhExpires, _, _, hasOH, ohExpires, _ = GetWeaponEnchantInfo()

@@ -212,9 +212,9 @@ spellstone:Update(function(item)
 
     if not hasMH or (hasMH and mhExpires / 1000 < GetTime()) then
         local mainHandSlotID = GetInventorySlotInfo("MainHandSlot")
-        local itemID = GetInventoryItemID("player", mainHandSlotID)
+        local itemLink = GetInventoryItemLink("player", mainHandSlotID)
 
-        if itemID == spellstone:GetID() then -- Use the GetID() method to compare item IDs
+        if itemLink and itemLink:match("item:(%d+)") == tostring(spellstone:GetItemID()) then
             UseInventoryItem(mainHandSlotID)
             C_Timer.After(0.1, function()
                 RunMacroText("/click StaticPopup1Button1")

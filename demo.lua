@@ -436,22 +436,19 @@ end)
 
 seedOfCorruption:Callback(function(spell)
     if target.enemy then
-        local numEnemiesNearTarget = 0
-        awful.enemies.loop(function(enemy)
-            if awful.UnitIsEnemy("player", enemy) and awful.UnitDistance(enemy, target) <= 20 then
-                numEnemiesNearTarget = numEnemiesNearTarget + 1
+        local count = 0
+        enemies.loop(function(enemy)
+            if enemy.distanceTo(target) < 10 then -- Check if enemy is close to the target
+                count = count + 1
             end
         end)
-        print("Number of enemies near target:", numEnemiesNearTarget) -- Add this line to print the count
-        if numEnemiesNearTarget > 1 then
-            awful.enemies.loop(function(enemy)
-                if awful.UnitIsEnemy("player", enemy) and awful.UnitDistance(enemy, target) <= 20 then
-                    spell:Cast(enemy)
-                end
-            end)
+        if count > 1 then -- Check if there are more than one enemy close to the target
+            -- Add your actions here
+            spell:Cast(target)
         end
     end
 end)
+  
 
 shadowflame:Callback(function(spell)
     if target.enemy then

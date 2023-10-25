@@ -239,12 +239,11 @@ function UseItemInSlot10()
     local itemID = GetInventoryItemID("player", 10)
     if not itemID then return end -- Exit if there's no item in slot 10
 
-    -- Get the cooldown of the item
-    local start, duration, enable = GetItemCooldown(itemID)
-    local cooldownRemaining = start + duration - GetTime()
+    -- Create an Item object for the item in slot 10
+    local item = awful.Item(itemID)
 
     -- Check if the player is in combat, if there is an enemy target, and if the item is ready to use
-    if player.combat and target.enemy and cooldownRemaining <= 0 then
+    if player.combat and target.enemy and item:Usable() then
         UseInventoryItem(10)
     end
 end

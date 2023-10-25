@@ -201,7 +201,7 @@ end)
 
 spellstoneTest:Callback(function(spell)
     if not player.mainHandEnchant then
-        RunMacroText("/use [mod:alt] Grand Spellstone")
+        RunMacroText("/use Grand Spellstone")
         RunMacroText("/use 16")
         RunMacroText("/click StaticPopup1Button1")
     end

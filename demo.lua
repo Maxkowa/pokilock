@@ -225,7 +225,6 @@ function Buff()
                     _Use(spellstonename)
                     UseInventoryItem(16)
                     spellstonecount = 0
-                    _print("Using Spellstone")
                 end
             end
         end

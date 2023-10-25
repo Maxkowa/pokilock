@@ -276,6 +276,12 @@ curseOfDoom:Callback(function(spell)
     end
 end)
 
+soulLink:Callback(function(spell)
+    if pet.exists and not player.buff(25228) then
+        spell:Cast()
+    end
+end)
+
 curseOfElements:Callback(function(spell)
     if target.enemy then
         if settings.curseOfElements and not target.debuff("Curse of the Elements") then
@@ -442,6 +448,7 @@ demo:Init(function()
     if player.mounted then return end 
     if player.casting or player.channeling then return end
     Buff()
+    soulLink()
     createSpellstone()
     createSoulstone()
     felArmor()

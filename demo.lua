@@ -447,6 +447,7 @@ seedOfCorruption:Callback(function(spell)
                     if enemy ~= lastTarget then -- Check if the enemy is not the same as the last target
                         spell:Cast(enemy) -- Cast the spell on the enemy that doesn't have the debuff
                         lastTarget = enemy -- Update the last target
+                        return -- Exit the loop after casting the spell on a new enemy
                     end
                 end
             end

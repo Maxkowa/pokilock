@@ -236,7 +236,7 @@ end5/1
 
 local itemInSlot10 = awful.Item(GetInventoryItemID("player", 10)) -- Create an Item object for the item in slot 10
 
-itemInSlot10:Update(function(item)
+itemInSlot10:Use(function(item)
     -- Get the item's link
     local itemLink = select(2, GetItemInfo(item.id))
     if not itemLink then return end -- Exit if the item link couldn't be retrieved

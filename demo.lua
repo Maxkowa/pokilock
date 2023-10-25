@@ -231,6 +231,27 @@ function Buff()
     end
 end
 
+function UseHyperspeedAccelerators()
+    -- Get the enchantment information for the hands slot
+    local hasHandEnchant, handEnchantExpiration, _, _, _, _, _, _, _, handEnchantID = GetInventoryItemGems(10)
+
+    -- Check if Hyperspeed Accelerators are active
+    local hyperspeedAcceleratorsID = 54758 -- Replace with the actual spell ID of Hyperspeed Accelerators
+    if hasHandEnchant and handEnchantID == hyperspeedAcceleratorsID then
+        -- Hyperspeed Accelerators are active, no need to use them again
+        return
+    end
+
+    -- Hyperspeed Accelerators are not active, try to use them
+    if not player.moving then
+        -- Check if Hyperspeed Accelerators are available
+        if GetItemCount(hyperspeedAcceleratorsID) >= 1 and (C_Container.GetItemCooldown(hyperspeedAcceleratorsID)) == 0 then
+            _Use(GetItemInfo(hyperspeedAcceleratorsID))
+            _print("Using Hyperspeed Accelerators")
+        end
+    end
+end
+
 
 felguard:Callback(function(spell)
     local felguardID = 30147

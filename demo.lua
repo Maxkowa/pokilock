@@ -243,7 +243,7 @@ function UseItemInSlot10()
     -- Use the item in slot 10
     print("Attempting to use item in slot 10")
     UseInventoryItem(10)
-    _print("Using item in slot 10")
+    print("Used item in slot 10")
 end
 
 felguard:Callback(function(spell)

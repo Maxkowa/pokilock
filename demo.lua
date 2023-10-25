@@ -265,8 +265,12 @@ end)
 
 curseOfDoom:Callback(function(spell)
     if target.enemy then
-        local debuff = target.debuffFrom({"Curse of Doom"}, player)
-        if settings.curseOfDoom and not debuff then
+        local debuffElements = target.debuff("Curse of the Elements")
+        local debuffDoom = target.debuffFrom({"Curse of Doom"}, player)
+        
+        if debuffElements then
+            spell:Cast(target)
+        elseif settings.curseOfDoom and not debuffDoom then
             spell:Cast(target)
         end
     end

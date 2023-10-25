@@ -191,6 +191,7 @@ end)
 
 
 local soulStoneCount = 0
+local spellstone = awful.Item(41196) -- Create an Item object for the spellstone
 
 createSpellstone:Callback(function(spell)
     if not player.combat then
@@ -202,9 +203,6 @@ createSpellstone:Callback(function(spell)
         end
     end
 end)
-
-local spellstone = awful.Item(41196) -- Create an Item object for the spellstone
-
 
 spellstone:Update(function(item)
     if not spellstone:Usable() then return end -- Check if the spellstone is usable

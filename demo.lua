@@ -76,7 +76,7 @@ awful.Populate({
     conflagrate = spell({17962}, { damage = "magic", targeted = true }),
     demonicImmolate = spell({75445}, { damage = "magic", targeted = true }),
     hellfire = spell({1949, 11683, 11684, 11685, 27213}, { damage = "magic", targeted = false }),
-    immolate = spell({47838}, { damage = "magic", targeted = true }),
+    immolate = spell({47811}, { damage = "magic", targeted = true }),
     incinerate = spell({29722, 32231, 47837, 47838}, { damage = "magic", targeted = true }),
     rainOfFire = spell({5740, 6219, 11677, 11678, 27212, 47836, 47837}, { damage = "magic", targeted = false }),
     searingPain = spell({17919, 17920, 17921, 17922, 17923, 17924, 27210, 47843, 47844, 47845}, { damage = "magic", targeted = true }),
@@ -289,7 +289,7 @@ curseOfElements:Callback(function(spell)
 end)
 
 immolate:Callback(function(spell)
-    local immolateID = 47881
+    local immolateID = 47811
     if target.enemy then
         if wasCasting[immolateID] then return end
         if not target.debuff("Immolate") then

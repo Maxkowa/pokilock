@@ -437,11 +437,11 @@ demo:Init(function()
     curseOfElements()
     corruption()
     immolate()
+    incinerate()
     immolationAura()
     soulFire()
     shadowflame()
     shadowBoltFiller()
-    incinerate()
 end)
 
 

@@ -235,16 +235,14 @@ function Buff()
 end
 
 
---function UseItemInSlot10()
+function UseItemInSlot10()
     -- Get the item ID for the item in slot 10
---    local itemID = GetInventoryItemID("player", 10)
---    if not itemID then return end -- Exit if there's no item in slot 10
+    local itemID = GetInventoryItemID("player", 10)
+    if not itemID then return end -- Exit if there's no item in slot 10
 
     -- Use the item in slot 10
---    print("Attempting to use item in slot 10")
---    UseInventoryItem(10)
---    print("Used item in slot 10")
---end
+    UseInventoryItem(10)
+end
 
 felguard:Callback(function(spell)
     local felguardID = 30147
@@ -438,7 +436,7 @@ demo:Init(function()
     felArmor()
     lifeTap()
     felguard()
---    UseItemInSlot10()
+    UseItemInSlot10()
     seedOfCorruption()
     shadowBolt()
     demonicEmpowerment()

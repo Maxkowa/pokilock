@@ -434,6 +434,8 @@ shadowBoltFiller:Callback(function(spell)
     end
 end)
 
+local lastTarget = nil -- Variable to store the last target
+
 seedOfCorruption:Callback(function(spell)
     if target.enemy then
         local count = 0
@@ -442,7 +444,10 @@ seedOfCorruption:Callback(function(spell)
                 if not enemy.debuff(47836) then -- Check if enemy doesn't have debuff 47836
                     count = count + 1
                     -- Add your actions here
-                    spell:Cast(enemy) -- Cast the spell on the enemy that doesn't have the debuff
+                    if enemy ~= lastTarget then -- Check if the enemy is not the same as the last target
+                        spell:Cast(enemy) -- Cast the spell on the enemy that doesn't have the debuff
+                        lastTarget = enemy -- Update the last target
+                    end
                 end
             end
         end)

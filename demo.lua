@@ -167,6 +167,9 @@ local function hasSoulstone()
     return soulstone.count > 0
 end
 
+local function hasSoulShards()
+    return soulShardCount > 0
+end
 
 
 awful.Populate(items, actor, getfenv(1))
@@ -187,11 +190,10 @@ function _print(message)
     awful.alert(message)
 end
 
-local soulStoneCount = 0
 
 createSoulstone:Callback(function(spell)
     if not player.combat then
-        if not hasSoulstone() then
+        if not hasSoulstone() and hasSoulShards() then
             spell:Cast()
         end
     end
@@ -201,12 +203,10 @@ end)
 local spellstone = awful.Item(41196) -- Create an Item object for the spellstone
 
 createSpellstone:Callback(function(spell)
-    if not player.combat then
-        if soulShardCount < 20 then
-            RunMacroText("/run local n=0 for i=0,4 do for j=1,C_Container.GetContainerNumSlots(i) do local z=C_Container.GetContainerItemID(i,j) if z~=nil then if z==6265 then if n>19 then C_Container.PickupContainerItem(i,j) DeleteCursorItem() else n=n+1 end end end end end")
-            if spellstone.count == 0 then
-                spell:Cast()
-            end
+    if not player.combat and hasSoulShards() then
+        RunMacroText("/run local n=0 for i=0,4 do for j=1,C_Container.GetContainerNumSlots(i) do local z=C_Container.GetContainerItemID(i,j) if z~=nil then if z==6265 then if n>19 then C_Container.PickupContainerItem(i,j) DeleteCursorItem() else n=n+1 end end end end end")
+        if spellstone.count == 0 then
+            spell:Cast()
         end
     end
 end)
@@ -223,7 +223,7 @@ function Buff()
 
     local hasMH, mhExpires, _, _, hasOH, ohExpires, _ = GetWeaponEnchantInfo()
 
-    if not (hasMH and mhExpires) and not player.moving then
+    if not (hasMH and mhExpires) and not player.moving and hasSoulShards() then
         for i = 1, #spellstonelist do
             if GetItemCount(spellstonelist[i]) >= 1 and (C_Container.GetItemCooldown(spellstonelist[i])) == 0 then
                 local CurrentWeapon = GetInventoryItemID("player", 16)
@@ -255,8 +255,8 @@ end
 felguard:Callback(function(spell)
     local felguardID = 30147
     if wasCasting[felguardID] then return end
-    if not pet.exists then
-      return spell:Cast()
+    if not pet.exists and hasSoulShards() then
+        return spell:Cast()
     end
 end)
 
@@ -352,7 +352,7 @@ end)
 
 soulFire:Callback(function(spell)
     if target.enemy then
-        if target.combat and soulShardCount >= 1 then
+        if target.combat and hasSoulShard() then
             if player.buff(63167) or target.hp <= 35 then
                 spell:Cast(target)
             end
@@ -396,7 +396,7 @@ shadowBolt:Callback(function(spell)
 end)
 
 felDomination:Callback(function(spell)
-    if not pet.exists and player.combat then
+    if not pet.exists and player.combat and hasSoulShard() then
         spell:Cast()
     end
 end)

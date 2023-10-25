@@ -331,7 +331,7 @@ end)
 
 
 demonicEmpowerment:Callback(function(spell)
-    if pet.exists then
+    if pet.exists and player.combat and target.enemy then
         spell:Cast()
     end
 end)

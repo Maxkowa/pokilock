@@ -234,27 +234,19 @@ function Buff()
     end
 end
 
+
 function UseHyperspeedAccelerators()
     -- Get the enchantment information for the item in slot 11
     local hasEnchant, enchantExpiration, _, _, _, _, _, _, _, enchantID = GetInventoryItemGems(11)
 
-    -- Check if Hyperspeed Accelerators are active
-    local hyperspeedAcceleratorsID = 3604 -- Replace with the actual spell ID of Hyperspeed Accelerators
-    if hasEnchant and enchantID == hyperspeedAcceleratorsID then
-        -- Hyperspeed Accelerators are active, no need to use them again
-        return
-    end
-
-    -- Hyperspeed Accelerators are not active, try to use them
-    if player.combat and target.enemy then
-        -- Check if Hyperspeed Accelerators are available
-        if GetItemCount(hyperspeedAcceleratorsID) >= 1 and (C_Container.GetItemCooldown(hyperspeedAcceleratorsID)) == 0 then
-            UseInventoryItem(11) -- Use the item in the first trinket slot
-            _print("Using Hyperspeed Accelerators")
-        end
+    -- Check if the enchantment ID is 3604
+    local enchantmentID = 3604
+    if hasEnchant and enchantID == enchantmentID then
+        -- The item is enchanted with the correct enchantment, use the item
+        UseInventoryItem(11)
+        _print("Using item in slot 11")
     end
 end
-
 
 felguard:Callback(function(spell)
     local felguardID = 30147

@@ -204,7 +204,9 @@ createSpellstone:Callback(function(spell)
 end)
 
 spellstoneTest:Callback(function(spell)
-    if not player.mainHandEnchant then
+    local hasMH, mhExpires, _, _, hasOH, ohExpires, _ = GetWeaponEnchantInfo()
+
+    if not hasMH or (hasMH and mhExpires / 1000 < GetTime()) then
         RunMacroText("/use Grand Spellstone")
         RunMacroText("/use 16")
         RunMacroText("/click StaticPopup1Button1")

@@ -349,6 +349,13 @@ incinerate:Callback(function(spell)
     if target.enemy then
         if player.buff(71165) and not player.buff(63167) then
             spell:Cast(target)
+        elseif not player.buff(63167) then
+            awful.enemies.loop(function(enemy)
+                if enemy.combat and enemy.hp <= 35 then
+                    spell:Cast(enemy)
+                end
+                return true
+            end)
         end
     end
 end)

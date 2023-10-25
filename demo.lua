@@ -13,9 +13,7 @@ local NewItem = awful.NewItem
 --TODO
 -- CHECK SEED FIRST
 --Fix Incinerate 3x cast + Cast delay
--- soullink
--- corruption if more then 1 warlock
---SoulFire only fish for buff
+
 
 awful.Populate({
     banish = spell({710, 18647}, { effect = "magic", targeted = true }),
@@ -444,7 +442,7 @@ seedOfCorruption:Callback(function(spell)
                 numEnemiesNearTarget = numEnemiesNearTarget + 1
             end
         end
-        if numEnemiesNearTarget >= 3 then
+        if numEnemiesNearTarget > 2 then -- Change the condition to > 2
             local enemies = awful.enemies.get(target, 10)
             for _, enemy in ipairs(enemies) do
                 spell:Cast(enemy)

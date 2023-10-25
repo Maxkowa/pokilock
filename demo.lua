@@ -439,15 +439,13 @@ seedOfCorruption:Callback(function(spell)
         local count = 0
         enemies.loop(function(enemy)
             if enemy.distanceTo(target) < 10 then -- Check if enemy is close to the target
-                if not enemy.debuff(47836) then -- Check if enemy is in combat and doesn't have debuff 47836
+                if not enemy.debuff(47836) then -- Check if enemy doesn't have debuff 47836
                     count = count + 1
+                    -- Add your actions here
+                    spell:Cast(enemy) -- Cast the spell on the enemy that doesn't have the debuff
                 end
             end
         end)
-        if count > 1 then -- Check if there are more than one enemy close to the target
-            -- Add your actions here
-            spell:Cast(target)
-        end
     end
 end)
   

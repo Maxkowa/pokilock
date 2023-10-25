@@ -234,35 +234,15 @@ function Buff()
     end
 end
 
-function OnUpdate()
-    UseItemInSlot10IfEnchanted()
-    -- Other update code...
-end
-
--- Call OnUpdate every frame
-local frame = CreateFrame("Frame")
-frame:SetScript("OnUpdate", OnUpdate)
-
-function UseItemInSlot10IfEnchanted()
+function UseItemInSlot10()
     -- Get the item ID for the item in slot 10
     local itemID = GetInventoryItemID("player", 10)
     if not itemID then return end -- Exit if there's no item in slot 10
 
-    -- Get the item's link
-    local itemLink = select(2, GetItemInfo(itemID))
-    if not itemLink then return end -- Exit if the item link couldn't be retrieved
-
-    -- Extract the enchantment ID from the item link
-    local enchantmentID = tonumber(itemLink:match("item:%d+:%d+:(%d+)"))
-    if not enchantmentID then return end -- Exit if the enchantment ID couldn't be retrieved
-
-    -- Check if the enchantment ID matches the ID of the Hyperspeed Accelerators enchantment
-    local hyperspeedAcceleratorsEnchantmentID = 3604 -- Replace with the actual enchantment ID of Hyperspeed Accelerators
-    if enchantmentID == hyperspeedAcceleratorsEnchantmentID then
-        -- The item has the Hyperspeed Accelerators enchantment, use the item
-        UseInventoryItem(10)
-        _print("Using item in slot 10")
-    end
+    -- Use the item in slot 10
+    print("Attempting to use item in slot 10")
+    UseInventoryItem(10)
+    print("Used item in slot 10")
 end
 
 felguard:Callback(function(spell)
@@ -457,7 +437,7 @@ demo:Init(function()
     felArmor()
     lifeTap()
     felguard()
-    UseItemInSlot10IfEnchanted()
+    UseItemInSlot10()
     seedOfCorruption()
     shadowBolt()
     demonicEmpowerment()

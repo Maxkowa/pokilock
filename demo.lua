@@ -339,7 +339,7 @@ seedOfCorruption:Callback(function(spell)
     if target.enemy then
         local numEnemiesNearTarget = 0
         for _, unit in ipairs(awful.units) do
-            if unit.enemy and unit.distance(target) <= 10 then
+            if unit.enemy and unit.distanceTo(target) <= 10 then
                 numEnemiesNearTarget = numEnemiesNearTarget + 1
             end
         end

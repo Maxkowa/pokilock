@@ -183,17 +183,17 @@ function _print(message)
     awful.alert(message)
 end
 
+local soulStoneCount = 0
 
 createSoulstone:Callback(function(spell)
     if not player.combat then
-        if soulstone.count == 0 then
+        if soulStoneCount == 0 then
             spell:Cast()
         end
     end
 end)
 
 
-local soulStoneCount = 0
 local spellstone = awful.Item(41196) -- Create an Item object for the spellstone
 
 createSpellstone:Callback(function(spell)

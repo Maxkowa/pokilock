@@ -217,7 +217,7 @@ spellstone:Update(function(item)
         local mainHandSlotID = GetInventorySlotInfo("MainHandSlot")
         local itemLink = GetInventoryItemLink("player", mainHandSlotID)
 
-        if itemLink and itemLink:match("item:(%d+)") == tostring(spellstone:GetItemID()) then
+        if itemLink and itemLink:match("item:(%d+)") == tostring(spellstone) then
             UseInventoryItem(mainHandSlotID)
             C_Timer.After(0.1, function()
                 RunMacroText("/click StaticPopup1Button1")

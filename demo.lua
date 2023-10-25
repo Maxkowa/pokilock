@@ -204,25 +204,31 @@ createSpellstone:Callback(function(spell)
     end
 end)
 
-spellstone:Update(function(item)
-    if not spellstone:Usable() then return end -- Check if the spellstone is usable
+function Buff()
+    local spellstonelist = { 41196, 41191, 41192, 41193, 41194, 41195 }
 
-    local hasMH, mhExpires, _, _, hasOH, ohExpires, _ = GetWeaponEnchantInfo()
-    local itemLink = GetInventoryItemLink("player", mainHandSlotID)
-    local _, _, _, _, _, _, _, _, _, itemID = GetItemInfo(itemLink)
-
-    if not hasMH or (hasMH and mhExpires / 1000 < GetTime()) then
-        local mainHandSlotID = GetInventorySlotInfo("MainHandSlot")
-        local itemLink = GetInventoryItemLink("player", mainHandSlotID)
-
-        if itemLink and itemLink:match("item:(%d+)") == tostring(spellstone) then
-            item:Use(mainHandSlotID)
-            C_Timer.After(0.1, function()
-                RunMacroText("/click StaticPopup1Button1")
-            end)
+    function _Use(item)
+        local name, bag, slot = SecureCmdItemParse(item)
+        if slot or GetItemInfo(name) then
+            SecureCmdUseItem(name, bag, slot)
         end
     end
-end)
+
+    if not checkweaponenchants('mainhand') and not player.moving then
+        for i = 1, #spellstonelist do
+            if GetItemCount(spellstonelist[i]) >= 1 and (C_Container.GetItemCooldown(spellstonelist[i])) == 0 then
+                local CurrentWeapon = GetInventoryItemID("player", 16)
+                local spellstonename = GetItemInfo(spellstonelist[i])
+                if spellstonename then
+                    _Use(spellstonename)
+                    UseInventoryItem(16)
+                    spellstonecount = 0
+                    _print("Using Spellstone")
+                end
+            end
+        end
+    end
+end
 
 
 felguard:Callback(function(spell)
@@ -388,7 +394,7 @@ demo:Init(function()
     WasCastingCheck()
     if player.mounted then return end 
     if player.casting or player.channeling then return end
-    spellstone()
+    Buff()
     createSpellstone()
     createSoulstone()
     felArmor()

@@ -232,16 +232,28 @@ function Buff()
             end
         end
     end
-end
+end5/1
 
 
 function UseHyperspeedAccelerators()
-    -- Check if the player can cast the Hyperspeed Accelerators spell
-    local hyperspeedAcceleratorsSpellID = 54758 -- Replace with the actual spell ID of Hyperspeed Accelerators
-    if IsSpellKnown(hyperspeedAcceleratorsSpellID) then
-        -- The player knows the Hyperspeed Accelerators spell, cast the spell
-        CastSpellByID(hyperspeedAcceleratorsSpellID)
-        _print("Casting Hyperspeed Accelerators")
+    -- Get the item ID for the item in slot 11
+    local itemID = GetInventoryItemID("player", 11)
+    if not itemID then return end -- Exit if there's no item in slot 11
+
+    -- Get the item's link
+    local itemLink = select(2, GetItemInfo(itemID))
+    if not itemLink then return end -- Exit if the item link couldn't be retrieved
+
+    -- Extract the enchantment ID from the item link
+    local enchantmentID = tonumber(itemLink:match("item:%d+:%d+:(%d+)"))
+    if not enchantmentID then return end -- Exit if the enchantment ID couldn't be retrieved
+
+    -- Check if the enchantment ID matches the ID of the Hyperspeed Accelerators enchantment
+    local hyperspeedAcceleratorsEnchantmentID = 3604 -- Replace with the actual enchantment ID of Hyperspeed Accelerators
+    if enchantmentID == hyperspeedAcceleratorsEnchantmentID then
+        -- The item has the Hyperspeed Accelerators enchantment, use the item
+        UseInventoryItem(11)
+        _print("Using item in slot 11")
     end
 end
 

@@ -323,7 +323,8 @@ function countEnemiesInRange(range)
 end
 
 immolationAura:Callback(function(spell)
-    if countEnemiesInRange(10) > 2 or (countEnemiesInRange(10) <= 2 and player.buff(47241) and player.buff(47241).remains and player.buff(47241).remains < 15) then
+    local count, total, objects = enemies.around(player, 10)
+    if count > 2 or (count <= 2 and player.buff(47241) and player.buff(47241).remains and player.buff(47241).remains < 15) then
         spell:Cast()
     end
 end)

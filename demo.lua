@@ -11,10 +11,10 @@ local spell = awful.Spell
 local NewItem = awful.NewItem
 
 --TODO
+-- CHECK SEED FIRST
 --Fix Incinerate 3x cast + Cast delay
 -- soullink
 -- corruption if more then 1 warlock
--- seed error
 --SoulFire only fish for buff
 
 awful.Populate({
@@ -302,7 +302,7 @@ end)
 
 incinerate:Callback(function(spell)
     if target.enemy then
-        if enemy.combat and player.buff(47247) and not player.buff(63167) then
+        if player.buff(47247) and not player.buff(63167) then
             awful.enemies.loop(function(enemy)
                 if enemy.combat and enemy.hp <= 35 then
                     spell:Cast(enemy)
@@ -337,7 +337,12 @@ end)
 
 seedOfCorruption:Callback(function(spell)
     if target.enemy then
-        local numEnemiesNearTarget = awful.enemies.around(target, 10)
+        local numEnemiesNearTarget = 0
+        for _, unit in ipairs(awful.units) do
+            if unit.enemy and unit.distance(target) <= 10 then
+                numEnemiesNearTarget = numEnemiesNearTarget + 1
+            end
+        end
         if numEnemiesNearTarget >= 3 then
             local enemies = awful.enemies.get(target, 10)
             for _, enemy in ipairs(enemies) do

@@ -234,14 +234,11 @@ function Buff()
     end
 end5/1
 
+local itemInSlot11 = awful.Item(GetInventoryItemID("player", 11)) -- Create an Item object for the item in slot 11
 
-function UseHyperspeedAccelerators()
-    -- Get the item ID for the item in slot 11
-    local itemID = GetInventoryItemID("player", 11)
-    if not itemID then return end -- Exit if there's no item in slot 11
-
+itemInSlot11:Update(function(item)
     -- Get the item's link
-    local itemLink = select(2, GetItemInfo(itemID))
+    local itemLink = select(2, GetItemInfo(item.id))
     if not itemLink then return end -- Exit if the item link couldn't be retrieved
 
     -- Extract the enchantment ID from the item link
@@ -252,10 +249,11 @@ function UseHyperspeedAccelerators()
     local hyperspeedAcceleratorsEnchantmentID = 3604 -- Replace with the actual enchantment ID of Hyperspeed Accelerators
     if enchantmentID == hyperspeedAcceleratorsEnchantmentID then
         -- The item has the Hyperspeed Accelerators enchantment, use the item
-        UseInventoryItem(11)
-        _print("Using item in slot 11")
+        if item:Use() then
+            _print("Using item in slot 11")
+        end
     end
-end
+end)
 
 felguard:Callback(function(spell)
     local felguardID = 30147

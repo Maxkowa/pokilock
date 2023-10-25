@@ -235,12 +235,12 @@ function Buff()
 end
 
 function UseHyperspeedAccelerators()
-    -- Get the enchantment information for the hands slot
-    local hasHandEnchant, handEnchantExpiration, _, _, _, _, _, _, _, handEnchantID = GetInventoryItemGems(10)
+    -- Get the enchantment information for the item in slot 11
+    local hasEnchant, enchantExpiration, _, _, _, _, _, _, _, enchantID = GetInventoryItemGems(11)
 
     -- Check if Hyperspeed Accelerators are active
     local hyperspeedAcceleratorsID = 3604 -- Replace with the actual spell ID of Hyperspeed Accelerators
-    if hasHandEnchant and handEnchantID == hyperspeedAcceleratorsID then
+    if hasEnchant and enchantID == hyperspeedAcceleratorsID then
         -- Hyperspeed Accelerators are active, no need to use them again
         return
     end

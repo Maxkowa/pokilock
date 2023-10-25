@@ -87,6 +87,7 @@ awful.Populate({
     soulFire = spell({6353, 17924, 27211, 47843, 47844, 47845}, { damage = "magic", targeted = true }),
     felguard = spell({30146}, { beneficial = true , targeted = false }),
     spellstoneTest = spell({41196}, { beneficial = true }),
+    hyperspeedAccelartors = spell({54758 }, { beneficial = true }),
 }, demo, getfenv(1))
 
 awful.powerTypes = {
@@ -235,23 +236,14 @@ function Buff()
 end
 
 
-function UseHyperspeedAccelerators()
-    -- Get the item ID for the item in slot 11
-    local itemID = GetInventoryItemID("player", 11)
-    if not itemID then return end -- Exit if there's no item in slot 11
-
-    -- Get the item's name
-    local itemName = GetItemInfo(itemID)
-    if not itemName then return end -- Exit if the item name couldn't be retrieved
-
-    -- Check if the item's name matches the name of the Hyperspeed Accelerators
-    local hyperspeedAcceleratorsName = "Hyperspeed Accelerators" -- Replace with the actual name of Hyperspeed Accelerators
-    if itemName == hyperspeedAcceleratorsName then
-        -- The item is the Hyperspeed Accelerators, use the item
-        UseInventoryItem(11)
-        _print("Using item in slot 11")
+hyperspeedAccelerators:Callback(function(spell)
+    -- Check if the player can cast the Hyperspeed Accelerators spell
+    if spell:Castable() then
+        -- The player can cast the Hyperspeed Accelerators spell, cast the spell
+        spell:Cast()
+        _print("Casting Hyperspeed Accelerators")
     end
-end
+end)
 
 felguard:Callback(function(spell)
     local felguardID = 30147
@@ -445,7 +437,7 @@ demo:Init(function()
     felArmor()
     lifeTap()
     felguard()
-    UseHyperspeedAccelerators()
+    hyperspeedAccelerators()
     seedOfCorruption()
     shadowBolt()
     demonicEmpowerment()

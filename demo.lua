@@ -169,7 +169,17 @@ local function hasSoulstone()
 end
 
 local function hasSoulShards()
-    return soulShardCount > 0
+    if soulShardCount > 0 then
+        if soulShardCount > 20 then
+            for i = 1, soulShardCount - 20 do
+                -- Delete a soul shard using the WoW API
+                DeleteCursorItem()
+            end
+        end
+        return true
+    else
+        return false
+    end
 end
 
 
@@ -205,7 +215,6 @@ local spellstone = awful.Item(41196) -- Create an Item object for the spellstone
 
 createSpellstone:Callback(function(spell)
     if not player.combat and hasSoulShards() then
-        RunMacroText("/run local n=0 for i=0,4 do for j=1,C_Container.GetContainerNumSlots(i) do local z=C_Container.GetContainerItemID(i,j) if z~=nil then if z==6265 then if n>19 then C_Container.PickupContainerItem(i,j) DeleteCursorItem() else n=n+1 end end end end end")
         if spellstone.count == 0 then
             spell:Cast()
         end

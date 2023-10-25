@@ -313,11 +313,14 @@ drainSoul:Callback(function(spell)
 end)
 
 immolationAura:Callback(function(spell)
-    awful.enemies.loop(function(enemy)
-        if enemy.distanceTo(player) <= 10 then
-            spell:Cast(enemy)
-        end
-    end)
+    local enemiesInRange = awful.enemies.around(player, 10)
+    if #enemiesInRange > 2 then
+        awful.enemies.loop(function(enemy)
+            if enemy.distanceTo(player) <= 10 then
+                spell:Cast(enemy)
+            end
+        end)
+    end
 end)
 
 

@@ -236,13 +236,18 @@ end
 
 
 function UseHyperspeedAccelerators()
-    -- Get the enchantment information for the item in slot 11
-    local hasEnchant, enchantExpiration, _, _, _, _, _, _, _, enchantID = GetInventoryItemGems(11)
+    -- Get the item ID for the item in slot 11
+    local itemID = GetInventoryItemID("player", 11)
+    if not itemID then return end -- Exit if there's no item in slot 11
 
-    -- Check if the enchantment ID is 3604
-    local enchantmentID = 3604
-    if hasEnchant and enchantID == enchantmentID then
-        -- The item is enchanted with the correct enchantment, use the item
+    -- Get the item's name
+    local itemName = GetItemInfo(itemID)
+    if not itemName then return end -- Exit if the item name couldn't be retrieved
+
+    -- Check if the item's name matches the name of the Hyperspeed Accelerators
+    local hyperspeedAcceleratorsName = "Hyperspeed Accelerators" -- Replace with the actual name of Hyperspeed Accelerators
+    if itemName == hyperspeedAcceleratorsName then
+        -- The item is the Hyperspeed Accelerators, use the item
         UseInventoryItem(11)
         _print("Using item in slot 11")
     end

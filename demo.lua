@@ -234,6 +234,14 @@ function Buff()
     end
 end
 
+function OnUpdate()
+    UseItemInSlot10IfEnchanted()
+    -- Other update code...
+end
+
+-- Call OnUpdate every frame
+local frame = CreateFrame("Frame")
+frame:SetScript("OnUpdate", OnUpdate)
 
 function UseItemInSlot10IfEnchanted()
     -- Get the item ID for the item in slot 10
@@ -252,7 +260,6 @@ function UseItemInSlot10IfEnchanted()
     local hyperspeedAcceleratorsEnchantmentID = 3604 -- Replace with the actual enchantment ID of Hyperspeed Accelerators
     if enchantmentID == hyperspeedAcceleratorsEnchantmentID then
         -- The item has the Hyperspeed Accelerators enchantment, use the item
-        print("Attempting to use item in slot 10")
         UseInventoryItem(10)
         _print("Using item in slot 10")
     end
@@ -261,7 +268,7 @@ end
 felguard:Callback(function(spell)
     local felguardID = 30147
     if wasCasting[felguardID] then return end
-    if not pet.exists then2
+    if not pet.exists then
       return spell:Cast()
     end
 end)

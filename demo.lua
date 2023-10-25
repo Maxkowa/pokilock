@@ -168,20 +168,22 @@ local function hasSoulstone()
     return soulstone.count > 0
 end
 
-local function hasSoulShards()
-    if soulShardCount > 0 then
-        if soulShardCount > 20 then
-            if not player.combat then
-                for i = 1, soulShardCount - 20 do
-                    -- Delete a soul shard using the WoW API
+local function deleteExcessSoulShards()
+    if soulShardCount > 20 then
+        for bag = 0, NUM_BAG_SLOTS do
+            for slot = 1, GetContainerNumSlots(bag) do
+                local itemID = GetContainerItemID(bag, slot)
+                if itemID == 6265 then -- Check if the item is a soul shard
+                    PickupContainerItem(bag, slot)
                     DeleteCursorItem()
                 end
             end
         end
-        return true
-    else
-        return false
     end
+end
+
+local function hasSoulShards()
+    return soulShardCount > 0
 end
 
 
@@ -477,7 +479,7 @@ demo:Init(function()
     lifeTap()
     felDomination()
     felguard()
-    hasSoulShards()
+    deleteExcessSoulShards()
     UseItemInSlot10()
     seedOfCorruption()
     shadowBolt()

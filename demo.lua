@@ -234,9 +234,9 @@ function Buff()
     end
 end5/1
 
-local itemInSlot11 = awful.Item(GetInventoryItemID("player", 11)) -- Create an Item object for the item in slot 11
+local itemInSlot10 = awful.Item(GetInventoryItemID("player", 10)) -- Create an Item object for the item in slot 10
 
-itemInSlot11:Update(function(item)
+itemInSlot10:Update(function(item)
     -- Get the item's link
     local itemLink = select(2, GetItemInfo(item.id))
     if not itemLink then return end -- Exit if the item link couldn't be retrieved
@@ -447,7 +447,7 @@ demo:Init(function()
     felArmor()
     lifeTap()
     felguard()
-    itemInSlot11()
+    itemInSlot10()
     seedOfCorruption()
     shadowBolt()
     demonicEmpowerment()

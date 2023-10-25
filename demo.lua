@@ -174,7 +174,7 @@ local function deleteExcessSoulShards()
             for slot = 1, GetContainerNumSlots(bag) do
                 local itemID = GetContainerItemID(bag, slot)
                 if itemID == 6265 then -- Check if the item is a soul shard
-                    UseContainerItem(bag, slot) -- Call the UseContainerItem method from the WoW API
+                    UseItemByName("Soul Shard") -- Call the UseItemByName function from the WoW API
                 end
             end
         end

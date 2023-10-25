@@ -174,8 +174,8 @@ local function deleteExcessSoulShards()
             for slot = 1, GetContainerNumSlots(bag) do
                 local itemID = GetContainerItemID(bag, slot)
                 if itemID == 6265 then -- Check if the item is a soul shard
-                    local soulShard = awful.Item(itemID) -- Create an Item object for the soul shard
-                    soulShard:Use() -- Use the soul shard
+                    PickupContainerItem(bag, slot) -- Call the PickupContainerItem method from the WoW API
+                    DeleteCursorItem() -- Delete the item from the cursor
                 end
             end
         end

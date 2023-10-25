@@ -439,7 +439,9 @@ seedOfCorruption:Callback(function(spell)
         local count = 0
         enemies.loop(function(enemy)
             if enemy.distanceTo(target) < 10 then -- Check if enemy is close to the target
-                count = count + 1
+                if enemy.combat and not enemy.debuff(47836) then -- Check if enemy is in combat and doesn't have debuff 47836
+                    count = count + 1
+                end
             end
         end)
         if count > 1 then -- Check if there are more than one enemy close to the target

@@ -295,9 +295,10 @@ end
 
 
 
-local function trinketBuff()
-    return player.buff(64713)
-end
+local trinketBuffs = {
+    64713,
+}
+player.buffFrom(trinketBuffs)
 
 local function checkTrinketBuff()
     if trinketBuff() then
@@ -305,9 +306,6 @@ local function checkTrinketBuff()
     end
 end
 
-local tickRate = 0.1
-
-local timer = C_Timer.NewTicker(tickRate, checkTrinketBuff)
 
 
 
@@ -534,6 +532,7 @@ demo:Init(function()
     createSpellstone()
     createSoulstone()
     felArmor()
+    checkTrinketBuff()
     lifeTap()
     felDomination()
     felguard()

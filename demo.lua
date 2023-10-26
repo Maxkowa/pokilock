@@ -295,21 +295,15 @@ end
 
 
 
-local trinketBuffs = {}
-awful.Populate(trinketBuffs, {
-    buffID = 64713
-})
-
-local function checkTrinketBuffs(trinketBuffs)
-    for _, buffID in ipairs(trinketBuffs) do
-        if player.buff(buffID) then
-            awful.alert("Trinket buff is up!")
-            break
-        end
-    end
+local function trinketBuff()
+    return player.buff(64713)
 end
 
-checkTrinketBuffs(trinketBuffs)
+local function checkTrinketBuff()
+    if trinketBuff() then
+        print("true")
+    end
+end
 
 
 
@@ -539,7 +533,7 @@ demo:Init(function()
     createSpellstone()
     createSoulstone()
     felArmor()
-    checkTrinketBuffs()
+    trinketBuff()
     lifeTap()
     felDomination()
     felguard()

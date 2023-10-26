@@ -299,22 +299,17 @@ local function trinketBuff()
     return player.buff(64713)
 end
 
--- Function to check the buff every tick
 local function checkTrinketBuff()
     if trinketBuff() then
-        print("true")
+        awful.alert("Burst?")
     end
 end
 
--- Replace the timer interval with your desired tick rate (in seconds)
 local tickRate = 0.1
 
--- Timer to call the checkTrinketBuff function every tick
 local timer = C_Timer.NewTicker(tickRate, checkTrinketBuff)
 
-if trinketBuff() then
-    awful.alert("Burst?")
-end
+
 
 felguard:Callback(function(spell)
     local felguardID = 30147

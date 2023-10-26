@@ -121,17 +121,27 @@ local dark = {21, 21, 21, 0.45}
 -- all ui saved variables are stored in `settings`
 -- slash command to open the GUI is now `/example`
 local gui, settings, cmd = awful.UI:New("pokilock", {
-	title = "Pokilock",
-	show = true, -- show on load by default
-	colors = {
-		-- color of our ui title in the top left
-		title = yellow,
-		-- primary is the primary text color
-		primary = white,
-		-- accent controls colors of elements and some element text in the UI. it should contrast nicely with the background.
-		accent = yellow,
-		background = dark,
-	}
+    title = "Pokilock",
+    show = true, -- show on load by default
+    colors = {
+        -- color of our ui title in the top left
+        title = yellow,
+        -- primary is the primary text color
+        primary = white,
+        -- accent controls colors of elements and some element text in the UI. it should contrast nicely with the background.
+        accent = yellow,
+        background = dark,
+    }
+})
+
+-- Create the status frame using the gui object
+local statusFrame = gui:StatusFrame({
+    fontSize = 12,
+    colors = {
+        background = {0, 0, 0, 0}, -- transparent background
+        value = {30, 240, 255, 1}, -- cool blue value text
+    },
+    maxWidth = 450,
 })
 
 gui:Tab("Farm")
@@ -140,7 +150,6 @@ gui.tabs["Farm"]:Checkbox({
     var = "farm", -- selected state = settings.farm
     tooltip = "Enable Farm",
 })
-
 
 gui:Tab("Curse")
 gui.tabs["Curse"]:Checkbox({
@@ -154,16 +163,6 @@ gui.tabs["Curse"]:Checkbox({
     var = "curseOfDoom", -- selected state = settings.curseOfDoom
     tooltip = "Enable Curse of Doom",
 })
-
-local statusFrame = ui:StatusFrame({
-    fontSize = 12,
-    colors = {
-        background = {0, 0, 0, 0}, -- transparent background
-        value = {30, 240, 255, 1}, -- cool blue value text
-    },
-    maxWidth = 450,
-})
-
 
 
 

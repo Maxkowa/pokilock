@@ -144,6 +144,12 @@ local statusFrame = ui:StatusFrame({
     maxWidth = 450,
 })
 
+statusFrame:Checkbox({
+    text = "Farm",
+    var = "farm",
+    tooltip = "Enable Farm",
+})
+
 ui:Tab("Farm")
 ui.tabs["Farm"]:Checkbox({
     text = "Farming Soulshard",

@@ -163,12 +163,13 @@ local statusFrame = ui:StatusFrame({
 
 -- Iterate over the tabs in ui.tabs
 for tabName, tab in pairs(ui.tabs) do
-    -- Iterate over the elements in each tab
-    for _, element in ipairs(tab.elements) do
-        -- Add the element to the statusFrame
-        statusFrame:AddElement(element)
+    -- Check if the tab has a Checkbox element
+    if tab.Checkbox then
+        -- Add the Checkbox element to the statusFrame
+        statusFrame:AddElement(tab.Checkbox)
     end
 end
+
 
 local healthstone = awful.Item(36892, 36893, 36894)
 local soulShard = awful.Item(6265)

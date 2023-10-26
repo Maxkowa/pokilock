@@ -180,6 +180,10 @@ local function hasSoulstone()
     return soulstone.count > 0
 end
 
+local function hasHealthstone()
+    return healthstone.count > 0
+end
+
 local function deleteExcessSoulShards()
     local itemID = 6265 -- Soul Shard item ID
     local soulShardCount = GetItemCount(itemID) - 20 -- Calculate the excess soul shard count
@@ -224,6 +228,14 @@ end
 createSoulstone:Callback(function(spell)
     if not player.combat then
         if not hasSoulstone() and hasSoulShards() then
+            spell:Cast()
+        end
+    end
+end)
+
+createHealthstone:Callback(function(spell)
+    if not player.combat then
+        if not hasHealthstone() and hasSoulShards() then
             spell:Cast()
         end
     end
@@ -281,8 +293,10 @@ function UseItemInSlot10()
     end
 end
 
+
+
 local function trinketBuff()
-    return player.buff(45518) 
+    return player.buff(64713) 
 end
 if trinketBuff() then
     print("true")
@@ -510,7 +524,9 @@ demo:Init(function()
     drainSoul()
     WasCastingCheck()
     Buff()
+    trinketBuff()
     soulLink()
+    createHealthstone()
     createSpellstone()
     createSoulstone()
     felArmor()

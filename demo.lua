@@ -286,6 +286,13 @@ function UseItemInSlot10()
     end
 end
 
+local function trinketBuff()
+    return player.buff(64713)
+end
+
+if trinketBuff() then
+    awful.alert("Burst?")
+end
 
 felguard:Callback(function(spell)
     local felguardID = 30147
@@ -334,7 +341,7 @@ immolate:Callback(function(spell)
     if target.enemy then
         if wasCasting[immolateID] then return end
         local debuff = target.debuffFrom({"Immolate"}, player)
-        if not debuff then
+        if not debuff and not trinketBuff() then
             spell:Cast(target)
         end
     end
@@ -398,7 +405,7 @@ end)
 corruption:Callback(function(spell)
     if target.enemy then
         local debuff = target.debuffFrom({"Corruption"}, player)
-        if not debuff and not target.debuff(47836) then
+        if not debuff and not target.debuff(47836) and not trinketBuff() then
             spell:Cast(target)
         end
     end

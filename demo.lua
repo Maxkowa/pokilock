@@ -114,19 +114,20 @@ awful.powerTypes = {
 }
 
 -- RGBA color scheme
-local purple = {148, 130, 201, 1}
+local yellow = {148, 130, 201, 1}
 local white = {255, 255, 255, 1}
 local dark = {21, 21, 21, 0.45}
 
 -- all ui saved variables are stored in `settings`
 -- slash command to open the GUI is now `/example`
 local gui, settings, cmd = awful.UI:New("pokilock", {
+	title = "Poki",
+    title2 = "lock",
 	show = true, -- show on load by default
 	colors = {
-		-- color of the first part of the title
-		titlePart1 = white,
-		-- color of the second part of the title
-		titlePart2 = purple,
+		-- color of our ui title in the top left
+		title = yellow,
+        title2 = white,
 		-- primary is the primary text color
 		primary = white,
 		-- accent controls colors of elements and some element text in the UI. it should contrast nicely with the background.
@@ -134,9 +135,6 @@ local gui, settings, cmd = awful.UI:New("pokilock", {
 		background = dark,
 	}
 })
-
--- Set the title text with two parts and different colors
-gui.title:SetText("|cFF"..awful.RGBToHex(yellow[1], yellow[2], yellow[3]).."Part 1 |r|cFF"..awful.RGBToHex(white[1], white[2], white[3]).."Part 2|r")
 
 gui:Tab("Farm")
 gui.tabs["Farm"]:Checkbox({

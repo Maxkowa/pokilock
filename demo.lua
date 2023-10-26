@@ -282,11 +282,8 @@ function UseItemInSlot10()
 end
 
 local function trinketBuff()
-    local trinketBuffID = 64713
-    local _, _, _, _, _, _, _, _, _, _, spellID = UnitBuff("player", "Trinket")
-    return spellID == trinketBuffID
+    return player.buff(45518) 
 end
-
 if trinketBuff() then
     print("true")
 end

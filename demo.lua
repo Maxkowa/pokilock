@@ -141,12 +141,7 @@ local statusFrame = ui:StatusFrame({
         value = {30, 240, 255, 1}, -- cool blue value text
     },
     maxWidth = 450,
-})
-
-statusFrame:Checkbox({
-    text = "Farming Soulshard",
-    var = "farm", -- selected state = settings.farm
-    tooltip = "Enable Farm",
+    column = true
 })
 
 -- Create the "Farm" tab and add the checkbox to it

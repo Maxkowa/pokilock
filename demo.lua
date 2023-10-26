@@ -373,7 +373,7 @@ immolationAura:Callback(function(spell)
     local count, total, objects = enemies.around(player, 10)
     if count > 2 or metamorphosisBuffDuration < 15 then
         if spell:Cast() then
-            awful.alert("Move Melee")
+            awful.alert("Immolation Aura activated!")
         end
     end
 end)

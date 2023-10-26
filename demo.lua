@@ -292,8 +292,14 @@ local function checkTrinketBuff()
     end
 end
 
+
 function trinket2()
-    if player.buff(47241) then
+    local itemID = GetInventoryItemID("player", 16)
+    if not itemID then return end 
+
+    local item = awful.Item(itemID)
+
+    if player.combat and target.enemy and item:Usable() and player.buff(47241) then
         UseInventoryItem(16)
     end
 end

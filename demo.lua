@@ -296,10 +296,6 @@ end
 
 
 local function trinketBuff()
-    -- Replace this with the appropriate way to get the player object
-    local player = GetPlayerObject()
-
-    -- Replace 64713 with the actual buff ID you want to check
     return player.buff(64713)
 end
 

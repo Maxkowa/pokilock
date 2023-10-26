@@ -153,6 +153,16 @@ local dark = {21, 21, 21, 0.45}
 
 local statusFrame = ui:StatusFrame(options)
 
+-- Add a checkbox element for Farming Soulshard
+statusFrame:Checkbox({
+    text = "Farming Soulshard",
+    var = "farm",
+    tooltip = "Enable or disable Farming Soulshard",
+})
+
+-- Show the status frame
+statusFrame:Show()
+
 
 local healthstone = awful.Item(36892, 36893, 36894)
 local soulShard = awful.Item(6265)

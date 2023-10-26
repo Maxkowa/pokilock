@@ -149,6 +149,7 @@ ui.tabs["Curse"]:Dropdown({
     default = "curseOfElements"  -- Set "Curse of Elements" as the default selection
 })
 
+ui.Tab("Let's go")
 ui.tabs["Let's go"]:Text({
     text = "Your text here " .. awful.textureEscape(47241, 16, "0:2"),  -- Add the texture of the spell with ID 47241
     position = {0, 70}  -- Position of the text (x, y)

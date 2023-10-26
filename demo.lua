@@ -330,7 +330,7 @@ curseOfDoom:Callback(function(spell)
         
         if debuffElements then
             spell:Cast(target)
-        elseif settings.curseOfDoom and not debuffDoom and target.timeToDie > 50 then
+        elseif settings.curseOfDoom and not debuffDoom and (not target.ttd or target.ttd > 50) then
             spell:Cast(target)
         end
     end

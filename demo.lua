@@ -137,17 +137,19 @@ ui.tabs["Farm"]:Checkbox({
 })
 
 ui:Tab("Curse")
-ui.tabs["Curse"]:Checkbox({
-    text = "Curse of Elements",
-    var = "curseOfElements", 
-    tooltip = "Enable Curse of Elements",
+ui.tabs["Curse"]:Dropdown({
+    var = "curseType",
+    tooltip = "Select the type of curse",
+    options = {
+        { label = "Curse of Elements", value = "curseOfElements" },
+        { label = "Curse of Doom", value = "curseOfDoom" },
+    },
+    placeholder = "Select a curse",
+    header = "Curse Type:",
+    default = "curseOfElements"  -- Set "Curse of Elements" as the default selection
 })
 
-ui.tabs["Curse"]:Checkbox({
-    text = "Curse of Doom",
-    var = "curseOfDoom", 
-    tooltip = "Enable Curse of Doom",
-})local yellow = {148, 130, 201, 1}
+local yellow = {148, 130, 201, 1}
 local white = {255, 255, 255, 1}
 local dark = {21, 21, 21, 0.45}
 

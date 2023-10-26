@@ -405,6 +405,7 @@ corruption:Callback(function(spell)
 end)
 
 incinerate:Callback(function(spell)
+    local incinerateID = 47838
     if target.enemy then
         if not player.buff(63167) then
             local casted = awful.enemies.loop(function(enemy)
@@ -415,7 +416,9 @@ incinerate:Callback(function(spell)
             if casted then return end
         end
         if not player.buff(71165) then
-            --SpellStopCasting() -- Cancel casting if we lost the buff 71165
+            return
+        end
+        if player.buffStacks(71165) == 1 and wasCasting[incinerateID] then
             return
         end
         spell:Cast(target)
@@ -500,7 +503,7 @@ demo:Init(function()
         metamorphosisBuffDuration = metamorphosisBuffDuration - awful.tickRate
     end
     drainSoul()
---    WasCastingCheck()
+    WasCastingCheck()
     Buff()
     soulLink()
     createSpellstone()

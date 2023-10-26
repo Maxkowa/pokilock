@@ -221,11 +221,6 @@ function WasCastingCheck()
     end
 end
 
-function _print(message)
-    awful.alert(message)
-end
-
-
 createSoulstone:Callback(function(spell)
     if not player.combat then
         if not hasSoulstone() and hasSoulShards() then

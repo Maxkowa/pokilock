@@ -344,7 +344,7 @@ curseOfDoom:Callback(function(spell)
         
         if debuffElements and debuffElements.friend then
             spell:Cast(target)
-        elseif settings.curseOfDoom and not debuffDoom and target.ttd > 50 then
+        elseif settings.curseType == "curseOfDoom" and not debuffDoom and target.ttd > 50 then
             spell:Cast(target)
         end
     end
@@ -354,7 +354,7 @@ curseOfAgony:Callback(function(spell)
     if target.enemy then
         local debuffAgony = target.debuffFrom({47864}, player)
 
-        if not debuffAgony and target.ttd > 24 and target.ttd < 50 and not checkTrinketBuff() and not settings.curseOfElements then
+        if not debuffAgony and target.ttd > 24 and target.ttd < 50 and not checkTrinketBuff() and not settings.curseType == "curseOfElements" then
             spell:Cast(target)
         end
     end
@@ -368,7 +368,7 @@ end)
 
 curseOfElements:Callback(function(spell)
     if target.enemy then
-        if settings.curseOfElements and not target.debuff("Curse of the Elements") then
+        if settings.curseType == "curseOfElements" and not target.debuff("Curse of the Elements") then
             spell:Cast(target)
         end
     end

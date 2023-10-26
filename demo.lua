@@ -215,7 +215,7 @@ function WasCastingCheck()
         wasCasting[player.castingid] = time
     end
     for spell, when in pairs(wasCasting) do
-        if time - when > 0.500 + awful.buffer then
+        if time - when > 0.100 + awful.buffer then
             wasCasting[spell] = nil
         end
     end
@@ -500,7 +500,7 @@ demo:Init(function()
         metamorphosisBuffDuration = metamorphosisBuffDuration - awful.tickRate
     end
     drainSoul()
-    WasCastingCheck()
+--    WasCastingCheck()
     Buff()
     soulLink()
     createSpellstone()

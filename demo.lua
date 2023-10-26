@@ -296,11 +296,25 @@ end
 
 
 local function trinketBuff()
-    return player.buff(64713) 
+    -- Replace this with the appropriate way to get the player object
+    local player = GetPlayerObject()
+
+    -- Replace 64713 with the actual buff ID you want to check
+    return player.buff(64713)
 end
-if trinketBuff() then
-    print("true")
+
+-- Function to check the buff every tick
+local function checkTrinketBuff()
+    if trinketBuff() then
+        print("true")
+    end
 end
+
+-- Replace the timer interval with your desired tick rate (in seconds)
+local tickRate = 0.1
+
+-- Timer to call the checkTrinketBuff function every tick
+local timer = C_Timer.NewTicker(tickRate, checkTrinketBuff)
 
 if trinketBuff() then
     awful.alert("Burst?")
@@ -524,7 +538,6 @@ demo:Init(function()
     drainSoul()
     WasCastingCheck()
     Buff()
-    trinketBuff()
     soulLink()
     createHealthstone()
     createSpellstone()

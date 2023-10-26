@@ -189,6 +189,7 @@ end
 
 local function hasSoulShards()
     local soulShardCount = GetItemCount(6265) -- Replace 6265 with the actual item ID of the soul shard
+    print("Number of Soul Shards: " .. soulShardCount)
     return soulShardCount > 0
 end
 

@@ -136,7 +136,8 @@ local statusFrame = ui:StatusFrame({
         value = {30, 240, 255, 1}, 
     },
     maxWidth = 450,
-    column = true
+    column = true,
+    settings = ui.tabs["Farm"].settings -- Add settings from the "Farm" tab
 })
 
 ui:Tab("Farm")

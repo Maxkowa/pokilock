@@ -373,7 +373,7 @@ end)
 
 soulFire:Callback(function(spell)
     if target.enemy then
-        if target.combat and hasSoulShard() then
+        if target.combat and hasSoulShards() then -- Corrected function name to hasSoulShards()
             if player.buff(63167) or target.hp <= 35 then
                 spell:Cast(target)
             end
@@ -490,7 +490,6 @@ demo:Init(function()
     if player.mounted then return end 
     if player.casting or player.channeling then return end
     Buff()
-    soulFire()
     soulLink()
     createSpellstone()
     createSoulstone()
@@ -508,6 +507,7 @@ demo:Init(function()
     corruption()
     immolate()
     incinerate()
+    soulFire()
     immolationAura()
     shadowflame()
     shadowBoltFiller()

@@ -152,7 +152,7 @@ ui.tabs["Curse"]:Dropdown({
 ui:Tab("Let's go")
 
 ui.tabs["Let's go"]:Text({
-    text = awful.textureEscape(47241, 16, "0:2") .. " Your text here",  -- Add the texture of the spell with ID 47241
+    text = awful.textureEscape(47241, 20, "0:2") .. "Welcome to the Devil",  -- Add the texture of the spell with ID 47241
     position = {0, 70},  -- Position of the text (x, y)
     size = 14,
     paddingBottom = 10,

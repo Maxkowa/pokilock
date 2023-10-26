@@ -151,13 +151,23 @@ ui.tabs["Curse"]:Checkbox({
 local white = {255, 255, 255, 1}
 local dark = {21, 21, 21, 0.45}
 
-local statusFrame = ui:StatusFrame(options)
+-- Create a StatusFrame with custom colors
+local statusFrame = ui:StatusFrame({
+    colors = {
+        background = dark,
+        enabled = white,
+    },
+    maxWidth = 450,
+    column = true
+})
 
 -- Add a checkbox element for Farming Soulshard
-statusFrame:Checkbox({
-    text = "Farming Soulshard",
+statusFrame:Toggle({
+    label = "Farming Soulshard",
     var = "farm",
-    tooltip = "Enable or disable Farming Soulshard",
+    onClick = function()
+        settings.farm = not settings.farm
+    end
 })
 
 -- Show the status frame

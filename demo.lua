@@ -154,13 +154,21 @@ local dark = {21, 21, 21, 0.45}
 local statusFrame = ui:StatusFrame({
     fontSize = 12,
     colors = {
-        background = {0, 0, 0, 0}, 
-        value = {30, 240, 255, 1}, 
+        background = {0, 0, 0, 0},
+        value = {30, 240, 255, 1},
     },
     maxWidth = 450,
     column = true,
-    settings = ui.tabs["Farm"].settings -- Add settings from the "Farm" tab
 })
+
+-- Iterate over the tabs in ui.tabs
+for tabName, tab in pairs(ui.tabs) do
+    -- Iterate over the elements in each tab
+    for _, element in ipairs(tab.elements) do
+        -- Add the element to the statusFrame
+        statusFrame:AddElement(element)
+    end
+end
 
 local healthstone = awful.Item(36892, 36893, 36894)
 local soulShard = awful.Item(6265)

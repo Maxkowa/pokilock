@@ -301,7 +301,7 @@ end
 
 local function checkTrinketBuff()
     if trinketBuff() then
-        print("true")
+        awful.alert("Burst???")
     end
 end
 
@@ -357,7 +357,7 @@ immolate:Callback(function(spell)
     if target.enemy then
         if wasCasting[immolateID] then return end
         local debuff = target.debuffFrom({"Immolate"}, player)
-        if not debuff and not trinketBuff() then
+        if not debuff and not checkTrinketBuff() then
             spell:Cast(target)
         end
     end
@@ -421,7 +421,7 @@ end)
 corruption:Callback(function(spell)
     if target.enemy then
         local debuff = target.debuffFrom({"Corruption"}, player)
-        if not debuff and not target.debuff(47836) and not trinketBuff() then
+        if not debuff and not target.debuff(47836) and not checkTrinketBuff() then
             spell:Cast(target)
         end
     end

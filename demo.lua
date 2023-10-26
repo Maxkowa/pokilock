@@ -155,6 +155,15 @@ gui.tabs["Curse"]:Checkbox({
     tooltip = "Enable Curse of Doom",
 })
 
+local statusFrame = ui:StatusFrame({
+    fontSize = 12,
+    colors = {
+        background = {0, 0, 0, 0}, -- transparent background
+        value = {30, 240, 255, 1}, -- cool blue value text
+    },
+    maxWidth = 450,
+})
+
 
 
 

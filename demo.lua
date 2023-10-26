@@ -295,6 +295,11 @@ end
 
 
 
+local trinketBuffs = {}
+awful.Populate({
+    buffID = 64713
+}, trinketBuffs)
+
 local function checkTrinketBuffs(trinketBuffs)
     for _, buffID in ipairs(trinketBuffs) do
         if player.buff(buffID) then
@@ -303,11 +308,6 @@ local function checkTrinketBuffs(trinketBuffs)
         end
     end
 end
-
-local trinketBuffs = {
-    64713
-}
-player.buff(trinketBuffs)
 
 checkTrinketBuffs(trinketBuffs)
 

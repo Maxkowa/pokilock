@@ -136,10 +136,9 @@ local gui, settings, cmd = awful.UI:New("pokilock", {
 
 gui:Tab("Farm")
 gui.tabs["Farm"]:Checkbox({
-    text = "Farm",
+    text = "Farming Soulshard",
     var = "farm", -- selected state = settings.farm
     tooltip = "Enable Farm",
-    paddingRight = 10
 })
 
 

@@ -132,7 +132,7 @@ local ui, settings, cmd = awful.UI:New("pokilock", {
 ui:Tab("Welcome")
 
 ui.tabs["Welcome"]:Text({
-    text = awful.textureEscape(47241, 30, "0:2") .. "Welcome to the Devil",  -- Add the texture of the spell with ID 47241
+    text = awful.textureEscape(47241, 24, "0:2") .. "Welcome to the Devil",  -- Add the texture of the spell with ID 47241
     position = {0, 70},  -- Position of the text (x, y)
     size = 14,
     paddingBottom = 10,

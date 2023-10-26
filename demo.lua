@@ -140,11 +140,10 @@ gui.tabs["Farm"]:Checkbox({
     var = "farm", -- selected state = settings.farm
     tooltip = "Enable Farm",
     width = 400, -- increase the width of the checkbox element
-    style = {
-        text = {
-            width = 400, -- increase the width of the checkbox text
-        }
-    }
+    call = function(self)
+        self.width = 400 -- increase the width of the checkbox text
+        self.paddingRight = 10 -- add padding to the right side of the checkbox text
+    end
 })
 
 

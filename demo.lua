@@ -286,26 +286,6 @@ function UseItemInSlot10()
     end
 end
 
-local function trackTrinketProc()
-    local trinketBuffs = {64713} -- Replace with the actual Spell IDs of the trinket proc buffs you want to track
-    
-    for i = 1, 40 do
-        local name, _, _, _, _, _, _, _, _, spellID = UnitBuff("player", i)
-        if name and tContains(trinketBuffs, spellID) then
-            -- Trinket proc buff is active
-            print("Trinket proc buff is active!")
-            -- Do something
-            return
-        end
-    end
-    
-    -- Trinket proc buff is not active
-    print("Trinket proc buff is not active.")
-    -- Do something else
-end
-
--- Call the function to track trinket proc buffs
-trackTrinketProc()
 
 felguard:Callback(function(spell)
     local felguardID = 30147

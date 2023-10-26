@@ -145,8 +145,8 @@ local statusFrame = ui:StatusFrame({
 })
 
 statusFrame:Checkbox({
-    text = "Farm",
-    var = "farm",
+    text = "Farming Soulshard",
+    var = "farm", -- selected state = settings.farm
     tooltip = "Enable Farm",
 })
 

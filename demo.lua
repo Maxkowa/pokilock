@@ -11,8 +11,9 @@ local spell = awful.Spell
 local NewItem = awful.NewItem
 
 --TODO
--- CHECK SEED FIRST
+-- Add Healthstone and Drainlife
 --Fix Incinerate 3x cast + Cast delay
+--try working on toggle pannel for cd's etc
 
 
 awful.Populate({
@@ -489,6 +490,7 @@ demo:Init(function()
     if player.mounted then return end 
     if player.casting or player.channeling then return end
     Buff()
+    soulFire()
     soulLink()
     createSpellstone()
     createSoulstone()
@@ -507,7 +509,6 @@ demo:Init(function()
     immolate()
     incinerate()
     immolationAura()
-    soulFire()
     shadowflame()
     shadowBoltFiller()
 end)

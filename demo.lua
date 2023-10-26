@@ -9,6 +9,7 @@ poki.warlock.demo = awful.Actor:New({ spec = 2, class = "warlock"})
 local demo = poki.warlock.demo
 local spell = awful.Spell
 local NewItem = awful.NewItem
+awful.ttd_enabled
 
 --TODO
 -- Add Healthstone and Drainlife
@@ -330,7 +331,7 @@ curseOfDoom:Callback(function(spell)
         
         if debuffElements then
             spell:Cast(target)
-        elseif settings.curseOfDoom and not debuffDoom and (not target.ttd or target.ttd > 50) then
+        elseif settings.curseOfDoom and not debuffDoom and target.timeToDie > 50 then
             spell:Cast(target)
         end
     end
@@ -339,9 +340,8 @@ end)
 curseOfAgony:Callback(function(spell)
     if target.enemy then
         local debuffAgony = target.debuffFrom({47864}, player)
-        local timeToDie = target.timeToDie
 
-        if not debuffAgony and timeToDie > 24 and timeToDie < 50 and not checkTrinketBuff() and not settings.curseOfElements then
+        if not debuffAgony and target.ttd > 24 and target.ttd < 50 and not checkTrinketBuff() and not settings.curseOfElements then
             spell:Cast(target)
         end
     end

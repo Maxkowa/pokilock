@@ -292,7 +292,11 @@ local function checkTrinketBuff()
     end
 end
 
-
+function trinket2()
+    if player.buff(47241) then
+        UseInventoryItem(16)
+    end
+end
 
 
 
@@ -515,6 +519,7 @@ demo:Init(function()
     if awful.burst then
         metamorphosis("burst")
     end
+    trinket2()
     drainSoul()
     WasCastingCheck()
     Buff()

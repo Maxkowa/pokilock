@@ -415,7 +415,7 @@ incinerate:Callback(function(spell)
             if casted then return end
         end
         if not player.buff(71165) then
-            SpellStopCasting() -- Cancel casting if we lost the buff 71165
+            --SpellStopCasting() -- Cancel casting if we lost the buff 71165
             return
         end
         spell:Cast(target)
@@ -425,7 +425,7 @@ end)
 shadowBolt:Callback(function(spell)
     local shadowBoltID = 47809
     if target.enemy then
-        --if wasCasting[shadowBoltID] then return end
+        if wasCasting[shadowBoltID] then return end
         if not target.debuff(17800) then
         spell:Cast(target)
         end

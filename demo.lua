@@ -363,12 +363,10 @@ immolate:Callback(function(spell)
     end
 end)
 
-local metamorphosisBuffDuration = 0
 
 metamorphosis:Callback("burst", function(spell)
     if target.enemy then
         spell:Cast()
-        metamorphosisBuffDuration = 30 -- Set the buff duration to 30 seconds after casting Metamorphosis
     end
 end)
 
@@ -392,9 +390,9 @@ end
 
 immolationAura:Callback(function(spell)
     local count, total, objects = enemies.around(player, 10)
-    if count > 2 or metamorphosisBuffDuration < 15 then
+    if count > 2 or player.buff(47241) and player.buffRemains(47241) < 15 then
         if spell:Cast() then
-            awful.alert("Immolation Aura activated!", 50589)
+            awful.alert("Move Meele!", 50589)
         end
     end
 end)
@@ -520,10 +518,6 @@ end)
 demo:Init(function() 
     if awful.burst then
         metamorphosis("burst")
-    end
-    -- Decrease the Metamorphosis buff duration by the time since the last frame
-    if metamorphosisBuffDuration > 0 then
-        metamorphosisBuffDuration = metamorphosisBuffDuration - awful.tickRate
     end
     drainSoul()
     WasCastingCheck()

@@ -296,7 +296,7 @@ end
 
 
 local trinketBuffs = {
-    64713,
+    64713
 }
 player.buffFrom(trinketBuffs)
 

@@ -149,16 +149,11 @@ ui.tabs["Curse"]:Dropdown({
     default = "curseOfElements"  -- Set "Curse of Elements" as the default selection
 })
 
-ui:Tab("Let's go")
-
--- Add a SpellIcon element
-ui.tabs["Let's go"]:SpellIcon({
-    spellID = 47241,  -- Spell ID for the icon
-    size = {64, 64},  -- Size of the icon (width, height)
-    position = {0, 0}  -- Position of the icon (x, y)
+ui.tabs["Let's go"]:Text({
+    text = "Your text here " .. awful.textureEscape(47241, 16, "0:2"),  -- Add the texture of the spell with ID 47241
+    position = {0, 70}  -- Position of the text (x, y)
 })
 
--- Add a Text element
 ui.tabs["Let's go"]:Text({
     text = "Your text here",  -- Text to display
     position = {0, 70}  -- Position of the text (x, y)

@@ -149,9 +149,21 @@ ui.tabs["Curse"]:Dropdown({
     default = "curseOfElements"  -- Set "Curse of Elements" as the default selection
 })
 
-local yellow = {148, 130, 201, 1}
-local white = {255, 255, 255, 1}
-local dark = {21, 21, 21, 0.45}
+ui:Tab("Let's go")
+
+-- Add a SpellIcon element
+ui.tabs["Let's go"]:SpellIcon({
+    spellID = 47241,  -- Spell ID for the icon
+    size = {64, 64},  -- Size of the icon (width, height)
+    position = {0, 0}  -- Position of the icon (x, y)
+})
+
+-- Add a Text element
+ui.tabs["Let's go"]:Text({
+    text = "Your text here",  -- Text to display
+    position = {0, 70}  -- Position of the text (x, y)
+})
+
 
 -- Create a StatusFrame with custom colors
 local statusFrame = ui:StatusFrame({

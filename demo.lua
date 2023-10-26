@@ -129,11 +129,13 @@ local ui, settings, cmd = awful.UI:New("pokilock", {
     }
 })
 
-ui:Tab("Farm")
-ui.tabs["Farm"]:Checkbox({
-    text = "Farming Soulshard",
-    var = "farm", 
-    tooltip = "Enable Farm",
+ui:Tab("Welcome")
+
+ui.tabs["Welcome"]:Text({
+    text = awful.textureEscape(47241, 20, "0:2") .. "Welcome to the Devil",  -- Add the texture of the spell with ID 47241
+    position = {0, 70},  -- Position of the text (x, y)
+    size = 20,
+    paddingBottom = 10,
 })
 
 ui:Tab("Curse")
@@ -149,18 +151,12 @@ ui.tabs["Curse"]:Dropdown({
     default = "curseOfElements"  -- Set "Curse of Elements" as the default selection
 })
 
-ui:Tab("Let's go")
-
-ui.tabs["Let's go"]:Text({
-    text = awful.textureEscape(47241, 20, "0:2") .. "Welcome to the Devil",  -- Add the texture of the spell with ID 47241
-    position = {0, 70},  -- Position of the text (x, y)
-    size = 14,
-    paddingBottom = 10,
-    OnClick = function(self, event)
-        awful.alert("You clicked the text!", 47241)
-    end
+ui:Tab("Farm")
+ui.tabs["Farm"]:Checkbox({
+    text = "Farming Soulshard",
+    var = "farm", 
+    tooltip = "Enable Farm",
 })
-
 
 -- Create a StatusFrame with custom colors
 local statusFrame = ui:StatusFrame({

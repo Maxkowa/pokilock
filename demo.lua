@@ -12,11 +12,9 @@ local NewItem = awful.NewItem
 
 --TODO
 -- Add Healthstone and Drainlife
---Fix Incinerate 3x cast + Cast delay
 --try working on toggle pannel for cd's etc
 -- doom ttd -> agony
 -- solve ST/AOE toggle
--- dont cast dots if trinket proc (immolate, Corruption)
 
 
 awful.Populate({
@@ -332,7 +330,18 @@ curseOfDoom:Callback(function(spell)
         
         if debuffElements then
             spell:Cast(target)
-        elseif settings.curseOfDoom and not debuffDoom then
+        elseif settings.curseOfDoom and not debuffDoom and target.timeToDie > 50 then
+            spell:Cast(target)
+        end
+    end
+end)
+
+curseOfAgony:Callback(function(spell)
+    if target.enemy then
+        local debuffAgony = target.debuffFrom({47864}, player)
+        local timeToDie = target.timeToDie
+
+        if not debuffAgony and timeToDie > 24 and timeToDie < 50 and not checkTrinketBuff() and not settings.curseOfElements then
             spell:Cast(target)
         end
     end
@@ -535,6 +544,7 @@ demo:Init(function()
     corruption()
     curseOfDoom()
     curseOfElements()
+    curseOfAgony()
     UseItemInSlot10()
     shadowBolt()
     soulFire()

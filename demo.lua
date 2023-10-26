@@ -129,17 +129,6 @@ local ui, settings, cmd = awful.UI:New("pokilock", {
     }
 })
 
-local statusFrame = ui:StatusFrame({
-    fontSize = 12,
-    colors = {
-        background = {0, 0, 0, 0}, 
-        value = {30, 240, 255, 1}, 
-    },
-    maxWidth = 450,
-    column = true,
-    settings = ui.tabs["Farm"].settings -- Add settings from the "Farm" tab
-})
-
 ui:Tab("Farm")
 ui.tabs["Farm"]:Checkbox({
     text = "Farming Soulshard",
@@ -161,6 +150,17 @@ ui.tabs["Curse"]:Checkbox({
 })local yellow = {148, 130, 201, 1}
 local white = {255, 255, 255, 1}
 local dark = {21, 21, 21, 0.45}
+
+local statusFrame = ui:StatusFrame({
+    fontSize = 12,
+    colors = {
+        background = {0, 0, 0, 0}, 
+        value = {30, 240, 255, 1}, 
+    },
+    maxWidth = 450,
+    column = true,
+    settings = ui.tabs["Farm"].settings -- Add settings from the "Farm" tab
+})
 
 local healthstone = awful.Item(36892, 36893, 36894)
 local soulShard = awful.Item(6265)

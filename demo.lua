@@ -300,11 +300,16 @@ local trinketBuffs = {
 }
 player.buffFrom(trinketBuffs)
 
-local function checkTrinketBuff()
-    if trinketBuff() then
-        awful.alert("Burst?")
+local function checkTrinketBuffs()
+    for _, buffID in ipairs(trinketBuffs) do
+        if player.buff(buffID) then
+            awful.alert("Trinket buff is up!")
+            break
+        end
     end
 end
+
+
 
 
 

@@ -120,7 +120,7 @@ local dark = {21, 21, 21, 0.45}
 
 -- all ui saved variables are stored in `settings`
 -- slash command to open the GUI is now `/example`
-local gui, settings, cmd = awful.UI:New("pokilock", {
+local ui, settings, cmd = awful.UI:New("pokilock", {
     title = "Pokilock",
     show = true, -- show on load by default
     colors = {
@@ -135,7 +135,7 @@ local gui, settings, cmd = awful.UI:New("pokilock", {
 })
 
 -- Create the status frame using the gui object
-local statusFrame = gui:StatusFrame({
+local statusFrame = ui:StatusFrame({
     fontSize = 12,
     colors = {
         background = {0, 0, 0, 0}, -- transparent background
@@ -144,21 +144,21 @@ local statusFrame = gui:StatusFrame({
     maxWidth = 450,
 })
 
-gui:Tab("Farm")
-gui.tabs["Farm"]:Checkbox({
+ui:Tab("Farm")
+ui.tabs["Farm"]:Checkbox({
     text = "Farming Soulshard",
     var = "farm", -- selected state = settings.farm
     tooltip = "Enable Farm",
 })
 
-gui:Tab("Curse")
-gui.tabs["Curse"]:Checkbox({
+ui:Tab("Curse")
+ui.tabs["Curse"]:Checkbox({
     text = "Curse of Elements",
     var = "curseOfElements", -- selected state = settings.curseOfElements
     tooltip = "Enable Curse of Elements",
 })
 
-gui.tabs["Curse"]:Checkbox({
+ui.tabs["Curse"]:Checkbox({
     text = "Curse of Doom",
     var = "curseOfDoom", -- selected state = settings.curseOfDoom
     tooltip = "Enable Curse of Doom",

@@ -296,9 +296,9 @@ end
 
 
 local trinketBuffs = {}
-awful.Populate({
+awful.Populate(trinketBuffs, {
     buffID = 64713
-}, trinketBuffs)
+})
 
 local function checkTrinketBuffs(trinketBuffs)
     for _, buffID in ipairs(trinketBuffs) do

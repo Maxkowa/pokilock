@@ -14,6 +14,9 @@ local NewItem = awful.NewItem
 -- Add Healthstone and Drainlife
 --Fix Incinerate 3x cast + Cast delay
 --try working on toggle pannel for cd's etc
+-- doom ttd -> agony
+-- solve ST/AOE toggle
+-- dont cast dots if trinket proc (immolate, Corruption)
 
 
 awful.Populate({
@@ -167,17 +170,6 @@ ui.tabs["Curse"]:Checkbox({
 })local yellow = {148, 130, 201, 1}
 local white = {255, 255, 255, 1}
 local dark = {21, 21, 21, 0.45}
-
-statusFrame:Checkbox({
-    text = "Farming Soulshard",
-    var = "farm", -- selected state = settings.farm
-    tooltip = "Enable Farm",
-})
-
-
-
-
-
 
 local healthstone = awful.Item(36892, 36893, 36894)
 local soulShard = awful.Item(6265)
@@ -341,7 +333,7 @@ immolate:Callback(function(spell)
     if target.enemy then
         if wasCasting[immolateID] then return end
         local debuff = target.debuffFrom({"Immolate"}, player)
-        if not debuff or (debuff[1] and debuff[1].remains and debuff[1].remains < 3) then
+        if not debuff then
             spell:Cast(target)
         end
     end
@@ -508,8 +500,6 @@ demo:Init(function()
     end
     drainSoul()
     WasCastingCheck()
-    if player.mounted then return end 
-    if player.casting or player.channeling then return end
     Buff()
     soulLink()
     createSpellstone()
@@ -519,16 +509,16 @@ demo:Init(function()
     felDomination()
     felguard()
     deleteExcessSoulShards()
-    UseItemInSlot10()
-    seedOfCorruption()
-    shadowBolt()
-    demonicEmpowerment()
+    immolate()
+    corruption()
     curseOfDoom()
     curseOfElements()
-    corruption()
-    immolate()
-    incinerate()
+    UseItemInSlot10()
+    shadowBolt()
     soulFire()
+    seedOfCorruption()
+    incinerate()
+    demonicEmpowerment()
     immolationAura()
     shadowflame()
     shadowBoltFiller()

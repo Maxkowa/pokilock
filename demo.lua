@@ -173,7 +173,7 @@ statusFrame:Toggle({
 })
 
 statusFrame:Toggle({
-    label = "Curse of Elements",
+    label = "Curse: ",
     var = "curseType",
     onClick = function()
         settings.curseType = (settings.curseType == "curseOfElements") and "curseOfDoom" or "curseOfElements"

@@ -286,6 +286,10 @@ local function trinketBuff()
 end
 
 if trinketBuff() then
+    print("true")
+end
+
+if trinketBuff() then
     awful.alert("Burst?")
 end
 

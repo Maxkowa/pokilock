@@ -188,6 +188,7 @@ local function deleteExcessSoulShards()
 end
 
 local function hasSoulShards()
+    local soulShardCount = GetItemCount(6265) -- Replace 6265 with the actual item ID of the soul shard
     return soulShardCount > 0
 end
 

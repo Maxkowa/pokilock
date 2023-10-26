@@ -189,22 +189,6 @@ local ui, settings, cmd = awful.UI:New("pokilock", {
     }
 })
 
--- Create the status frame using the gui object
-local statusFrame = ui:StatusFrame({
-    fontSize = 12,
-    colors = {
-        background = {0, 0, 0, 0}, -- transparent background
-        value = {30, 240, 255, 1}, -- cool blue value text
-    },
-    maxWidth = 450,
-})
-
-statusFrame:Checkbox({
-    text = "Farming Soulshard",
-    var = "farm", -- selected state = settings.farm
-    tooltip = "Enable Farm",
-})
-
 -- Create the "Farm" tab and add the checkbox to it
 ui:Tab("Farm")
 ui.tabs["Farm"]:Checkbox({
@@ -226,6 +210,23 @@ ui.tabs["Curse"]:Checkbox({
     var = "curseOfDoom", -- selected state = settings.curseOfDoom
     tooltip = "Enable Curse of Doom",
 })
+
+-- Create the status frame using the gui object
+local statusFrame = ui:StatusFrame({
+    fontSize = 12,
+    colors = {
+        background = {0, 0, 0, 0}, -- transparent background
+        value = {30, 240, 255, 1}, -- cool blue value text
+    },
+    maxWidth = 450,
+})
+
+statusFrame:Checkbox({
+    text = "Farming Soulshard",
+    var = "farm", -- selected state = settings.farm
+    tooltip = "Enable Farm",
+})
+
 
 
 

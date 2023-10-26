@@ -14,7 +14,6 @@ awful.ttd = true
 --TODO
 -- Add Healthstone and Drainlife
 --try working on toggle pannel for cd's etc
--- doom ttd -> agony
 -- solve ST/AOE toggle
 
 
@@ -119,52 +118,44 @@ local yellow = {148, 130, 201, 1}
 local white = {255, 255, 255, 1}
 local dark = {21, 21, 21, 0.45}
 
--- all ui saved variables are stored in `settings`
--- slash command to open the GUI is now `/example`
 local ui, settings, cmd = awful.UI:New("pokilock", {
     title = "Pokilock",
-    show = true, -- show on load by default
+    show = true, 
     colors = {
-        -- color of our ui title in the top left
         title = yellow,
-        -- primary is the primary text color
         primary = white,
-        -- accent controls colors of elements and some element text in the UI. it should contrast nicely with the background.
         accent = yellow,
         background = dark,
     }
 })
 
--- Create the status frame using the gui object
 local statusFrame = ui:StatusFrame({
     fontSize = 12,
     colors = {
-        background = {0, 0, 0, 0}, -- transparent background
-        value = {30, 240, 255, 1}, -- cool blue value text
+        background = {0, 0, 0, 0}, 
+        value = {30, 240, 255, 1}, 
     },
     maxWidth = 450,
     column = true
 })
 
--- Create the "Farm" tab and add the checkbox to it
 ui:Tab("Farm")
 ui.tabs["Farm"]:Checkbox({
     text = "Farming Soulshard",
-    var = "farm", -- selected state = settings.farm
+    var = "farm", 
     tooltip = "Enable Farm",
 })
 
--- Create the "Curse" tab and add the checkboxes to it
 ui:Tab("Curse")
 ui.tabs["Curse"]:Checkbox({
     text = "Curse of Elements",
-    var = "curseOfElements", -- selected state = settings.curseOfElements
+    var = "curseOfElements", 
     tooltip = "Enable Curse of Elements",
 })
 
 ui.tabs["Curse"]:Checkbox({
     text = "Curse of Doom",
-    var = "curseOfDoom", -- selected state = settings.curseOfDoom
+    var = "curseOfDoom", 
     tooltip = "Enable Curse of Doom",
 })local yellow = {148, 130, 201, 1}
 local white = {255, 255, 255, 1}
@@ -184,20 +175,20 @@ local function hasHealthstone()
 end
 
 local function deleteExcessSoulShards()
-    local itemID = 6265 -- Soul Shard item ID
-    local soulShardCount = GetItemCount(itemID) - 20 -- Calculate the excess soul shard count
+    local itemID = 6265 
+    local soulShardCount = GetItemCount(itemID) - 20 
 
     if soulShardCount > 0 then
         for bag = 0, 4 do
             for slot = 1, C_Container.GetContainerNumSlots(bag) do
                 if soulShardCount <= 0 then
-                    return -- Exit the function if excess soul shards have been deleted
+                    return 
                 end
 
                 if C_Container.GetContainerItemID(bag, slot) == itemID then
-                    C_Container.PickupContainerItem(bag, slot) -- Pick up the soul shard
-                    DeleteCursorItem() -- Delete the item from the cursor
-                    soulShardCount = soulShardCount - 1 -- Decrement the excess soul shard count
+                    C_Container.PickupContainerItem(bag, slot) 
+                    DeleteCursorItem() 
+                    soulShardCount = soulShardCount - 1 
                 end
             end
         end
@@ -205,7 +196,7 @@ local function deleteExcessSoulShards()
 end
 
 local function hasSoulShards()
-    local soulShardCount = GetItemCount(6265) -- Replace 6265 with the actual item ID of the soul shard
+    local soulShardCount = GetItemCount(6265) 
     return soulShardCount >= 1
 end
 
@@ -241,7 +232,7 @@ createHealthstone:Callback(function(spell)
 end)
 
 
-local spellstone = awful.Item(41196) -- Create an Item object for the spellstone
+local spellstone = awful.Item(41196) 
 
 createSpellstone:Callback(function(spell)
     if not player.combat and hasSoulShards() then
@@ -279,14 +270,11 @@ function Buff()
 end
 
 function UseItemInSlot10()
-    -- Get the item ID for the item in slot 10
     local itemID = GetInventoryItemID("player", 10)
-    if not itemID then return end -- Exit if there's no item in slot 10
+    if not itemID then return end 
 
-    -- Create an Item object for the item in slot 10
     local item = awful.Item(itemID)
 
-    -- Check if the player is in combat, if there is an enemy target, and if the item is ready to use
     if player.combat and target.enemy and item:Usable() then
         UseInventoryItem(10)
     end
@@ -417,7 +405,7 @@ end)
 
 soulFire:Callback(function(spell)
     if target.enemy then
-        if target.combat and hasSoulShards() then -- Corrected function name to hasSoulShards()
+        if target.combat and hasSoulShards() then 
             if player.buff(63167) or target.hp <= 35 then
                 spell:Cast(target)
             end
@@ -483,24 +471,23 @@ shadowBoltFiller:Callback(function(spell)
     end
 end)
 
-local lastTarget = nil -- Variable to store the last target
+local lastTarget = nil 
 
 seedOfCorruption:Callback(function(spell)
     if target.enemy then
         local count = 0
         enemies.loop(function(enemy)
-            if enemy.distanceTo(target) < 10 and enemy.combat then -- Check if enemy is close to the target and in combat
-                if enemy.debuff(47836) then -- Check if enemy has debuff 47836
-                    SpellStopCasting() -- Cancel casting if enemy has the debuff
-                    return -- Exit the loop
+            if enemy.distanceTo(target) < 10 and enemy.combat then 
+                if enemy.debuff(47836) then 
+                    SpellStopCasting() 
+                    return 
                 end
-                if not enemy.debuff(47836) then -- Check if enemy doesn't have debuff 47836
+                if not enemy.debuff(47836) then 
                     count = count + 1
-                    -- Add your actions here
-                    if count > 2 then -- Check if there are more than 2 enemies
-                        spell:Cast(enemy) -- Cast the spell on the enemy that doesn't have the debuff
-                        lastTarget = enemy -- Update the last target
-                        return true -- Exit the loop after casting the spell on a new enemy
+                    if count > 2 then 
+                        spell:Cast(enemy) 
+                        lastTarget = enemy 
+                        return true 
                     end
                 end
             end

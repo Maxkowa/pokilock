@@ -121,13 +121,11 @@ local dark = {21, 21, 21, 0.45}
 -- all ui saved variables are stored in `settings`
 -- slash command to open the GUI is now `/example`
 local gui, settings, cmd = awful.UI:New("pokilock", {
-	title = "Poki",
-    title2 = "lock",
+	title = "Pokilock",
 	show = true, -- show on load by default
 	colors = {
 		-- color of our ui title in the top left
 		title = yellow,
-        title2 = white,
 		-- primary is the primary text color
 		primary = white,
 		-- accent controls colors of elements and some element text in the UI. it should contrast nicely with the background.
@@ -142,6 +140,11 @@ gui.tabs["Farm"]:Checkbox({
     var = "farm", -- selected state = settings.farm
     tooltip = "Enable Farm",
     width = 400, -- increase the width of the checkbox element
+    style = {
+        text = {
+            width = 400, -- increase the width of the checkbox text
+        }
+    }
 })
 
 

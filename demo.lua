@@ -151,24 +151,7 @@ ui.tabs["Curse"]:Checkbox({
 local white = {255, 255, 255, 1}
 local dark = {21, 21, 21, 0.45}
 
-local statusFrame = ui:StatusFrame({
-    fontSize = 12,
-    colors = {
-        background = {0, 0, 0, 0},
-        value = {30, 240, 255, 1},
-    },
-    maxWidth = 450,
-    column = true,
-})
-
--- Iterate over the tabs in ui.tabs
-for tabName, tab in pairs(ui.tabs) do
-    -- Check if the tab has a Checkbox element
-    if tab.Checkbox then
-        -- Add the Checkbox element to the statusFrame
-        statusFrame:AddElement(tab.Checkbox)
-    end
-end
+local statusFrame = ui:StatusFrame(options)
 
 
 local healthstone = awful.Item(36892, 36893, 36894)

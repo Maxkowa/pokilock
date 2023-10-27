@@ -440,10 +440,21 @@ end)
 
 local isExecuted = false
 
-local function petAttack()
-    if pet.exists and not isExecuted then
-        SendChatMessage("/petattack", "SAY")
-        isExecuted = true
+local function togglePetMode()
+    if player.combat then
+        -- Toggle pet defensive mode
+        if pet.defensiveMode then
+            pet.defensiveMode = false
+        else
+            pet.defensiveMode = true
+        end
+    else
+        -- Toggle pet passive mode
+        if pet.passiveMode then
+            pet.passiveMode = false
+        else
+            pet.passiveMode = true
+        end
     end
 end
 
@@ -673,7 +684,7 @@ demo:Init(function()
     felguard()
     useHealthstone()
     drainLife()
-    petAttack()
+    togglePetMode()
     seedOfCorruption()
     immolate()
     corruption()

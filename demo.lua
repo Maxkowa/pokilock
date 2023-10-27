@@ -168,16 +168,16 @@ ui.tabs["Combat"]:Slider({
     tooltip = "Health percentage to start using Drain Life"
 })
 
-ui.tabs["Combat"]:Slider({
-    text = "Kick Slider %",
-    var = "kickSlider",
-    min = 0,
-    max = 100,
-    step = 1,
-    default = 50,
-    valueType = "%",
-    tooltip = "Health percentage to start using Kick"
-})
+--ui.tabs["Combat"]:Slider({
+--    text = "Kick Slider %",
+--    var = "kickSlider",
+--    min = 0,
+--    max = 100,
+--    step = 1,
+--    default = 50,
+--    valueType = "%",
+--    tooltip = "Health percentage to start using Kick"
+--})
 
 ui:Tab("Curse")
 ui.tabs["Curse"]:Dropdown({
@@ -262,19 +262,20 @@ end
 
 local function deleteExcessSoulShards()
     local itemID = 6265 
-    local soulShardCount = GetItemCount(itemID) - settings.deleteSoulShard
+    local soulShardCount = GetItemCount(itemID)
 
-    if soulShardCount > 0 then
+    if soulShardCount > settings.deleteSoulShard then
+        local excessShards = soulShardCount - settings.deleteSoulShard
         for bag = 0, 4 do
             for slot = 1, C_Container.GetContainerNumSlots(bag) do
-                if soulShardCount <= 0 then
+                if excessShards <= 0 then
                     return 
                 end
 
                 if C_Container.GetContainerItemID(bag, slot) == itemID then
                     C_Container.PickupContainerItem(bag, slot) 
                     DeleteCursorItem() 
-                    soulShardCount = soulShardCount - 1 
+                    excessShards = excessShards - 1 
                 end
             end
         end
@@ -414,6 +415,12 @@ felguard:Callback(function(spell)
     if wasCasting[felguardID] then return end
     if not pet.exists and hasSoulShards() then
         return spell:Cast()
+    end
+end)
+
+drainLife:Callback(function(spell)
+    if player.hp <= settings.drainLifeHealth and target.combat then
+        return spell:Cast(target)
     end
 end)
 

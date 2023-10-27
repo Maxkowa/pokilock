@@ -458,7 +458,7 @@ soulFire:Callback(function(spell)
     if target.enemy then
         if target.combat and hasSoulShards() then 
             local buffRemains = player.buffRemains(63167)
-            if (player.buff(63167) and spell.castTime < buffRemains) or target.hp <= 35 then
+            if player.buff(63167) and spell.castTime < buffRemains then
                 spell:Cast(target)
             end
         end
@@ -526,7 +526,7 @@ end)
 local lastTarget = nil 
 
 seedOfCorruption:Callback(function(spell)
-    if target.enemy then
+    if target.enemy and not settings.forceSingleTarget then
         local count = 0
         enemies.loop(function(enemy)
             if enemy.distanceTo(target) < 15 and enemy.combat then 

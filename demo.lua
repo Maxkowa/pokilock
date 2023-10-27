@@ -144,6 +144,12 @@ ui.tabs["Welcome"]:Text({
     size = 10,
 })
 
+ui.tabs["Welcome"]:Text({
+    text = "Send me feedback, suggestions, and questions via |cFF5865F2Discord: poki1901",
+    position = {0, 130},
+    size = 10,
+})
+
 ui:Tab("Combat")
 
 ui.tabs["Combat"]:Checkbox({

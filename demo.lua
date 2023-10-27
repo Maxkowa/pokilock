@@ -146,7 +146,7 @@ ui.tabs["Welcome"]:Text({
 
 ui.tabs["Welcome"]:Text({
     text = "Send me feedback, suggestions, and questions via |cFF5865F2Discord: poki1901",
-    position = {0, 130},
+    position = {0, 300},
     size = 10,
 })
 

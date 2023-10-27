@@ -141,7 +141,7 @@ local warlockClassColor = "|cFF9482C9" -- Warlock class color
 ui.tabs["Welcome"]:Text({
     text = "|cFFFFFFFFuse " .. warlockClassColor .. "/burst |cFFFFFFFFfor Metamorphosis",
     position = {0, 100},
-    size = 12,
+    size = 10,
 })
 
 ui:Tab("Combat")

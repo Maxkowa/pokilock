@@ -137,7 +137,7 @@ ui.tabs["Welcome"]:Text({
 })
 
 ui.tabs["Welcome"]:Text({
-    text = {'use', '/burst', 'for Metamorphosis'},
+    text = {"use", "/burst", "for Metamorphosis"},
     colors = {
         text = {white, yellow, white},
     },

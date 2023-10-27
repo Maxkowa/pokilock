@@ -206,7 +206,7 @@ ui.tabs["Misc"]:Slider({
     max = 30,
     step = 1,
     default = 20,
-    tooltip = "Number of Soul Shards to delete"
+    tooltip = "Number of Soul Shards to hold"
 })
 
 -- Create a StatusFrame with custom colors

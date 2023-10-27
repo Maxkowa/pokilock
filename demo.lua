@@ -136,8 +136,10 @@ ui.tabs["Welcome"]:Text({
     paddingBottom = 10,
 })
 
+local warlockClassColor = "|cFF9482C9" -- Warlock class color
+
 ui.tabs["Welcome"]:Text({
-    text = "|cFFFFFFFFuse |cFFFFFF00/burst |cFFFFFFFFfor Metamorphosis",
+    text = "|cFFFFFFFFuse " .. warlockClassColor .. "/burst |cFFFFFFFFfor Metamorphosis",
     position = {0, 100},
     size = 12,
 })

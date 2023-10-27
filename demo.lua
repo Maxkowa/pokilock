@@ -227,7 +227,7 @@ end
 
 local function deleteExcessSoulShards()
     local itemID = 6265 
-    local soulShardCount = GetItemCount(itemID) - 20 
+    local soulShardCount = GetItemCount(itemID) - settings.deleteSoulShard
 
     if soulShardCount > 0 then
         for bag = 0, 4 do

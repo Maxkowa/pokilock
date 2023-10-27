@@ -157,14 +157,14 @@ ui.tabs["Curse"]:Dropdown({
     default = "curseOfElements"  -- Set "Curse of Elements" as the default selection
 })
 
-ui:Tab("Farm")
-ui.tabs["Farm"]:Checkbox({
+ui:Tab("Misc")
+ui.tabs["Misc"]:Checkbox({
     text = "Farming Soulshard",
     var = "farm", 
     tooltip = "Enable Farm",
 })
 
-ui.tabs["Farm"]:Slider({
+ui.tabs["Misc"]:Slider({
     text = "Delete Soul Shard",
     var = "deleteSoulShard",
     min = 1,

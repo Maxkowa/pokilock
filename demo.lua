@@ -130,10 +130,16 @@ local ui, settings, cmd = awful.UI:New("pokilock", {
 ui:Tab("Welcome")
 
 ui.tabs["Welcome"]:Text({
-    text = awful.textureEscape(47241, 18, "0:2") .. "Welcome to the Devil",  -- Add the texture of the spell with ID 47241
-    position = {0, 70},  -- Position of the text (x, y)
+    text = awful.textureEscape(47241, 18, "0:2") .. "Welcome to the Devil",  
+    position = {0, 70},  
     size = 14,
     paddingBottom = 10,
+})
+
+ui.tabs["Welcome"]:Text({
+    text = "use /burst for Metamorphosis",
+    position = {0, 100},  -- Adjust the position as needed
+    size = 12,  -- Adjust the size as needed
 })
 
 ui:Tab("Combat")

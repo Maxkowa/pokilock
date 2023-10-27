@@ -440,7 +440,7 @@ end)
 
 local function petAttack()
     if pet.exists and player.combat and player.target and player.target.enemy then
-        pet.attack(player.target)
+        pet:Attack(player.target)
     end
 end
 

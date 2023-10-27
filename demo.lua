@@ -506,7 +506,7 @@ shadowBolt:Callback(function(spell)
 end)
 
 felDomination:Callback(function(spell)
-    if not pet.exists and player.combat and hasSoulShard() then
+    if not pet.exists and player.combat and hasSoulShards() then
         spell:Cast()
     end
 end)

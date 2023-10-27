@@ -15,7 +15,6 @@ awful.ttd = true
 -- Add Healthstone and Drainlife
 -- try working on toggle pannel for cd's etc
 -- solve ST/AOE toggle
--- add cast time/buffRemain soulfire
 
 
 awful.Populate({
@@ -139,6 +138,12 @@ ui.tabs["Welcome"]:Text({
     paddingBottom = 10,
 })
 
+ui.tabs["Welcome"]:Checkbox({
+    text = "Single Target",
+    var = "singleTarget",
+    tooltip = "Enable to force single target mode",
+})
+
 ui:Tab("Curse")
 ui.tabs["Curse"]:Dropdown({
     var = "curseType",
@@ -169,7 +174,14 @@ local statusFrame = ui:StatusFrame({
     column = true
 })
 
--- Add a checkbox element for Farming Soulshard
+statusFrame:Toggle({
+    label = "Force Single Target",
+    var = "singleTarget",
+    onClick = function()
+        settings.singleTarget = not settings.singleTarget
+    end
+})
+
 statusFrame:Toggle({
     label = "Farming Soulshard",
     var = "farm",

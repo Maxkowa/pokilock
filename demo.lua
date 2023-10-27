@@ -439,7 +439,7 @@ drainLife:Callback(function(spell)
 end)
 
 local function petAttack()
-    if pet.exists and target.combat and player.target then
+    if pet.exists then
         SendChatMessage("/petattack", "SAY")
         print("Pet attack executed")
     end

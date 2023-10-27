@@ -12,7 +12,7 @@ local NewItem = awful.NewItem
 awful.ttd = true
 
 --TODO
--- try working on toggle pannel for cd's etc
+-- petattack fix
 
 
 awful.Populate({
@@ -439,23 +439,8 @@ drainLife:Callback(function(spell)
 end)
 
 
-local function togglePetMode()
-    if UnitAffectingCombat("player") then
-        -- Toggle pet defensive mode
-        if GetPetDefensiveMode() then
-            PetDefensiveMode(false)
-        else
-            PetDefensiveMode(true)
-        end
-    else
-        -- Toggle pet passive mode
-        local petModes = {
-            [true] = false,
-            [false] = true
-        }
-        PetPassiveMode(petModes[GetPetPassiveMode()])
-    end
-end
+--local function togglePetMode()
+
 
 lifeTap:Callback(function(spell)
         if player.mana > 22000 and player.buff(63321)then return end
@@ -683,7 +668,7 @@ demo:Init(function()
     felguard()
     useHealthstone()
     drainLife()
-    togglePetMode()
+--    togglePetMode()
     seedOfCorruption()
     immolate()
     corruption()

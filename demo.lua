@@ -117,10 +117,10 @@ local white = {255, 255, 255, 1}
 local dark = {21, 21, 21, 0.45}
 
 local ui, settings, cmd = awful.UI:New("pokilock", {
-    title = "Poki", "lock",
+    title = {'Poki', 'lock'},
     show = true, 
     colors = {
-        title = white, yellow,  
+        title = {white, yellow},  
         primary = white,
         accent = yellow,
         background = dark,

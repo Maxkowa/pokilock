@@ -117,14 +117,27 @@ local white = {255, 255, 255, 1}
 local dark = {21, 21, 21, 0.45}
 
 local ui, settings, cmd = awful.UI:New("pokilock", {
-    title = "Pokilock",
     show = true, 
     colors = {
-        title = yellow,
+        title = white,  
         primary = white,
         accent = yellow,
         background = dark,
     }
+})
+
+
+ui:Label({
+    text = "Poki",
+    position = {0, 0},  
+    color = white,
+})
+
+
+ui:Label({
+    text = "lock",
+    position = {50, 0},  
+    color = yellow,
 })
 
 ui:Tab("Welcome")
@@ -187,7 +200,7 @@ ui.tabs["Curse"]:Dropdown({
     },
     placeholder = "Select a curse",
     header = "Curse Type:",
-    default = "curseOfElements"  -- Set "Curse of Elements" as the default selection
+    default = "curseOfElements"  
 })
 
 ui:Tab("Misc")
@@ -207,7 +220,6 @@ ui.tabs["Misc"]:Slider({
     tooltip = "Number of Soul Shards to hold"
 })
 
--- Create a StatusFrame with custom colors
 local statusFrame = ui:StatusFrame({
     colors = {
         background = dark,
@@ -241,7 +253,6 @@ statusFrame:Toggle({
     end
 })
 
--- Show the status frame
 statusFrame:Show()
 
 

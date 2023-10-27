@@ -441,7 +441,7 @@ end)
 local function petAttack()
     if pet.exists and player.combat and player.target and player.target.enemy then
         SendChatMessage("/petattack", "SAY")
-        print("attack")
+        print("Pet attack executed")
     end
 end
 

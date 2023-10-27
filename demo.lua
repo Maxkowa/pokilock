@@ -140,7 +140,7 @@ ui.tabs["Welcome"]:Text({
     text = {'use', '/burst' 'for Metamorphosis'},
     colors = {
         text = {white, yellow, white},
-    }
+    },
     position = {0, 100},  
     size = 12, 
 })

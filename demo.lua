@@ -117,31 +117,15 @@ local white = {255, 255, 255, 1}
 local dark = {21, 21, 21, 0.45}
 
 local ui, settings, cmd = awful.UI:New("pokilock", {
-    title = "Pokilock",
+    title = "Poki", "lock",
     show = true, 
     colors = {
-        title = white,  
+        title = white, yellow,  
         primary = white,
         accent = yellow,
         background = dark,
     }
 })
-
-local title = "Pokilock"
-local halfLength = math.ceil(#title / 2)
-
-ui:Text({
-    text = title:sub(1, halfLength),
-    position = {0, 0},
-    color = white,
-})
-
-ui:Text({
-    text = title:sub(halfLength + 1),
-    position = {halfLength * 8, 0},
-    color = yellow,
-})
-
 
 ui:Tab("Welcome")
 

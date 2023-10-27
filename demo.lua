@@ -319,8 +319,10 @@ createHealthstone:Callback(function(spell)
 end)
 
 if player.hp <= settings.useHealthstone then
-    if healthstone:Use() then
-        awful.alert("Used Healthstone!", healthstone.id)
+    if player.combat then
+        if healthstone:Use() then
+            awful.alert("Used Healthstone!", healthstone.id)
+        end
     end
 end
 
@@ -648,6 +650,8 @@ demo:Init(function()
     lifeTap()
     felDomination()
     felguard()
+    healthstone()
+    drainLife()
     seedOfCorruption()
     immolate()
     corruption()

@@ -438,6 +438,12 @@ drainLife:Callback(function(spell)
     end
 end)
 
+local function petAttack()
+    if pet.exists and player.combat and player.target and player.target.enemy then
+        pet.attack(player.target)
+    end
+end
+
 lifeTap:Callback(function(spell)
         if player.mana > 22000 and player.buff(63321)then return end
             if player.mana < 10000 or not player.buff(63321) or not player.combat then
@@ -664,6 +670,7 @@ demo:Init(function()
     felguard()
     useHealthstone()
     drainLife()
+    petAttack()
     seedOfCorruption()
     immolate()
     corruption()

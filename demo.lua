@@ -145,14 +145,14 @@ ui.tabs["Welcome"]:Checkbox({
 })
 
 ui.tabs["Welcome"]:Slider({
-    text = "Create Healthstone",
-    var = "createHealthstone",
+    text = "Using Healthstone",
+    var = "UseHealthstone",
     min = 0,
     max = 100,
     step = 1,
     default = 30,
     valueType = "%",
-    tooltip = "Health percentage to create healthstone"
+    tooltip = "Health percentage to use healthstone"
 })
 
 ui:Tab("Curse")

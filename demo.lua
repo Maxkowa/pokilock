@@ -164,6 +164,16 @@ ui.tabs["Farm"]:Checkbox({
     tooltip = "Enable Farm",
 })
 
+ui.tabs["Farm"]:Slider({
+    text = "Delete Soul Shard",
+    var = "deleteSoulShard",
+    min = 1,
+    max = 30,
+    step = 1,
+    default = 20,
+    tooltip = "Number of Soul Shards to delete"
+})
+
 -- Create a StatusFrame with custom colors
 local statusFrame = ui:StatusFrame({
     colors = {

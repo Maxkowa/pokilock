@@ -438,22 +438,21 @@ drainLife:Callback(function(spell)
     end
 end)
 
-local isExecuted = false
 
 local function togglePetMode()
-    if player.combat then
+    if UnitAffectingCombat("player") then
         -- Toggle pet defensive mode
-        if pet.defensiveMode then
-            pet.defensiveMode = false
+        if GetPetDefensiveMode() then
+            PetDefensiveMode(false)
         else
-            pet.defensiveMode = true
+            PetDefensiveMode(true)
         end
     else
         -- Toggle pet passive mode
-        if pet.passiveMode then
-            pet.passiveMode = false
+        if GetPetPassiveMode() then
+            PetPassiveMode(false)
         else
-            pet.passiveMode = true
+            PetPassiveMode(true)
         end
     end
 end

@@ -138,13 +138,15 @@ ui.tabs["Welcome"]:Text({
     paddingBottom = 10,
 })
 
-ui.tabs["Welcome"]:Checkbox({
+ui:Tab("Combat")
+
+ui.tabs["Combat"]:Checkbox({
     text = "Single Target",
     var = "singleTarget",
     tooltip = "Enable to force single target mode",
 })
 
-ui.tabs["Welcome"]:Slider({
+ui.tabs["Combat"]:Slider({
     text = "Using Healthstone",
     var = "useHealthstone",
     min = 0,
@@ -155,7 +157,7 @@ ui.tabs["Welcome"]:Slider({
     tooltip = "Health percentage to use healthstone"
 })
 
-ui.tabs["Welcome"]:Slider({
+ui.tabs["Combat"]:Slider({
     text = "Drain Life Health %",
     var = "drainLifeHealth",
     min = 0,
@@ -166,7 +168,7 @@ ui.tabs["Welcome"]:Slider({
     tooltip = "Health percentage to start using Drain Life"
 })
 
-ui.tabs["Welcome"]:Slider({
+ui.tabs["Combat"]:Slider({
     text = "Kick Slider %",
     var = "kickSlider",
     min = 0,

@@ -127,6 +127,21 @@ local ui, settings, cmd = awful.UI:New("pokilock", {
     }
 })
 
+local title = "Pokilock"
+local halfLength = math.ceil(#title / 2)
+
+ui:Text({
+    text = title:sub(1, halfLength),
+    position = {0, 0},
+    color = white,
+})
+
+ui:Text({
+    text = title:sub(halfLength + 1),
+    position = {halfLength * 8, 0},
+    color = yellow,
+})
+
 
 ui:Tab("Welcome")
 

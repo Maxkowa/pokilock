@@ -438,10 +438,12 @@ drainLife:Callback(function(spell)
     end
 end)
 
+local isExecuted = false
+
 local function petAttack()
-    if pet.exists then
+    if pet.exists and not isExecuted then
         SendChatMessage("/petattack", "SAY")
-        print("Pet attack executed")
+        isExecuted = true
     end
 end
 

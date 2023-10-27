@@ -142,7 +142,7 @@ ui.tabs["Welcome"]:Text({
     text = "|cFFFFFFFFuse " .. warlockClassColor .. "/burst |cFFFFFFFFfor Metamorphosis",
     position = {0, 100},
     size = 10,
-    paddingBottom = 50,
+    paddingBottom = 70,
 })
 
 ui.tabs["Welcome"]:Text({

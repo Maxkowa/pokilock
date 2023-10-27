@@ -333,7 +333,7 @@ end)
 local function useHealthstone()
     if player.hp <= settings.useHealthstone and player.combat then
         if healthstone:Usable() and healthstone:Use() then
-            awful.alert("Used Healthstone!", healthstone.id)
+            awful.alert("Used Healthstone!", createHealthstone.id)
         end
     end
 end
@@ -440,8 +440,7 @@ end)
 
 local function petAttack()
     if pet.exists and player.combat and player.target and player.target.enemy then
-        C_PetJournal.SummonPetByGUID(pet.guid)
-        DoEmote("PETATTACK")
+        SendChatMessage("/petattack", "SAY")
     end
 end
 

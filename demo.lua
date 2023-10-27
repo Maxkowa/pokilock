@@ -449,11 +449,11 @@ local function togglePetMode()
         end
     else
         -- Toggle pet passive mode
-        if GetPetPassiveMode() then
-            PetPassiveMode(false)
-        else
-            PetPassiveMode(true)
-        end
+        local petModes = {
+            [true] = false,
+            [false] = true
+        }
+        PetPassiveMode(petModes[GetPetPassiveMode()])
     end
 end
 

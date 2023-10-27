@@ -530,10 +530,6 @@ seedOfCorruption:Callback(function(spell)
         local count = 0
         enemies.loop(function(enemy)
             if enemy.distanceTo(target) < 15 and enemy.combat then 
-                if enemy.debuff(47836) then 
-                    SpellStopCasting() 
-                    return 
-                end
                 if not enemy.debuff(47836) then 
                     count = count + 1
                     if count > 2 then 

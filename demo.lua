@@ -142,20 +142,15 @@ ui.tabs["Welcome"]:Text({
     text = "|cFFFFFFFFuse " .. warlockClassColor .. "/burst |cFFFFFFFFfor Metamorphosis",
     position = {0, 100},
     size = 10,
-    paddingBottom = 70,
+    paddingBottom = 80,
 })
 
 ui.tabs["Welcome"]:Text({
-    text = "Send me feedback, suggestions, and questions via",
+    text = "Send me feedback, suggestions, and questions via |cFF5865F2Discord: poki1901",
     position = {0, 0},
-    size = 10,
+    size = 8,
 })
 
-ui.tabs["Welcome"]:Text({
-    text = "|cFF5865F2Discord: poki1901",
-    position = {0, 0},
-    size = 10,
-})
 
 ui:Tab("Combat")
 

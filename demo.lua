@@ -440,7 +440,8 @@ end)
 
 local function petAttack()
     if pet.exists and player.combat and player.target and player.target.enemy then
-        pet:Attack(player.target)
+        C_PetJournal.SummonPetByGUID(pet.guid)
+        DoEmote("PETATTACK")
     end
 end
 

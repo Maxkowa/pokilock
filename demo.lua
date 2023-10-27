@@ -137,12 +137,9 @@ ui.tabs["Welcome"]:Text({
 })
 
 ui.tabs["Welcome"]:Text({
-    text = {"use", "/burst", "for Metamorphosis"},
-    colors = {
-        text = {white, yellow, white},
-    },
-    position = {0, 100},  
-    size = 12, 
+    text = "|cFFFFFFFFuse |cFFFFFF00/burst |cFFFFFFFFfor Metamorphosis",
+    position = {0, 100},
+    size = 12,
 })
 
 ui:Tab("Combat")

@@ -13,8 +13,9 @@ awful.ttd = true
 
 --TODO
 -- Add Healthstone and Drainlife
---try working on toggle pannel for cd's etc
+-- try working on toggle pannel for cd's etc
 -- solve ST/AOE toggle
+-- add cast time/buffRemain soulfire
 
 
 awful.Populate({
@@ -444,7 +445,8 @@ end)
 soulFire:Callback(function(spell)
     if target.enemy then
         if target.combat and hasSoulShards() then 
-            if player.buff(63167) or target.hp <= 35 then
+            local buffRemains = player.buffRemains(63167)
+            if (player.buff(63167) and spell.castTime < buffRemains) or target.hp <= 35 then
                 spell:Cast(target)
             end
         end

@@ -146,13 +146,35 @@ ui.tabs["Welcome"]:Checkbox({
 
 ui.tabs["Welcome"]:Slider({
     text = "Using Healthstone",
-    var = "UseHealthstone",
+    var = "useHealthstone",
     min = 0,
     max = 100,
     step = 1,
     default = 30,
     valueType = "%",
     tooltip = "Health percentage to use healthstone"
+})
+
+ui.tabs["Welcome"]:Slider({
+    text = "Drain Life Health %",
+    var = "drainLifeHealth",
+    min = 0,
+    max = 100,
+    step = 1,
+    default = 20,
+    valueType = "%",
+    tooltip = "Health percentage to start using Drain Life"
+})
+
+ui.tabs["Welcome"]:Slider({
+    text = "Kick Slider %",
+    var = "kickSlider",
+    min = 0,
+    max = 100,
+    step = 1,
+    default = 50,
+    valueType = "%",
+    tooltip = "Health percentage to start using Kick"
 })
 
 ui:Tab("Curse")
@@ -293,6 +315,11 @@ createHealthstone:Callback(function(spell)
     end
 end)
 
+if player.hp <= settings.useHealthstone then
+    if healthstone:Use() then
+        awful.alert("Used Healthstone!", healthstone.id)
+    end
+end
 
 local spellstone = awful.Item(41196) 
 

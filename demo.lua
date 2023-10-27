@@ -12,9 +12,7 @@ local NewItem = awful.NewItem
 awful.ttd = true
 
 --TODO
--- Add Healthstone and Drainlife
 -- try working on toggle pannel for cd's etc
--- solve ST/AOE toggle
 
 
 awful.Populate({

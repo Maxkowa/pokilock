@@ -128,19 +128,6 @@ local ui, settings, cmd = awful.UI:New("pokilock", {
 })
 
 
-ui:Label({
-    text = "Poki",
-    position = {0, 0},  
-    color = white,
-})
-
-
-ui:Label({
-    text = "lock",
-    position = {50, 0},  
-    color = yellow,
-})
-
 ui:Tab("Welcome")
 
 ui.tabs["Welcome"]:Text({

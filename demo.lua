@@ -529,7 +529,7 @@ seedOfCorruption:Callback(function(spell)
     if target.enemy then
         local count = 0
         enemies.loop(function(enemy)
-            if enemy.distanceTo(target) < 10 and enemy.combat then 
+            if enemy.distanceTo(target) < 15 and enemy.combat then 
                 if enemy.debuff(47836) then 
                     SpellStopCasting() 
                     return 
@@ -580,6 +580,7 @@ demo:Init(function()
     lifeTap()
     felDomination()
     felguard()
+    seedOfCorruption()
     immolate()
     corruption()
     curseOfDoom()
@@ -588,7 +589,6 @@ demo:Init(function()
     UseItemInSlot10()
     shadowBolt()
     soulFire()
-    seedOfCorruption()
     incinerate()
     demonicEmpowerment()
     immolationAura()

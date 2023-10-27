@@ -144,6 +144,17 @@ ui.tabs["Welcome"]:Checkbox({
     tooltip = "Enable to force single target mode",
 })
 
+ui.tabs["Welcome"]:Slider({
+    text = "Create Healthstone",
+    var = "createHealthstone",
+    min = 0,
+    max = 100,
+    step = 1,
+    default = 30,
+    valueType = "%",
+    tooltip = "Health percentage to create healthstone"
+})
+
 ui:Tab("Curse")
 ui.tabs["Curse"]:Dropdown({
     var = "curseType",
@@ -580,11 +591,15 @@ end)
 
 
 
-demo:Init(function() 
+demo:Init(function()
+    if player.mounted then
+        return
+    end 
     if awful.burst then
         metamorphosis("burst")
     end
     trinket2()
+    trinket1()
     drainSoul()
     WasCastingCheck()
     Buff()

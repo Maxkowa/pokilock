@@ -63,7 +63,7 @@ awful.Populate({
     curseOfWeakness = spell({702, 1108, 6205, 7646, 11707, 11708, 27228}, { effect = "magic", targeted = true }),
     darkPact = spell({18220, 18937, 18938, 27265, 59092}, { beneficial = true }),
     deathCoil = spell({6789, 17925, 17926, 27223, 47859, 47860}, { damage = "magic", targeted = true }),
-    drainLife = spell({689, 699, 709, 7651, 11699, 11700, 27263, 47857, 47858}, { damage = "magic", targeted = true }),
+    drainLife = spell({689, 699, 709, 7651, 11699, 11700, 27263, 47857}, { damage = "magic", targeted = true }),
     drainMana = spell({5138}, { target = true }),
     fear = spell({5782, 6213, 6215}, { effect = "magic", targeted = true }),
     haunt = spell({48181, 59164, 59165, 59166}, { damage = "magic", targeted = true }),
@@ -320,7 +320,7 @@ end)
 
 local function useHealthstone()
     if player.hp <= settings.useHealthstone and player.combat then
-        if healthstone:Use() then
+        if healthstone:Usable() and healthstone:Use() then
             awful.alert("Used Healthstone!", healthstone.id)
         end
     end

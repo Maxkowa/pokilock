@@ -421,7 +421,7 @@ felguard:Callback(function(spell)
 end)
 
 drainLife:Callback(function(spell)
-    if player.hp <= settings.drainLifeHealth then
+    if player.hp <= settings.drainLifeHealth and player.combat then
         return spell:Cast(target)
     end
 end)

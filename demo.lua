@@ -440,7 +440,7 @@ end)
 
 
 local function togglePetMode()
-    if UnitAffectingCombat("player") then
+    if player.combat then
         -- Toggle pet defensive mode
         if GetPetDefensiveMode() then
             PetDefensiveMode(false)

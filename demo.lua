@@ -652,8 +652,7 @@ awful.Draw(function(draw)
     if pet and not pet.dead then
         local petX, petY, petZ = pet.position()
         local outlineRadius = 1 
-        local purpleColor = {0.5, 0, 0.5} -- RGB values for purple
-        draw:SetColor(unpack(purpleColor))
+        draw:SetColor(106, 90, 205, 1)
         draw:FilledCircle(petX, petY, petZ, outlineRadius)
     end
 end)

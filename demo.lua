@@ -323,8 +323,6 @@ local function drawPetOutline()
     local petX, petY, petZ = ObjectPosition("pet")
     local outlineRadius = 2 -- Adjust the radius of the outline as needed
 
-    awful.Draw.Clear() -- Clear the previous outline
-
     awful.Draw(function(draw)
         draw:Outline(petX, petY, petZ, outlineRadius)
     end)

@@ -226,15 +226,8 @@ ui.tabs["Misc"]:Slider({
 
 ui.tabs["Misc"]:Checkbox({
     text = "Toggle Awful Draw",
-    var = "toggleAwfulDraw",
-    tooltip = "Enable/Disable Awful Draw functionality",
-    onChange = function()
-        if settings.toggleAwfulDraw then
-            awful.Draw:Enable()
-        else
-            awful.Draw:Disable()
-        end
-    end
+    var = "petDraw",
+    tooltip = "Enable/Disable Pet Draw",
 })
 
 local statusFrame = ui:StatusFrame({
@@ -662,7 +655,7 @@ end)
 
 
 awful.Draw(function(draw)
-    if pet and not pet.dead then
+    if pet and not pet.dead and settings.petDraw then
         local petX, petY, petZ = pet.position()
         local outlineRadius = 1
         draw:FilledCircle(petX, petY, petZ, outlineRadius, steps)

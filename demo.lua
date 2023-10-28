@@ -323,6 +323,13 @@ local function drawPetOutline()
     local petX, petY, petZ = ObjectPosition("pet")
     local outlineRadius = 2 -- Adjust the radius of the outline as needed
 
+    -- Remove previous outlines by drawing a transparent rectangle over the entire screen
+    awful.Draw(function(draw)
+        draw:SetColor(0, 0, 0, 0) -- Set the color to transparent
+        draw:Rectangle(0, 0, 0, 10000, 10000, 0) -- Draw a large rectangle to cover the screen
+    end)
+
+    -- Draw the new outline
     awful.Draw(function(draw)
         draw:Outline(petX, petY, petZ, outlineRadius)
     end)

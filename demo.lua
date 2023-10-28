@@ -224,6 +224,19 @@ ui.tabs["Misc"]:Slider({
     tooltip = "Number of Soul Shards to hold"
 })
 
+ui.tabs["Misc"]:Checkbox({
+    text = "Toggle Awful Draw",
+    var = "toggleAwfulDraw",
+    tooltip = "Enable/Disable Awful Draw functionality",
+    onChange = function()
+        if settings.toggleAwfulDraw then
+            awful.Draw:Enable()
+        else
+            awful.Draw:Disable()
+        end
+    end
+})
+
 local statusFrame = ui:StatusFrame({
     colors = {
         background = dark,

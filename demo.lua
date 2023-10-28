@@ -315,21 +315,7 @@ function WasCastingCheck()
     end
 end
 
-local function drawPetOutline()
-    if not pet or pet.dead then
-        return 
-    end
 
-    local petX, petY, petZ = ObjectPosition("pet")
-    local outlineRadius = 2 
-
-    awful.OnUpdate(function()
-        awful.Draw(function(draw)
-            draw:FilledCircle(petX, petY, petZ, outlineRadius) -- Draw a filled circle with a radius of 2
-            draw:SetColor(1, 1, 0, 1) -- Set the color to yellow (R=1, G=1, B=0) with an alpha of 1
-        end)
-    end)
-end
 
 createSoulstone:Callback(function(spell)
     if not player.combat then
@@ -660,6 +646,13 @@ shadowflame:Callback(function(spell)
     end
 end)
 
+awful.Draw(function(draw)
+    if pet and not pet.dead then
+        local petX, petY, petZ = pet.position()
+        local outlineRadius = 2 
+        draw:Outline(petX, petY, petZ, outlineRadius)
+    end)
+end
 
 
 demo:Init(function()
@@ -685,7 +678,7 @@ demo:Init(function()
     felguard()
     useHealthstone()
     drainLife()
-    drawPetOutline()
+--    drawPetOutline()
 --    togglePetMode()
     seedOfCorruption()
     immolate()

@@ -316,6 +316,10 @@ function WasCastingCheck()
 end
 
 local function drawPetOutline()
+    if not pet or pet.dead then
+        return -- Pet doesn't exist or is dead, so no outline to draw
+    end
+
     local petX, petY, petZ = ObjectPosition("pet")
     local outlineRadius = 5 -- Adjust the radius of the outline as needed
 
@@ -678,6 +682,7 @@ demo:Init(function()
     felguard()
     useHealthstone()
     drainLife()
+    drawPetOutline()
 --    togglePetMode()
     seedOfCorruption()
     immolate()

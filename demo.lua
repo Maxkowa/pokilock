@@ -3,6 +3,7 @@ local player = awful.player
 local pet = awful.pet
 local wasCasting = {}
 local target, focus, healer, enemyHealer = awful.target, awful.focus, awful.healer, awful.enemyHealer
+local Draw = awful.Draw
 awful.DevMode = true
 poki.warlock = {}
 poki.warlock.demo = awful.Actor:New({ spec = 2, class = "warlock"})
@@ -312,6 +313,15 @@ function WasCastingCheck()
             wasCasting[spell] = nil
         end
     end
+end
+
+local function drawPetOutline()
+    local petX, petY, petZ = ObjectPosition("pet")
+    local outlineRadius = 5 -- Adjust the radius of the outline as needed
+
+    awful.Draw(function(draw)
+        draw:Outline(petX, petY, petZ, outlineRadius)
+    end)
 end
 
 createSoulstone:Callback(function(spell)

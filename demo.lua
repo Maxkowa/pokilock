@@ -323,9 +323,11 @@ local function drawPetOutline()
     local petX, petY, petZ = ObjectPosition("pet")
     local outlineRadius = 2 
 
-    awful.Draw(function(draw)
-        draw:FilledCircle(petX, petY, petZ, outlineRadius) -- Draw a filled circle with a radius of 2
-        draw:SetColor(1, 1, 0, 1) -- Set the color to yellow (R=1, G=1, B=0) with an alpha of 1
+    awful.OnUpdate(function()
+        awful.Draw(function(draw)
+            draw:FilledCircle(petX, petY, petZ, outlineRadius) -- Draw a filled circle with a radius of 2
+            draw:SetColor(1, 1, 0, 1) -- Set the color to yellow (R=1, G=1, B=0) with an alpha of 1
+        end)
     end)
 end
 

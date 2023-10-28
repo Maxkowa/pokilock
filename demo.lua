@@ -659,7 +659,6 @@ awful.Draw(function(draw)
         local petX, petY, petZ = pet.position()
         local outlineRadius = 1
         draw:FilledCircle(petX, petY, petZ, outlineRadius, steps)
-        draw:Texture(petX, petY, petZ, texture)
     end
 end)
  

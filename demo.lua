@@ -658,7 +658,6 @@ awful.Draw(function(draw)
     if pet and not pet.dead and settings.petDraw then
         local petX, petY, petZ = pet.position()
         local outlineRadius = 1
-        local texture = awful.textureEscape(30146)
         draw:FilledCircle(petX, petY, petZ, outlineRadius, steps)
         draw:Texture(petX, petY, petZ, texture)
     end

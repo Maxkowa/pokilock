@@ -646,17 +646,18 @@ shadowflame:Callback(function(spell)
     end
 end)
 
-{148, 130, 201, 1}
+
 
 awful.Draw(function(draw)
     if pet and not pet.dead then
         local petX, petY, petZ = pet.position()
         local outlineRadius = 1 
-        local yellowColor = {148, 130, 201} -
-        draw:SetColor(unpack(yellowColor))
-        draw:Outline(petX, petY, petZ, outlineRadius)
+        local purpleColor = {0.5, 0, 0.5} -- RGB values for purple
+        draw:SetColor(unpack(purpleColor))
+        draw:FilledCircle(petX, petY, petZ, outlineRadius)
     end
 end)
+ 
 
 
 demo:Init(function()

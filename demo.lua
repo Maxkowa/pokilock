@@ -317,21 +317,15 @@ end
 
 local function drawPetOutline()
     if not pet or pet.dead then
-        return -- Pet doesn't exist or is dead, so no outline to draw
+        return 
     end
 
     local petX, petY, petZ = ObjectPosition("pet")
-    local outlineRadius = 2 -- Adjust the radius of the outline as needed
+    local outlineRadius = 2 
 
-    -- Remove previous outlines by drawing a transparent rectangle over the entire screen
     awful.Draw(function(draw)
-        draw:SetColor(0, 0, 0, 0) -- Set the color to transparent
-        draw:Rectangle(0, 0, 0, 10000, 10000, 0) -- Draw a large rectangle to cover the screen
-    end)
-
-    -- Draw the new outline
-    awful.Draw(function(draw)
-        draw:Outline(petX, petY, petZ, outlineRadius)
+        draw:Cylinder(petX, petY, petZ, outlineRadius, 1) -- Draw a yellow cylinder with a radius of 2 and height of 1
+        draw:SetColor(1, 1, 0, 1) -- Set the color to yellow (R=1, G=1, B=0) with an alpha of 1
     end)
 end
 

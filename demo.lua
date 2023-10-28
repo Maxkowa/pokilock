@@ -651,8 +651,8 @@ awful.Draw(function(draw)
         local petX, petY, petZ = pet.position()
         local outlineRadius = 2 
         draw:Outline(petX, petY, petZ, outlineRadius)
-    end)
-end
+    end
+end)
 
 
 demo:Init(function()
